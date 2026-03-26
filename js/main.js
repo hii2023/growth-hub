@@ -81,95 +81,145 @@ function renderWisdomDots() {
   });
 }
 
-// ── Quiz Engine ───────────────────────────────
-function initQuiz() {
+// ── Quiz Engine (v2 — Question Bank + Rotation) ──
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildQuizFromBank(bank, count = 5) {
   const quizContainer = document.getElementById('quiz');
+  if (!quizContainer || !bank || !bank.length) return;
+
+  const selected = shuffleArray(bank).slice(0, count);
+  const labelEl = document.getElementById('quiz-bank-label');
+  if (labelEl) labelEl.textContent = `Showing ${count} of ${bank.length} questions — reshuffles on every visit`;
+
+  quizContainer.innerHTML = selected.map((q, qi) => {
+    const shuffledOpts = shuffleArray(q.options);
+    const opts = shuffledOpts.map((o, oi) => `
+      <label class="q-option" data-correct="${o.correct}">
+        <input type="radio" name="q${qi}">
+        <span class="q-option-dot"></span>
+        ${o.text}
+      </label>`).join('');
+    return `
+      <div class="quiz-question" id="qq${qi}">
+        <div class="q-number">${qi + 1}</div>
+        <div class="q-text">${q.question}</div>
+        <div class="q-options">${opts}</div>
+        <div class="q-answer">${q.explanation}</div>
+      </div>`;
+  }).join('');
+
+  attachQuizHandlers();
+}
+
+function attachQuizHandlers() {
+  const quizContainer = document.getElementById('quiz');
+  const submitBtn = document.getElementById('quiz-submit');
+  const resetBtn  = document.getElementById('quiz-reset');
+  const scoreEl   = document.getElementById('quiz-score');
   if (!quizContainer) return;
 
-  const submitBtn = document.getElementById('quiz-submit');
-  const resetBtn = document.getElementById('quiz-reset');
-  const scoreEl = document.getElementById('quiz-score');
-
-  // Attach option click handlers
   quizContainer.querySelectorAll('.q-option').forEach(opt => {
     opt.addEventListener('click', function () {
       const qBlock = this.closest('.quiz-question');
-      if (qBlock.dataset.answered) return; // already answered
-
-      // Select visually
+      if (qBlock.dataset.answered) return;
       qBlock.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
       this.classList.add('selected');
-      this.querySelector('input[type="radio"]').checked = true;
+      const radio = this.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
     });
   });
 
   if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
+    // Remove old listener by replacing node
+    const newBtn = submitBtn.cloneNode(true);
+    submitBtn.parentNode.replaceChild(newBtn, submitBtn);
+    newBtn.addEventListener('click', () => {
       const questions = quizContainer.querySelectorAll('.quiz-question');
-      let correct = 0;
-      let answered = 0;
-
+      let correct = 0, answered = 0;
       questions.forEach(q => {
         const selected = q.querySelector('.q-option.selected');
         if (!selected) return;
         answered++;
         q.dataset.answered = '1';
-
-        const isCorrect = selected.dataset.correct === 'true';
-        if (isCorrect) {
-          selected.classList.add('correct');
-          correct++;
+        if (selected.dataset.correct === 'true') {
+          selected.classList.add('correct'); correct++;
         } else {
           selected.classList.add('wrong');
-          // Highlight the correct one
-          q.querySelectorAll('.q-option').forEach(o => {
-            if (o.dataset.correct === 'true') o.classList.add('correct');
-          });
+          q.querySelectorAll('.q-option').forEach(o => { if (o.dataset.correct === 'true') o.classList.add('correct'); });
         }
-
-        // Show answer explanation
         const ans = q.querySelector('.q-answer');
         if (ans) ans.classList.add('show');
       });
-
-      if (answered === 0) {
-        alert('Please answer at least one question first!');
-        return;
-      }
-
+      if (answered === 0) { alert('Please answer at least one question first!'); return; }
       const pct = Math.round((correct / answered) * 100);
-      let emoji = '🎯';
-      let msg = 'Great job!';
+      let emoji = '🎯', msg = 'Great job!';
       if (pct === 100) { emoji = '🏆'; msg = 'Perfect score! Outstanding!'; }
       else if (pct >= 80) { emoji = '🌟'; msg = 'Excellent work!'; }
       else if (pct >= 60) { emoji = '📚'; msg = 'Good effort! Review and retry.'; }
-      else { emoji = '💪'; msg = 'Keep studying — you\'ll get it!'; }
-
+      else { emoji = '💪'; msg = "Keep studying — you'll get it!"; }
       if (scoreEl) {
         scoreEl.innerHTML = `<span class="score-emoji">${emoji}</span>${correct}/${answered} correct (${pct}%) — ${msg}`;
         scoreEl.classList.add('show');
         scoreEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-
-      submitBtn.style.display = 'none';
+      newBtn.style.display = 'none';
     });
   }
 
   if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      quizContainer.querySelectorAll('.quiz-question').forEach(q => {
-        delete q.dataset.answered;
-        q.querySelectorAll('.q-option').forEach(o => {
-          o.classList.remove('selected', 'correct', 'wrong');
-          o.querySelector('input[type="radio"]').checked = false;
+    const newReset = resetBtn.cloneNode(true);
+    resetBtn.parentNode.replaceChild(newReset, resetBtn);
+    newReset.addEventListener('click', () => {
+      // If bank exists, re-draw with new random set
+      if (window.QUIZ_BANK) {
+        if (scoreEl) scoreEl.classList.remove('show');
+        buildQuizFromBank(window.QUIZ_BANK);
+        const newSubmit = document.getElementById('quiz-submit');
+        if (newSubmit) newSubmit.style.display = '';
+      } else {
+        quizContainer.querySelectorAll('.quiz-question').forEach(q => {
+          delete q.dataset.answered;
+          q.querySelectorAll('.q-option').forEach(o => {
+            o.classList.remove('selected','correct','wrong');
+            const r = o.querySelector('input[type="radio"]');
+            if (r) r.checked = false;
+          });
+          const ans = q.querySelector('.q-answer');
+          if (ans) ans.classList.remove('show');
         });
-        const ans = q.querySelector('.q-answer');
-        if (ans) ans.classList.remove('show');
-      });
-      if (scoreEl) scoreEl.classList.remove('show');
-      if (submitBtn) submitBtn.style.display = '';
+        if (scoreEl) scoreEl.classList.remove('show');
+        const sub = document.getElementById('quiz-submit');
+        if (sub) sub.style.display = '';
+      }
     });
   }
+}
+
+function initQuiz() {
+  // If a QUIZ_BANK is defined by the page, use the dynamic engine
+  if (window.QUIZ_BANK && window.QUIZ_BANK.length) {
+    buildQuizFromBank(window.QUIZ_BANK, 5);
+  } else {
+    // Fallback: wire up static HTML quiz
+    attachQuizHandlers();
+  }
+}
+
+// ── Tip of the Day Rotator ────────────────────
+function initTipRotator() {
+  const el = document.getElementById('tip-text');
+  const tips = window.PAGE_TIPS;
+  if (!el || !tips || !tips.length) return;
+  const idx = Math.floor(Math.random() * tips.length);
+  el.textContent = tips[idx];
 }
 
 // ── Scroll Reveal ─────────────────────────────
@@ -287,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initWisdom();
   initQuiz();
+  initTipRotator();
   initScrollReveal();
   initActiveNav();
   initMobileMenu();

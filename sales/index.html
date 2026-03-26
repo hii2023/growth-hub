@@ -318,6 +318,39 @@
       color: var(--text-secondary);
       margin: 0;
     }
+
+    /* Quiz bank label row */
+    .quiz-bank-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .quiz-refresh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .quiz-refresh-btn:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
@@ -381,7 +414,7 @@
           <div class="stat-label" style="color:rgba(255,255,255,0.7);">Real Examples</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num" style="color:white;">5</div>
+          <div class="stat-num" style="color:white;">15</div>
           <div class="stat-label" style="color:rgba(255,255,255,0.7);">Quiz Questions</div>
         </div>
       </div>
@@ -425,6 +458,15 @@
       <!-- Main Content -->
       <main>
 
+        <!-- Tip of the Day -->
+        <div class="tip-rotator">
+          <span class="tip-icon">🔥</span>
+          <div>
+            <div class="tip-label">Sales Tip of the Day</div>
+            <div class="tip-text" id="tip-text">Loading tip...</div>
+          </div>
+        </div>
+
         <!-- ══════════════════════════════════════ -->
         <!-- SECTION 1: Core Concept               -->
         <!-- ══════════════════════════════════════ -->
@@ -445,6 +487,30 @@
             <p style="font-size:0.92rem; max-width:600px; margin:1rem auto 0;">
               The best salespeople are equal parts psychologist, strategist, and storyteller. They ask before they tell. They listen before they pitch. They build before they close. The transaction is simply the natural conclusion of a well-built relationship.
             </p>
+          </div>
+
+          <!-- Before / After: Old Sales vs Modern Sales -->
+          <div class="before-after reveal" style="margin-top:2rem;">
+            <div class="ba-before">
+              <div class="ba-label ba-label-before">❌ Old Way</div>
+              <ul class="ba-list">
+                <li>Lead with the product pitch immediately</li>
+                <li>Talk about features and specs</li>
+                <li>Handle objections with rehearsed rebuttals</li>
+                <li>Close as quickly as possible</li>
+                <li>Move on after a lost deal</li>
+              </ul>
+            </div>
+            <div class="ba-after">
+              <div class="ba-label ba-label-after">✅ Modern Way</div>
+              <ul class="ba-list">
+                <li>Lead with a diagnostic question</li>
+                <li>Talk about outcomes and ROI</li>
+                <li>Explore objections as information</li>
+                <li>Close when the fit is confirmed</li>
+                <li>Learn from every lost deal</li>
+              </ul>
+            </div>
           </div>
 
           <!-- Pipeline visual -->
@@ -548,6 +614,54 @@
             <p>Research-backed, battle-tested frameworks used by the world's top sales professionals.</p>
           </div>
 
+          <!-- Transactional vs Consultative Comparison Table -->
+          <div class="reveal" style="margin-bottom:2rem;">
+            <h4 style="margin-bottom:0.75rem;">Transactional vs. Consultative Selling</h4>
+            <div class="compare-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Transactional Seller</th>
+                    <th>Consultative Seller</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Primary focus</td>
+                    <td>Product features</td>
+                    <td>Customer problems</td>
+                  </tr>
+                  <tr>
+                    <td>Relationship</td>
+                    <td>One-time</td>
+                    <td>Long-term</td>
+                  </tr>
+                  <tr>
+                    <td>Questions asked</td>
+                    <td>Few</td>
+                    <td>Many</td>
+                  </tr>
+                  <tr>
+                    <td>Perceived as</td>
+                    <td>Vendor</td>
+                    <td>Trusted advisor</td>
+                  </tr>
+                  <tr>
+                    <td>Win rate on complex deals</td>
+                    <td>Low</td>
+                    <td>High</td>
+                  </tr>
+                  <tr>
+                    <td>Customer retention</td>
+                    <td>Low</td>
+                    <td>High</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div class="grid-2" style="gap:2rem;">
 
             <!-- Method 1: SPIN Selling -->
@@ -561,6 +675,38 @@
                 </div>
               </div>
               <p style="font-size:0.88rem;">SPIN Selling is built on a simple insight: the more a customer talks about their problem, the more urgency they feel to solve it. Your job is to ask the right questions in the right sequence.</p>
+
+              <!-- SPIN Visual Flow -->
+              <div class="flow-steps" style="margin: 1.2rem 0;">
+                <div class="flow-step">
+                  <div class="flow-step-badge">S</div>
+                  <div class="flow-step-content">
+                    <strong>Situation</strong>
+                    <span>"What's your current state?"</span>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-badge">P</div>
+                  <div class="flow-step-content">
+                    <strong>Problem</strong>
+                    <span>"What's causing friction?"</span>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-badge">I</div>
+                  <div class="flow-step-content">
+                    <strong>Implication</strong>
+                    <span>"What does this cost you?"</span>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-badge">N</div>
+                  <div class="flow-step-content">
+                    <strong>Need-Payoff</strong>
+                    <span>"What would solving this be worth?"</span>
+                  </div>
+                </div>
+              </div>
 
               <div class="spin-row">
                 <div class="spin-letter">S</div>
@@ -829,49 +975,74 @@
             <p>See exactly how world-class organizations apply sales science to win at scale.</p>
           </div>
 
-          <div class="grid-2" style="gap:1.5rem;">
+          <!-- Did You Know -->
+          <div class="did-you-know reveal">
+            <span class="dyk-icon">🔬</span>
+            <div>
+              <strong>Did You Know?</strong>
+              <p>Harvard Business Review found that top-performing salespeople ask 39% more questions during discovery calls than average performers — and listen 54% more.</p>
+            </div>
+          </div>
 
-            <!-- Example 1: Salesforce -->
-            <div class="example-card reveal">
-              <div class="example-label">Enterprise B2B</div>
-              <h4>Salesforce's Enterprise Deal Strategy</h4>
-              <p style="font-size:0.9rem;">
-                Salesforce revolutionized enterprise sales by abandoning the traditional "feature dump" approach entirely. Their sales organization uses a deeply consultative method: before any demo, account executives spend hours understanding the customer's specific KPIs, revenue targets, and operational pain points.
-              </p>
-              <p style="font-size:0.9rem;">
-                Rather than selling "CRM software," they sell <strong>"revenue growth"</strong> and <strong>"customer retention."</strong> Every demo is tailored to show the customer's own data flowing through the platform. ROI projections — built with the customer's actual numbers — are presented before the price is ever discussed.
-              </p>
-              <p style="font-size:0.9rem;">
-                When objections arise around price, Salesforce reps are trained to pivot immediately to the cost of inaction: "What is one lost customer worth to you annually? Our data shows our customers retain 27% more clients in year one." The conversation moves from "is this expensive?" to "can we afford not to?"
-              </p>
-              <div class="outcome-box">
-                <strong>💡 Key Insight:</strong> By framing every demo around the customer's specific KPIs and demonstrating ROI before price, Salesforce achieves 70%+ win rates in enterprise. Average deal size runs 3x that of competitors — not because their product is 3x better, but because their sales process is 3x more sophisticated.
+          <div class="grid-2" style="gap:1.5rem; margin-top:1.5rem;">
+
+            <!-- Example 1: Salesforce — Scenario Card -->
+            <div class="scenario-card reveal">
+              <div class="scenario-card-header">
+                <span class="scenario-icon">🏢</span>
+                <div>
+                  <div class="scenario-title">Salesforce Enterprise Deal</div>
+                  <div class="scenario-subtitle">CRM → Revenue Platform</div>
+                </div>
               </div>
-              <div>
-                <span class="stat-callout">📊 70%+ Enterprise Win Rate</span>
-                <span class="stat-callout" style="margin-left:0.5rem;">💰 3x Avg Deal Size vs. Competitors</span>
+              <div class="scenario-card-body">
+                <p style="font-size:0.9rem;">
+                  Salesforce revolutionized enterprise sales by abandoning the traditional "feature dump" approach entirely. Their sales organization uses a deeply consultative method: before any demo, account executives spend hours understanding the customer's specific KPIs, revenue targets, and operational pain points.
+                </p>
+                <p style="font-size:0.9rem;">
+                  Rather than selling "CRM software," they sell <strong>"revenue growth"</strong> and <strong>"customer retention."</strong> Every demo is tailored to show the customer's own data flowing through the platform. ROI projections — built with the customer's actual numbers — are presented before the price is ever discussed.
+                </p>
+                <p style="font-size:0.9rem;">
+                  When objections arise around price, Salesforce reps are trained to pivot immediately to the cost of inaction: "What is one lost customer worth to you annually? Our data shows our customers retain 27% more clients in year one." The conversation moves from "is this expensive?" to "can we afford not to?"
+                </p>
+                <div class="outcome-box">
+                  <strong>💡 Key Insight:</strong> By framing every demo around the customer's specific KPIs and demonstrating ROI before price, Salesforce achieves 70%+ win rates in enterprise. Average deal size runs 3x that of competitors — not because their product is 3x better, but because their sales process is 3x more sophisticated.
+                </div>
+                <div class="stat-chips">
+                  <span class="stat-chip">📊 70% win rate</span>
+                  <span class="stat-chip">💰 3× deal size</span>
+                  <span class="stat-chip">🎯 $50K avg deal</span>
+                </div>
               </div>
             </div>
 
-            <!-- Example 2: Apple -->
-            <div class="example-card reveal fade-in-delay-1">
-              <div class="example-label">B2C Retail</div>
-              <h4>Apple's In-Store Sales Method</h4>
-              <p style="font-size:0.9rem;">
-                Apple's retail stores generate more revenue per square foot than any other retailer in the world — not by accident, but because of a meticulously designed sales philosophy baked into every staff interaction.
-              </p>
-              <p style="font-size:0.9rem;">
-                Apple trains every Genius Bar and floor specialist using the <strong>APPLE acronym</strong>: <em>Approach</em> with a personalized warm welcome. <em>Probe</em> politely to understand their needs. <em>Present</em> a solution for the customer to take home today. <em>Listen</em> for and resolve any issues or concerns. <em>End</em> with a fond farewell and invitation to return.
-              </p>
-              <p style="font-size:0.9rem;">
-                Critically, staff are instructed <strong>never to pitch a product first.</strong> The opening question is always some version of: <em>"What do you use your current device for?"</em> Only once friction is identified — "my photos keep running out of storage," "my laptop is too heavy to carry to meetings" — does the specialist show how the new product removes that specific friction. There is no pushy close. The natural progression does the closing.
-              </p>
-              <div class="outcome-box">
-                <strong>💡 Key Insight:</strong> Apple Stores generate approximately <strong>$5,500 in revenue per square foot</strong> — the world's highest retail revenue density. Their secret is not product superiority alone, but a sales culture built on curiosity over pitch, and empathy over transaction.
+            <!-- Example 2: Apple — Scenario Card -->
+            <div class="scenario-card reveal fade-in-delay-1">
+              <div class="scenario-card-header">
+                <span class="scenario-icon">🍎</span>
+                <div>
+                  <div class="scenario-title">Apple Store Sales Method</div>
+                  <div class="scenario-subtitle">No pitch. Just questions.</div>
+                </div>
               </div>
-              <div>
-                <span class="stat-callout">🏆 $5,500/sqft Revenue</span>
-                <span class="stat-callout" style="margin-left:0.5rem;">🌍 World's Highest Retail $/sqft</span>
+              <div class="scenario-card-body">
+                <p style="font-size:0.9rem;">
+                  Apple's retail stores generate more revenue per square foot than any other retailer in the world — not by accident, but because of a meticulously designed sales philosophy baked into every staff interaction.
+                </p>
+                <p style="font-size:0.9rem;">
+                  Apple trains every Genius Bar and floor specialist using the <strong>APPLE acronym</strong>: <em>Approach</em> with a personalized warm welcome. <em>Probe</em> politely to understand their needs. <em>Present</em> a solution for the customer to take home today. <em>Listen</em> for and resolve any issues or concerns. <em>End</em> with a fond farewell and invitation to return.
+                </p>
+                <p style="font-size:0.9rem;">
+                  Critically, staff are instructed <strong>never to pitch a product first.</strong> The opening question is always some version of: <em>"What do you use your current device for?"</em> Only once friction is identified — "my photos keep running out of storage," "my laptop is too heavy to carry to meetings" — does the specialist show how the new product removes that specific friction. There is no pushy close. The natural progression does the closing.
+                </p>
+                <div class="outcome-box">
+                  <strong>💡 Key Insight:</strong> Apple Stores generate approximately <strong>$5,500 in revenue per square foot</strong> — the world's highest retail revenue density. Their secret is not product superiority alone, but a sales culture built on curiosity over pitch, and empathy over transaction.
+                </div>
+                <div class="stat-chips">
+                  <span class="stat-chip">🏆 $5,500/sqft</span>
+                  <span class="stat-chip">🌍 #1 retail</span>
+                  <span class="stat-chip">😊 60 NPS</span>
+                </div>
               </div>
             </div>
 
@@ -885,157 +1056,23 @@
           <div class="section-header reveal">
             <span class="section-label">Test Yourself</span>
             <h2>Knowledge Quiz</h2>
-            <p>Five questions to test your understanding of sales frameworks, methods, and mindset.</p>
+            <p>Questions from a rotating bank of 15 — reshuffled on every visit to keep it fresh.</p>
           </div>
 
           <div class="quiz-container reveal">
 
-            <!-- Q1 -->
-            <div class="quiz-question" id="q1">
-              <div class="q-number">1</div>
-              <div class="q-text">In SPIN Selling, what does the "I" stand for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Interest
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Implication
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Initiative
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Insight
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Correct: Implication.</strong> Implication questions explore the consequences of a problem — "If this issue continues, what impact will it have on your revenue?" This step is the most powerful in SPIN because it creates urgency organically. The customer feels the weight of the problem themselves, rather than being told to care about it.
-              </div>
+            <div class="quiz-bank-label">
+              <span id="quiz-bank-label">Showing 5 of 15 questions — reshuffles every visit</span>
+              <button class="quiz-refresh-btn" id="quiz-reset">🔀 New Questions</button>
             </div>
 
-            <!-- Q2 -->
-            <div class="quiz-question" id="q2">
-              <div class="q-number">2</div>
-              <div class="q-text">What is the core philosophy of the Challenger Sale?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Always discount to close
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Build rapport above all else
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Teach, Tailor, and Take Control
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Follow the customer's lead at all times
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Correct: Teach, Tailor, and Take Control.</strong> Challengers win by offering unique insights the customer hasn't considered (Teach), customizing that message to each stakeholder's priorities (Tailor), and constructively challenging the customer's assumptions rather than simply accommodating them (Take Control). Research showed that "Relationship Builders" actually perform worst among top seller archetypes.
-              </div>
-            </div>
+            <div id="quiz"></div>
 
-            <!-- Q3 -->
-            <div class="quiz-question" id="q3">
-              <div class="q-number">3</div>
-              <div class="q-text">What does "Value Proposition" mean in sales?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> The price of your product
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> The unique benefit your product delivers to solve a specific customer problem
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> A guarantee clause in a sales contract
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> Your product's full feature list
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Correct: The unique benefit your product delivers to solve a specific problem.</strong> A value proposition answers the most important question in every prospect's mind: "Why should I buy from YOU, specifically?" It connects your solution directly to the customer's desired outcome — not to your product's specs. A great value prop is specific, outcome-focused, and differentiated from alternatives.
-              </div>
-            </div>
-
-            <!-- Q4 -->
-            <div class="quiz-question" id="q4">
-              <div class="q-number">4</div>
-              <div class="q-text">What does the AIDA model stand for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> A negotiation and conflict framework
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Attention, Interest, Desire, Action
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Analysis, Inquiry, Deal, Agreement
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> A conflict resolution model from HR
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Correct: Attention, Interest, Desire, Action.</strong> AIDA is one of the oldest and most enduring frameworks in sales and marketing. It describes the customer's psychological journey from first encountering your message (Attention) through building curiosity (Interest), emotional resonance (Desire), and finally a purchasing decision (Action). It works at the level of an email subject line, a cold call opener, or a full enterprise sales process.
-              </div>
-            </div>
-
-            <!-- Q5 -->
-            <div class="quiz-question" id="q5">
-              <div class="q-number">5</div>
-              <div class="q-text">What is the #1 mistake salespeople make in objection handling?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Listening too carefully before responding
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Immediately arguing against the objection
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Acknowledging the concern empathetically
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Asking clarifying questions to understand better
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Correct: Immediately arguing against the objection.</strong> When a salesperson argues defensively the moment an objection surfaces, it triggers psychological reactance — the prospect doubles down. The right approach follows a structured protocol: Acknowledge the concern genuinely ("That's a fair point and I hear it a lot") → Clarify the real concern beneath the stated one → Respond with evidence and perspective → Confirm the answer actually resolved the concern before moving on.
-              </div>
-            </div>
-
-            <!-- Quiz Actions -->
             <div class="quiz-actions">
               <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
-              <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
             </div>
 
-            <!-- Score -->
-            <div class="quiz-score" id="quiz-score">
-              <span class="score-emoji" id="score-emoji">🎉</span>
-              <span id="score-text"></span>
-            </div>
+            <div class="quiz-score" id="quiz-score"></div>
 
           </div>
         </section>
@@ -1062,13 +1099,178 @@
 
   <script src="../js/main.js"></script>
   <script>
+    window.QUIZ_BANK = [
+      {
+        question: "In SPIN Selling, what does the 'I' stand for?",
+        options: [
+          { text: "Interest — gauging the buyer's level of engagement", correct: false },
+          { text: "Implication — exploring the consequences of their problem", correct: true },
+          { text: "Initiative — asking the buyer to take the next step", correct: false },
+          { text: "Insight — sharing a unique market perspective", correct: false }
+        ],
+        explanation: "Implication questions amplify pain: 'If this inventory issue continues, how will it affect your Q4 revenue?' This creates urgency by making the problem feel bigger and more expensive — without you having to say so."
+      },
+      {
+        question: "What is the core philosophy of the Challenger Sale?",
+        options: [
+          { text: "Always discount aggressively to close faster", correct: false },
+          { text: "Build deep personal rapport before ever discussing the product", correct: false },
+          { text: "Teach, Tailor, and Take Control of the conversation", correct: true },
+          { text: "Follow the customer's lead — never push back", correct: false }
+        ],
+        explanation: "Challengers win by teaching customers something they didn't know about their own business, tailoring the pitch to each stakeholder's priorities, and constructively challenging assumptions. They're not afraid to say 'You might be thinking about this wrong.'"
+      },
+      {
+        question: "What is a 'Value Proposition'?",
+        options: [
+          { text: "The list price of your product or service", correct: false },
+          { text: "A guarantee clause in the sales contract", correct: false },
+          { text: "The unique benefit your solution delivers for a specific customer problem", correct: true },
+          { text: "Your company's mission statement", correct: false }
+        ],
+        explanation: "A great value proposition answers: 'Why should THIS customer buy from ME, for THEIR specific problem?' It connects your solution to their desired outcome — not just features."
+      },
+      {
+        question: "What does the AIDA model stand for?",
+        options: [
+          { text: "Analysis, Inquiry, Deal, Agreement", correct: false },
+          { text: "Attention, Interest, Desire, Action", correct: true },
+          { text: "Approach, Investigate, Demonstrate, Achieve", correct: false },
+          { text: "Acquire, Influence, Deliver, Assess", correct: false }
+        ],
+        explanation: "AIDA maps the customer's mental journey: Grab Attention → Build Interest → Create Desire (emotional want) → Prompt Action (easy yes). Every great sales pitch and ad follows this arc."
+      },
+      {
+        question: "What is the #1 mistake salespeople make when handling objections?",
+        options: [
+          { text: "Listening too carefully before responding", correct: false },
+          { text: "Immediately arguing against or dismissing the objection", correct: true },
+          { text: "Acknowledging the concern with empathy", correct: false },
+          { text: "Asking for clarification about the objection", correct: false }
+        ],
+        explanation: "Arguing creates defensiveness. The winning sequence is: Acknowledge ('That's a fair concern') → Clarify ('Can you tell me more about what's driving that?') → Respond with evidence → Confirm ('Does that address your concern?')."
+      },
+      {
+        question: "In SPIN Selling, what is the purpose of 'Situation' questions?",
+        options: [
+          { text: "To close the deal by summarizing benefits", correct: false },
+          { text: "To gather factual context about the buyer's current state", correct: true },
+          { text: "To create urgency by highlighting problems", correct: false },
+          { text: "To get the buyer to express the value of your solution", correct: false }
+        ],
+        explanation: "Situation questions establish the baseline: 'What CRM are you currently using?' 'How large is your sales team?' 'How do you currently handle X?' Don't overdo them — too many feel like an interrogation. Use research to reduce them."
+      },
+      {
+        question: "What distinguishes a 'Consultative Seller' from a traditional salesperson?",
+        options: [
+          { text: "They focus on product features rather than benefits", correct: false },
+          { text: "They act as a trusted advisor, diagnosing problems before prescribing solutions", correct: true },
+          { text: "They always offer the lowest price", correct: false },
+          { text: "They close on the first call regardless of fit", correct: false }
+        ],
+        explanation: "Consultative sellers ask before they tell. Like a doctor who examines before prescribing, they deeply understand the customer's world first. This builds trust and dramatically reduces buyer's remorse and churn."
+      },
+      {
+        question: "What is 'social selling'?",
+        options: [
+          { text: "Selling products on social media stores", correct: false },
+          { text: "Using social platforms to research, connect, and build relationships with prospects before the formal sales conversation", correct: true },
+          { text: "Getting referrals from friends and family", correct: false },
+          { text: "Posting promotional content on LinkedIn", correct: false }
+        ],
+        explanation: "Social selling is about being present, valuable, and visible to prospects on platforms like LinkedIn before you ever pitch. 78% of social sellers outsell peers who don't use social media — because they arrive at the conversation already trusted."
+      },
+      {
+        question: "What is the 'puppy dog close' technique?",
+        options: [
+          { text: "Using emotional stories about pets to build rapport", correct: false },
+          { text: "Letting the customer try or use the product with no commitment, knowing they'll fall in love with it", correct: true },
+          { text: "A soft close technique for emotionally hesitant buyers", correct: false },
+          { text: "Always bringing gifts or samples to sales meetings", correct: false }
+        ],
+        explanation: "Named after pet stores that let you take the puppy home for the weekend — knowing you'll never bring it back. Free trials, pilot programs, and test drives all leverage this principle. Commitment drops when the risk feels low."
+      },
+      {
+        question: "In the sales funnel, what happens at the 'Discovery' stage?",
+        options: [
+          { text: "You deliver your product demo or presentation", correct: false },
+          { text: "You ask deep questions to understand the prospect's problems, goals, and budget", correct: true },
+          { text: "You send the proposal and pricing", correct: false },
+          { text: "You cold-call new prospects for the first time", correct: false }
+        ],
+        explanation: "Discovery is the most underinvested stage. Great discovery questions reveal: What problem needs solving? What's the cost of NOT solving it? Who decides? What does success look like? What have you tried before? The quality of your discovery determines the quality of your close."
+      },
+      {
+        question: "What is 'loss aversion' and how does it apply to sales?",
+        options: [
+          { text: "Buyers who have lost money previously refuse to buy again", correct: false },
+          { text: "People feel the pain of losing something ~2x more than the pleasure of gaining the same thing", correct: true },
+          { text: "Sales reps avoid losing deals by discounting aggressively", correct: false },
+          { text: "A risk-based pricing model", correct: false }
+        ],
+        explanation: "Kahneman's research shows losses hurt twice as much as equivalent gains feel good. Smart sellers frame pitches around what the customer will LOSE by not acting ('You're currently losing $50K/quarter to this inefficiency') rather than what they'll gain."
+      },
+      {
+        question: "What is the 'Assumptive Close'?",
+        options: [
+          { text: "Assuming the customer will say no and preparing for rejection", correct: false },
+          { text: "Speaking and acting as if the customer has already decided to buy", correct: true },
+          { text: "A closing technique used only for large enterprise deals", correct: false },
+          { text: "Making assumptions about the customer's budget without asking", correct: false }
+        ],
+        explanation: "The assumptive close shifts the question from 'Will you buy?' to 'How would you like to proceed?' — 'Would Tuesday or Thursday work better for onboarding?' — 'Would you like to start with the annual or monthly plan?' It works because it reduces decision friction."
+      },
+      {
+        question: "What does 'pipeline velocity' measure?",
+        options: [
+          { text: "How quickly your sales team responds to inbound leads", correct: false },
+          { text: "How fast and efficiently deals move through your sales funnel", correct: true },
+          { text: "The volume of cold calls made per week", correct: false },
+          { text: "Customer satisfaction scores after purchase", correct: false }
+        ],
+        explanation: "Pipeline velocity = (Number of deals × Average deal value × Win rate) ÷ Sales cycle length. Improving any of these four levers increases revenue. Most sales teams only focus on deal count — ignoring deal value, win rate, and speed."
+      },
+      {
+        question: "What is the 'Challenger' sales profile most effective for?",
+        options: [
+          { text: "Simple, transactional, low-cost purchases", correct: false },
+          { text: "Complex B2B sales where buyers may not fully understand their own problems", correct: true },
+          { text: "Retail and consumer sales environments", correct: false },
+          { text: "Renewal and upsell conversations with existing happy customers", correct: false }
+        ],
+        explanation: "Challenger shines in complex sales where the customer has a status quo bias and needs someone to show them a better way. In simple transactional sales, the relationship-builder often wins. Know which mode the situation calls for."
+      },
+      {
+        question: "What does 'ICP' stand for in sales?",
+        options: [
+          { text: "Internal Closing Protocol", correct: false },
+          { text: "Ideal Customer Profile — the description of the perfect buyer for your solution", correct: true },
+          { text: "Initial Contact Procedure", correct: false },
+          { text: "Income Conversion Percentage", correct: false }
+        ],
+        explanation: "Your ICP defines who you should be selling to: company size, industry, role, pain points, tech stack, budget range, growth stage. Selling outside your ICP destroys win rates and wastes time. The best sales teams are ruthlessly focused on their ICP."
+      }
+    ];
+
+    window.PAGE_TIPS = [
+      "💡 People don't buy products — they buy the version of themselves your product promises to create.",
+      "💡 Ask more questions than you answer. The best salespeople talk 30% of the time, listen 70%.",
+      "💡 'No' usually means 'not yet' or 'not enough information' — not 'never'.",
+      "💡 Frame your offer around what the customer LOSES by not buying, not what they gain.",
+      "💡 The follow-up is where most deals are won. 80% of sales require 5+ follow-ups.",
+      "💡 Sell to the problem, not the product. Nobody wakes up wanting a CRM — they want to hit their revenue target.",
+      "💡 In B2B sales, find the economic buyer, the technical buyer, and the user buyer — each needs a different message."
+    ];
+  </script>
+  <script>
     // ── Page Init ──────────────────────────────
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
       initReveal();
       initTOCHighlight();
       initMobileMenu();
-      initQuiz();
+      initTipRotator();
+      initQuizBank();
     });
 
     // ── Scroll Reveal ──────────────────────────
@@ -1116,51 +1318,96 @@
       });
     }
 
-    // ── Quiz Logic ─────────────────────────────
-    function initQuiz() {
-      const submitBtn = document.getElementById('quiz-submit');
-      const resetBtn = document.getElementById('quiz-reset');
-      const scoreDiv = document.getElementById('quiz-score');
+    // ── Tip Rotator ────────────────────────────
+    function initTipRotator() {
+      const tipEl = document.getElementById('tip-text');
+      if (!tipEl || !window.PAGE_TIPS || !window.PAGE_TIPS.length) return;
+      const tips = window.PAGE_TIPS;
+      let idx = Math.floor(Math.random() * tips.length);
+      tipEl.textContent = tips[idx];
+    }
 
-      // Option selection
-      document.querySelectorAll('.q-option').forEach(opt => {
+    // ── Quiz Bank ──────────────────────────────
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function buildQuiz() {
+      const bank = window.QUIZ_BANK || [];
+      const quizEl = document.getElementById('quiz');
+      const labelEl = document.getElementById('quiz-bank-label');
+      const scoreDiv = document.getElementById('quiz-score');
+      const submitBtn = document.getElementById('quiz-submit');
+      if (!quizEl || !bank.length) return;
+
+      // Reset state
+      if (scoreDiv) { scoreDiv.classList.remove('show'); scoreDiv.innerHTML = ''; }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
+
+      const selected = shuffle(bank).slice(0, 5);
+      const total = bank.length;
+      if (labelEl) labelEl.innerHTML = `Showing 5 of ${total} questions — reshuffles every visit <span id="quiz-bank-label-inner"></span>`;
+
+      quizEl.innerHTML = selected.map((q, qi) => {
+        const shuffledOpts = shuffle(q.options);
+        const optionsHtml = shuffledOpts.map((opt, oi) => `
+          <label class="q-option" data-correct="${opt.correct}">
+            <input type="radio" name="q${qi}" />
+            <span class="q-option-dot"></span> ${opt.text}
+          </label>
+        `).join('');
+
+        return `
+          <div class="quiz-question" id="qb${qi}">
+            <div class="q-number">${qi + 1}</div>
+            <div class="q-text">${q.question}</div>
+            <div class="q-options">${optionsHtml}</div>
+            <div class="q-answer">${q.explanation}</div>
+          </div>
+        `;
+      }).join('');
+
+      // Wire up option selection
+      quizEl.querySelectorAll('.q-option').forEach(opt => {
         opt.addEventListener('click', () => {
           const question = opt.closest('.quiz-question');
           question.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
           opt.classList.add('selected');
-          // Check radio
           opt.querySelector('input[type="radio"]').checked = true;
         });
       });
 
+      // Wire up submit
       if (submitBtn) {
-        submitBtn.addEventListener('click', () => {
-          const questions = document.querySelectorAll('.quiz-question');
+        submitBtn.onclick = () => {
+          const questions = quizEl.querySelectorAll('.quiz-question');
           let score = 0;
           let answered = 0;
 
           questions.forEach(q => {
-            const selected = q.querySelector('.q-option.selected');
-            if (!selected) return;
+            const sel = q.querySelector('.q-option.selected');
+            if (!sel) return;
             answered++;
 
-            const isCorrect = selected.dataset.correct === 'true';
+            const isCorrect = sel.dataset.correct === 'true';
             if (isCorrect) {
-              selected.classList.add('correct');
+              sel.classList.add('correct');
               score++;
             } else {
-              selected.classList.add('wrong');
-              // Show the correct one
+              sel.classList.add('wrong');
               q.querySelectorAll('.q-option').forEach(opt => {
                 if (opt.dataset.correct === 'true') opt.classList.add('correct');
               });
             }
 
-            // Show explanation
             const answer = q.querySelector('.q-answer');
             if (answer) answer.classList.add('show');
 
-            // Disable further clicks
             q.querySelectorAll('.q-option').forEach(opt => {
               opt.style.pointerEvents = 'none';
             });
@@ -1171,39 +1418,31 @@
             return;
           }
 
-          // Show score
-          scoreDiv.classList.add('show');
-          const pct = Math.round((score / 5) * 100);
-          let emoji = '🎉';
-          let msg = '';
-          if (score === 5)       { emoji = '🏆'; msg = 'Perfect Score! You\'re a Sales Vault master!'; }
-          else if (score >= 4)   { emoji = '🎯'; msg = `Excellent — ${score}/5! You have a strong command of sales science.`; }
-          else if (score >= 3)   { emoji = '💡'; msg = `Good work — ${score}/5! Review the frameworks above to sharpen the gaps.`; }
-          else if (score >= 2)   { emoji = '📚'; msg = `${score}/5 — Keep studying! Re-read the methods section and try again.`; }
-          else                   { emoji = '💪'; msg = `${score}/5 — Don\'t give up. Every expert started as a beginner.`; }
-
-          document.getElementById('score-emoji').textContent = emoji;
-          document.getElementById('score-text').textContent = msg;
-          scoreDiv.style.borderTop = `4px solid var(--site-color)`;
+          if (scoreDiv) {
+            scoreDiv.classList.add('show');
+            let emoji = '🎉';
+            let msg = '';
+            if (score === 5)      { emoji = '🏆'; msg = 'Perfect Score! You\'re a Sales Vault master!'; }
+            else if (score >= 4)  { emoji = '🎯'; msg = `Excellent — ${score}/5! You have a strong command of sales science.`; }
+            else if (score >= 3)  { emoji = '💡'; msg = `Good work — ${score}/5! Review the frameworks above to sharpen the gaps.`; }
+            else if (score >= 2)  { emoji = '📚'; msg = `${score}/5 — Keep studying! Re-read the methods section and try again.`; }
+            else                  { emoji = '💪'; msg = `${score}/5 — Don\'t give up. Every expert started as a beginner.`; }
+            scoreDiv.innerHTML = `<span class="score-emoji">${emoji}</span><span>${msg}</span>`;
+            scoreDiv.style.borderTop = '4px solid var(--site-color)';
+          }
 
           submitBtn.disabled = true;
           submitBtn.style.opacity = '0.5';
-        });
+        };
       }
+    }
 
+    function initQuizBank() {
+      buildQuiz();
+      const resetBtn = document.getElementById('quiz-reset');
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          document.querySelectorAll('.q-option').forEach(opt => {
-            opt.classList.remove('selected', 'correct', 'wrong');
-            opt.style.pointerEvents = '';
-            opt.querySelector('input[type="radio"]').checked = false;
-          });
-          document.querySelectorAll('.q-answer').forEach(a => a.classList.remove('show'));
-          scoreDiv.classList.remove('show');
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '';
-          }
+          buildQuiz();
         });
       }
     }

@@ -59,7 +59,7 @@
       line-height: 1.4;
     }
 
-    /* ── Cialdini Principles Grid ───────────── */
+    /* ── Cialdini Principles Grid (local) ───── */
     .principles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -410,6 +410,64 @@
 
     .s1 .dot-marker { background: var(--site-color); }
     .s2 .dot-marker { background: #0ea5e9; }
+
+    /* ── Principle Grid (shared component override) ── */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .principle-grid .principle-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .principle-grid .principle-card .p-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .principle-grid .principle-card .p-example {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Quiz Bank ──────────────────────────── */
+    .quiz-bank-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      padding: 0.7rem 1rem;
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-refresh-btn {
+      background: rgba(139,92,246,0.12);
+      color: var(--site-color);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quiz-refresh-btn:hover {
+      background: var(--site-color);
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -479,6 +537,15 @@
         <!-- ── Page Content ─────────────────── -->
         <div class="page-content">
 
+          <!-- ── Tip Rotator ──────────────────── -->
+          <div class="tip-rotator">
+            <span class="tip-icon">🧠</span>
+            <div>
+              <div class="tip-label">Psychology Tip of the Day</div>
+              <div class="tip-text" id="tip-text">Loading tip...</div>
+            </div>
+          </div>
+
           <!-- ══ SECTION 1 — CORE CONCEPT ══════════════════════ -->
           <section id="concept" class="section" style="padding-top:0;">
             <div class="section-header reveal">
@@ -496,13 +563,13 @@
               </p>
             </div>
 
-            <!-- System 1 vs 2 Highlight -->
+            <!-- System 1 vs System 2 Highlight -->
             <div class="highlight-box reveal mt-3">
               <strong>System 1 vs System 2 Thinking (Kahneman):</strong>
               <p style="margin-top:0.4rem;">System 1 is fast, automatic, and emotional — it drives most decisions. System 2 is slow, deliberate, and logical. Influence works by engaging System 1.</p>
             </div>
 
-            <!-- Visual comparison of System 1 vs System 2 -->
+            <!-- System 1 vs System 2 Visual comparison boxes -->
             <div class="system-compare reveal">
               <div class="system-box s1">
                 <span class="sys-label">System 1 — The Autopilot</span>
@@ -527,6 +594,84 @@
                   <div class="sys-trait"><span class="dot-marker"></span>Lazy — avoids activation</div>
                   <div class="sys-trait"><span class="dot-marker"></span>Rationalizes System 1 choices</div>
                 </div>
+              </div>
+            </div>
+
+            <!-- System 1 vs System 2 Compare Table -->
+            <div class="reveal mt-3">
+              <div class="compare-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>System 1 (Fast)</th>
+                      <th>System 2 (Slow)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Speed</strong></td>
+                      <td>Milliseconds</td>
+                      <td>Seconds</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Effort</strong></td>
+                      <td>Effortless</td>
+                      <td>Effortful</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Awareness</strong></td>
+                      <td>Unconscious</td>
+                      <td>Conscious</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Basis</strong></td>
+                      <td>Emotion &amp; habit</td>
+                      <td>Logic &amp; analysis</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Used for</strong></td>
+                      <td>95% of decisions</td>
+                      <td>~5% of decisions</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Influenced by</strong></td>
+                      <td>Framing, anchors, emotion</td>
+                      <td>Evidence &amp; reasoning</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Before / After: Rational vs Psychology-Informed -->
+            <div class="before-after reveal mt-4">
+              <div class="before-col">
+                <div class="ba-label">❌ Purely Rational Appeal</div>
+                <ul class="ba-list">
+                  <li>"Our software has 47 features"</li>
+                  <li>"Our price is 12% lower than competitors"</li>
+                  <li>"We have ISO certification"</li>
+                  <li>"Our uptime is 99.9%"</li>
+                </ul>
+              </div>
+              <div class="after-col">
+                <div class="ba-label">✅ Psychology-Informed Appeal</div>
+                <ul class="ba-list">
+                  <li>"Join 50,000 teams already hitting their targets <em>(Social Proof)</em>"</li>
+                  <li>"Limited founding member pricing — closes Friday <em>(Scarcity)</em>"</li>
+                  <li>"As featured in Forbes and TechCrunch <em>(Authority)</em>"</li>
+                  <li>"Free 14-day trial — no card needed <em>(Reciprocity)</em>"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Did You Know -->
+            <div class="did-you-know reveal mt-3">
+              <div class="dyk-icon">💡</div>
+              <div class="dyk-content">
+                <div class="dyk-label">Did You Know?</div>
+                <p>Robert Cialdini's research showed that a hotel's energy-saving message changed from "Help the environment" to "Most guests in this room reuse their towels" — and reuse rates jumped by <strong>26%</strong>. Same request, different social frame.</p>
               </div>
             </div>
 
@@ -633,42 +778,50 @@
               <div class="method-number">METHOD 01</div>
               <h3 style="margin-top:0.5rem;">Cialdini's 6 Principles of Influence</h3>
               <p>Dr. Robert Cialdini spent 35 years studying why people say "yes." His landmark research identified six universal principles that reliably trigger compliance — understanding them is essential for anyone in sales, leadership, or communications.</p>
-              <div class="principles-grid">
+
+              <!-- Principle Grid (new visual component) -->
+              <div class="principle-grid">
                 <div class="principle-card">
-                  <div class="principle-num">1</div>
+                  <div class="p-icon">🎁</div>
                   <span class="principle-tag">Give First</span>
                   <h4>Reciprocity</h4>
-                  <p>People feel compelled to return favors. Give value, help, or gifts first — and create a powerful sense of obligation to reciprocate.</p>
+                  <p>Give first, receive later. People feel compelled to return favors when you provide genuine value upfront.</p>
+                  <span class="p-example">Example: Free trial, handwritten note</span>
                 </div>
                 <div class="principle-card">
-                  <div class="principle-num">2</div>
+                  <div class="p-icon">🔒</div>
                   <span class="principle-tag">Small Yes → Big Yes</span>
-                  <h4>Commitment &amp; Consistency</h4>
-                  <p>Once people commit to something small, they align future behavior to remain consistent. Foot-in-the-door uses this systematically.</p>
+                  <h4>Commitment</h4>
+                  <p>Small yes leads to big yes. Once committed, people align future behavior to remain consistent.</p>
+                  <span class="p-example">Example: Email signup → purchase</span>
                 </div>
                 <div class="principle-card">
-                  <div class="principle-num">3</div>
+                  <div class="p-icon">👥</div>
                   <span class="principle-tag">Follow the Crowd</span>
                   <h4>Social Proof</h4>
-                  <p>"1 million customers can't be wrong." We follow the crowd — especially in uncertainty. Reviews, ratings, and testimonials all leverage this.</p>
+                  <p>We follow the crowd. Reviews, ratings, and testimonials all leverage our tendency to look to others.</p>
+                  <span class="p-example">Example: "4.8★ from 50,000 reviews"</span>
                 </div>
                 <div class="principle-card">
-                  <div class="principle-num">4</div>
+                  <div class="p-icon">🏅</div>
                   <span class="principle-tag">Trust Credentials</span>
                   <h4>Authority</h4>
-                  <p>Credentials, titles, and demonstrated expertise create trust and deference. People follow the lead of credible, knowledgeable experts.</p>
+                  <p>Trust the expert. Credentials, titles, and demonstrated expertise create deference and compliance.</p>
+                  <span class="p-example">Example: "Dr. recommended", "Forbes featured"</span>
                 </div>
                 <div class="principle-card">
-                  <div class="principle-num">5</div>
-                  <span class="principle-tag">We Say Yes to People We Like</span>
+                  <div class="p-icon">❤️</div>
+                  <span class="principle-tag">Say Yes to Those We Like</span>
                   <h4>Liking</h4>
-                  <p>We comply with people who are similar to us, who give us compliments, or who are familiar. Rapport and warmth are powerful influence tools.</p>
+                  <p>Yes to those we like. Similarity, genuine compliments, and familiarity build rapport that converts.</p>
+                  <span class="p-example">Example: Finding common ground, compliments</span>
                 </div>
                 <div class="principle-card">
-                  <div class="principle-num">6</div>
+                  <div class="p-icon">⏰</div>
                   <span class="principle-tag">Rare = Valuable</span>
                   <h4>Scarcity</h4>
-                  <p>"Only 3 left in stock." The fear of missing out is stronger than the joy of gaining. Limited availability creates urgency and desire.</p>
+                  <p>Rare is valuable. The fear of missing out is stronger than the desire to gain. Limited = desired.</p>
+                  <span class="p-example">Example: "Only 3 left", "48h offer"</span>
                 </div>
               </div>
             </div>
@@ -727,7 +880,41 @@
               <div class="method-number">METHOD 03</div>
               <h3 style="margin-top:0.5rem;">The EAST Nudge Framework (Behavioural Insights Team)</h3>
               <p>Developed by the UK Government's Behavioural Insights Team, the EAST framework provides a practical blueprint for designing nudges — small changes to choice architecture that dramatically shift behavior without mandates or incentives.</p>
-              <div class="east-grid">
+
+              <!-- EAST Flow Steps -->
+              <div class="flow-steps">
+                <div class="flow-step">
+                  <div class="flow-step-icon">E</div>
+                  <div class="flow-step-body">
+                    <div class="flow-step-title">Easy</div>
+                    <div class="flow-step-desc">Remove friction. Make the desired choice the default.</div>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-icon">A</div>
+                  <div class="flow-step-body">
+                    <div class="flow-step-title">Attractive</div>
+                    <div class="flow-step-desc">Use visuals and rewards to draw attention.</div>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-icon">S</div>
+                  <div class="flow-step-body">
+                    <div class="flow-step-title">Social</div>
+                    <div class="flow-step-desc">Show what people like them are doing.</div>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <div class="flow-step-icon">T</div>
+                  <div class="flow-step-body">
+                    <div class="flow-step-title">Timely</div>
+                    <div class="flow-step-desc">Act at peak motivation.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legacy east-grid cards (kept for content depth) -->
+              <div class="east-grid" style="margin-top:1.2rem;">
                 <div class="east-card">
                   <div class="east-letter">E</div>
                   <h4>Easy</h4>
@@ -847,71 +1034,61 @@
 
             <div class="grid-2">
 
-              <!-- Example 1: Amazon -->
-              <div class="example-card reveal">
-                <div class="example-meta">
-                  <span class="example-label">Case Study 01</span>
-                  <span class="tag" style="background:rgba(255,153,0,0.12); color:#e67e00;">E-Commerce</span>
-                </div>
-                <h4>Amazon's "Only 5 Left in Stock" — Scarcity + Social Proof</h4>
-                <p>Amazon is perhaps the world's most sophisticated practitioner of behavioral psychology in product design. A single product page simultaneously deploys multiple Cialdini principles: <strong>Scarcity</strong> ("Only 5 left in stock — order soon"), <strong>Social Proof</strong> ("4,000+ reviews, 4.7 stars"), <strong>Authority</strong> ("Amazon's Choice"), and <strong>Commitment</strong> (One-click buy removes friction barriers entirely). Each element targets a different cognitive trigger, and together they create a conversion machine that's exceptionally difficult to resist.</p>
-                <div class="example-principles">
-                  <span class="tag">Scarcity</span>
-                  <span class="tag">Social Proof</span>
-                  <span class="tag">Authority</span>
-                  <span class="tag">Commitment</span>
-                  <span class="tag">Loss Aversion</span>
-                </div>
-                <div class="metric-row">
-                  <div class="metric-item">
-                    <span class="m-val">2-3x</span>
-                    <span class="m-label">higher conversion vs competitors</span>
-                  </div>
-                  <div class="metric-item">
-                    <span class="m-val">+30%</span>
-                    <span class="m-label">purchase likelihood from scarcity labels alone</span>
-                  </div>
-                  <div class="metric-item">
-                    <span class="m-val">95%</span>
-                    <span class="m-label">of purchases influenced by reviews</span>
+              <!-- Example 1: Amazon — Scenario Card -->
+              <div class="scenario-card reveal">
+                <div class="scenario-header" style="background: linear-gradient(135deg, var(--site-color), var(--site-dark));">
+                  <span class="scenario-icon">🛒</span>
+                  <div>
+                    <div class="scenario-label">Case Study 01</div>
+                    <div class="scenario-title">Amazon's Influence Engine</div>
                   </div>
                 </div>
-                <div class="outcome-box">
-                  <strong>Key Insight:</strong> The power isn't in any single principle — it's in the <em>stack</em>. Combining scarcity + social proof + authority in a single touchpoint creates a near-irresistible psychological environment. Amazon's A/B testing culture means every element has been empirically validated.
+                <div class="scenario-body">
+                  <p>Amazon is perhaps the world's most sophisticated practitioner of behavioral psychology in product design. A single product page simultaneously deploys multiple Cialdini principles: <strong>Scarcity</strong> ("Only 5 left in stock — order soon"), <strong>Social Proof</strong> ("4,000+ reviews, 4.7 stars"), <strong>Authority</strong> ("Amazon's Choice"), and <strong>Commitment</strong> (One-click buy removes friction barriers entirely). Each element targets a different cognitive trigger, and together they create a conversion machine that's exceptionally difficult to resist.</p>
+                  <div class="stat-chips">
+                    <span class="stat-chip">+30% conversion lift from scarcity</span>
+                    <span class="stat-chip">35% revenue from recommendations</span>
+                    <span class="stat-chip">4× higher conversion with social proof</span>
+                  </div>
+                  <div class="example-principles">
+                    <span class="tag">Scarcity</span>
+                    <span class="tag">Social Proof</span>
+                    <span class="tag">Authority</span>
+                    <span class="tag">Commitment</span>
+                    <span class="tag">Loss Aversion</span>
+                  </div>
+                  <div class="outcome-box" style="margin-top:1rem;">
+                    <strong>Key Insight:</strong> The power isn't in any single principle — it's in the <em>stack</em>. Combining scarcity + social proof + authority in a single touchpoint creates a near-irresistible psychological environment. Amazon's A/B testing culture means every element has been empirically validated.
+                  </div>
                 </div>
               </div>
 
-              <!-- Example 2: Spotify -->
-              <div class="example-card reveal fade-in-delay-1">
-                <div class="example-meta">
-                  <span class="example-label">Case Study 02</span>
-                  <span class="tag" style="background:rgba(30,215,96,0.12); color:#15803d;">SaaS / Subscription</span>
-                </div>
-                <h4>Spotify's Free Trial → Paid Conversion — Reciprocity + Commitment</h4>
-                <p>Spotify's conversion strategy is a masterclass in behavioral design. It starts with <strong>Reciprocity</strong>: three months of premium service free — a massive value delivery that creates psychological debt. During the trial, users create playlists, discover artists, and build listening habits (<strong>Commitment &amp; Consistency</strong> in action). By end of trial, the switching cost feels enormous — users have "invested" in the platform, activating the <strong>Sunk Cost</strong> effect. The final nudge is architectural: the "Cancel" button is deliberately buried while "Continue Premium" is front-and-center in high-contrast purple — the EAST framework's <em>Easy</em> principle executed perfectly.</p>
-                <div class="example-principles">
-                  <span class="tag">Reciprocity</span>
-                  <span class="tag">Commitment</span>
-                  <span class="tag">Sunk Cost</span>
-                  <span class="tag">EAST Nudge</span>
-                  <span class="tag">Framing</span>
-                </div>
-                <div class="metric-row">
-                  <div class="metric-item">
-                    <span class="m-val">~60%</span>
-                    <span class="m-label">free trial to paid conversion rate</span>
-                  </div>
-                  <div class="metric-item">
-                    <span class="m-val">3 mo</span>
-                    <span class="m-label">free trial — reciprocity investment</span>
-                  </div>
-                  <div class="metric-item">
-                    <span class="m-val">236M+</span>
-                    <span class="m-label">paid subscribers (2025)</span>
+              <!-- Example 2: Spotify — Scenario Card -->
+              <div class="scenario-card reveal fade-in-delay-1">
+                <div class="scenario-header" style="background: linear-gradient(135deg, var(--site-color), var(--site-dark));">
+                  <span class="scenario-icon">🎵</span>
+                  <div>
+                    <div class="scenario-label">Case Study 02</div>
+                    <div class="scenario-title">Spotify Free-to-Paid</div>
                   </div>
                 </div>
-                <div class="outcome-box">
-                  <strong>Key Insight:</strong> The sequence matters — Reciprocity builds obligation, Commitment locks in identity, and the Nudge removes the final rational barrier. By the time the trial ends, the "rational" decision is the psychologically loaded one: continue paying. The UX design seals it.
+                <div class="scenario-body">
+                  <p>Spotify's conversion strategy is a masterclass in behavioral design. It starts with <strong>Reciprocity</strong>: three months of premium service free — a massive value delivery that creates psychological debt. During the trial, users create playlists, discover artists, and build listening habits (<strong>Commitment &amp; Consistency</strong> in action). By end of trial, the switching cost feels enormous — users have "invested" in the platform, activating the <strong>Sunk Cost</strong> effect. The final nudge is architectural: the "Cancel" button is deliberately buried while "Continue Premium" is front-and-center — the EAST framework's <em>Easy</em> principle executed perfectly.</p>
+                  <div class="stat-chips">
+                    <span class="stat-chip">60% trial conversion</span>
+                    <span class="stat-chip">3-month free trial value</span>
+                    <span class="stat-chip">#1 music app</span>
+                  </div>
+                  <div class="example-principles">
+                    <span class="tag">Reciprocity</span>
+                    <span class="tag">Commitment</span>
+                    <span class="tag">Sunk Cost</span>
+                    <span class="tag">EAST Nudge</span>
+                    <span class="tag">Framing</span>
+                  </div>
+                  <div class="outcome-box" style="margin-top:1rem;">
+                    <strong>Key Insight:</strong> The sequence matters — Reciprocity builds obligation, Commitment locks in identity, and the Nudge removes the final rational barrier. By the time the trial ends, the "rational" decision is the psychologically loaded one: continue paying. The UX design seals it.
+                  </div>
                 </div>
               </div>
 
@@ -927,166 +1104,13 @@
             </div>
 
             <div class="quiz-container reveal">
-
-              <!-- Q1 -->
-              <div class="quiz-question" id="q1">
-                <div class="q-number">1</div>
-                <div class="q-text">What is "Social Proof" in psychology?</div>
-                <div class="q-options">
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q1" />
-                    <span class="q-option-dot"></span>
-                    Showing legal documentation to build credibility
-                  </label>
-                  <label class="q-option" data-correct="true">
-                    <input type="radio" name="q1" />
-                    <span class="q-option-dot"></span>
-                    The tendency to follow others' behavior, especially in uncertain situations
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q1" />
-                    <span class="q-option-dot"></span>
-                    Proving your academic credentials before speaking
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q1" />
-                    <span class="q-option-dot"></span>
-                    A formal logical argument style used in debates
-                  </label>
-                </div>
-                <div class="q-answer">
-                  Social Proof is one of Cialdini's 6 Principles of Influence. When people are uncertain about what to do, they look to others' behavior as a signal of what's correct — "Best Seller" badges, review counts, user testimonials, and "Join 1 million customers" messaging all leverage this powerful instinct.
-                </div>
+              <div class="quiz-bank-label">
+                <span id="quiz-bank-label">Showing 5 of 15 questions — reshuffles every visit</span>
+                <button class="quiz-refresh-btn" id="quiz-reset">🔀 New Questions</button>
               </div>
-
-              <!-- Q2 -->
-              <div class="quiz-question" id="q2">
-                <div class="q-number">2</div>
-                <div class="q-text">What is the "Scarcity Principle" in influence psychology?</div>
-                <div class="q-options">
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q2" />
-                    <span class="q-option-dot"></span>
-                    Always charging premium prices for your products
-                  </label>
-                  <label class="q-option" data-correct="true">
-                    <input type="radio" name="q2" />
-                    <span class="q-option-dot"></span>
-                    We value things more when they are rare or available for a limited time
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q2" />
-                    <span class="q-option-dot"></span>
-                    Keeping information secret during negotiations
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q2" />
-                    <span class="q-option-dot"></span>
-                    Reducing product features to improve focus and clarity
-                  </label>
-                </div>
-                <div class="q-answer">
-                  Scarcity triggers Loss Aversion — the pain of potentially missing out on something is psychologically stronger than the pleasure of acquiring it. "Limited time offer," "Only 3 left in stock," and "Exclusive membership" messaging all activate this powerful instinct that evolved to help us secure vital, finite resources.
-                </div>
-              </div>
-
-              <!-- Q3 -->
-              <div class="quiz-question" id="q3">
-                <div class="q-number">3</div>
-                <div class="q-text">In Kahneman's framework, which system drives most everyday decisions?</div>
-                <div class="q-options">
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q3" />
-                    <span class="q-option-dot"></span>
-                    System 2 — slow, deliberate, and rational analysis
-                  </label>
-                  <label class="q-option" data-correct="true">
-                    <input type="radio" name="q3" />
-                    <span class="q-option-dot"></span>
-                    System 1 — fast, automatic, and emotional processing
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q3" />
-                    <span class="q-option-dot"></span>
-                    The rational conscious mind evaluating all options equally
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q3" />
-                    <span class="q-option-dot"></span>
-                    The prefrontal cortex exclusively, as the seat of executive function
-                  </label>
-                </div>
-                <div class="q-answer">
-                  System 1 processes 11 million bits of information per second versus System 2's mere 40 bits — a ratio of 275,000:1. Most decisions, judgments, and emotional reactions occur before System 2 is even engaged. Effective influence strategies target System 1 by triggering automatic, emotional responses rather than requiring effortful deliberation.
-                </div>
-              </div>
-
-              <!-- Q4 -->
-              <div class="quiz-question" id="q4">
-                <div class="q-number">4</div>
-                <div class="q-text">What is the "Framing Effect" in behavioral psychology?</div>
-                <div class="q-options">
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q4" />
-                    <span class="q-option-dot"></span>
-                    The technique of putting a picture in a literal frame to increase its perceived value
-                  </label>
-                  <label class="q-option" data-correct="true">
-                    <input type="radio" name="q4" />
-                    <span class="q-option-dot"></span>
-                    How the presentation of information alters decisions even when the underlying facts are identical
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q4" />
-                    <span class="q-option-dot"></span>
-                    Setting an initial anchor number at the start of a negotiation
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q4" />
-                    <span class="q-option-dot"></span>
-                    A structured technique for organizing public speaking presentations
-                  </label>
-                </div>
-                <div class="q-answer">
-                  "90% fat free" versus "contains 10% fat" — the same nutritional fact, but completely different perceptions and purchase decisions. Framing shapes how information is processed by System 1. Positive frames (gain-framing) and negative frames (loss-framing) can produce entirely different choices from identical data. Skilled communicators master frame control.
-                </div>
-              </div>
-
-              <!-- Q5 -->
-              <div class="quiz-question" id="q5">
-                <div class="q-number">5</div>
-                <div class="q-text">The "Foot-in-the-Door" persuasion technique relies on which of Cialdini's principles?</div>
-                <div class="q-options">
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q5" />
-                    <span class="q-option-dot"></span>
-                    Scarcity — creating urgency through limited availability
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q5" />
-                    <span class="q-option-dot"></span>
-                    Authority — establishing credibility before making a large request
-                  </label>
-                  <label class="q-option" data-correct="true">
-                    <input type="radio" name="q5" />
-                    <span class="q-option-dot"></span>
-                    Commitment and Consistency — small "yes" leads to larger "yes"
-                  </label>
-                  <label class="q-option" data-correct="false">
-                    <input type="radio" name="q5" />
-                    <span class="q-option-dot"></span>
-                    Reciprocity — giving value before making a request
-                  </label>
-                </div>
-                <div class="q-answer">
-                  Getting a small "yes" first creates a self-image as "someone who agrees with this cause/person/brand." To remain internally consistent with this self-image, people then agree to progressively larger requests. The foot-in-the-door technique exploits commitment bias — once we've said yes once, we feel psychologically compelled to keep saying yes.
-                </div>
-              </div>
-
-              <!-- Quiz Actions -->
+              <div id="quiz"></div>
               <div class="quiz-actions">
-                <button class="btn btn-primary" id="quiz-submit">Check Answers</button>
-                <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
+                <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
               </div>
               <div class="quiz-score" id="quiz-score"></div>
             </div>
@@ -1113,6 +1137,288 @@
   </footer>
 
   <script src="../js/main.js"></script>
+
+  <script>
+window.QUIZ_BANK = [
+  {
+    question: "What is 'Social Proof' in psychology?",
+    options: [
+      { text: "Showing legal documentation to support your claims", correct: false },
+      { text: "The tendency to follow others' behavior as a signal of what's correct, especially in uncertain situations", correct: true },
+      { text: "Proving your credentials and authority to an audience", correct: false },
+      { text: "A logical argument backed by multiple sources", correct: false }
+    ],
+    explanation: "Social proof is one of Cialdini's 6 principles. When uncertain, we look to what others are doing. 'Best Seller,' '4.8 stars from 10,000 reviews,' and 'Join 500,000 users' all activate this powerful heuristic. We assume: if that many people chose it, it must be right."
+  },
+  {
+    question: "What is the 'Scarcity Principle'?",
+    options: [
+      { text: "Always charging premium prices to signal quality", correct: false },
+      { text: "We assign more value to things that are rare, limited, or about to become unavailable", correct: true },
+      { text: "Keeping business strategies secret from competitors", correct: false },
+      { text: "Reducing product features to improve focus", correct: false }
+    ],
+    explanation: "Scarcity triggers loss aversion — the fear of missing out is stronger than the desire to gain. 'Only 3 left in stock,' 'Offer ends tonight,' and 'Exclusive member access' all activate this. Interestingly, it works even when people know it's a tactic."
+  },
+  {
+    question: "In Kahneman's framework, which system drives most everyday decisions?",
+    options: [
+      { text: "System 2 — slow, deliberate, logical analysis", correct: false },
+      { text: "System 1 — fast, automatic, emotional, and largely unconscious", correct: true },
+      { text: "The prefrontal cortex working in isolation", correct: false },
+      { text: "The rational self-interest model from economics", correct: false }
+    ],
+    explanation: "System 1 processes ~11 million bits of information per second vs System 2's ~40 bits. 95% of decisions are System 1. This is why nudges, framing, and emotional triggers work so powerfully — they bypass effortful rational analysis entirely."
+  },
+  {
+    question: "What is the 'Framing Effect'?",
+    options: [
+      { text: "Decorating your presentation slides with attractive borders", correct: false },
+      { text: "Setting a negotiation anchor at the start of a conversation", correct: false },
+      { text: "How the presentation of information alters decisions even when the underlying facts are identical", correct: true },
+      { text: "A technique for public speaking to engage an audience", correct: false }
+    ],
+    explanation: "'90% fat free' vs '10% fat' — same product, completely different perception. '5% mortality rate' vs '95% survival rate' — same statistic, very different emotional response. Framing is not deception; it's understanding that facts are always delivered in a context."
+  },
+  {
+    question: "The 'Foot-in-the-Door' technique relies on which Cialdini principle?",
+    options: [
+      { text: "Scarcity — creating urgency through limited availability", correct: false },
+      { text: "Authority — using credentials to gain compliance", correct: false },
+      { text: "Commitment and Consistency — small yeses lead to larger yeses", correct: true },
+      { text: "Reciprocity — giving first to receive later", correct: false }
+    ],
+    explanation: "Once we say yes to something small, we update our self-image: 'I'm someone who supports this.' To remain consistent with that self-image, we're more likely to say yes to larger requests. Political campaigns, charity drives, and subscription models all use this."
+  },
+  {
+    question: "What is 'reciprocity' as a principle of influence?",
+    options: [
+      { text: "Treating people the same way they treat you — matching their energy", correct: false },
+      { text: "The deeply embedded human tendency to return favors and feel obligated when given something", correct: true },
+      { text: "A negotiation strategy of making equal concessions", correct: false },
+      { text: "Mutual respect and two-way communication in relationships", correct: false }
+    ],
+    explanation: "Reciprocity is one of the most powerful forces in human society. When someone gives us something — even unsolicited — we feel a strong psychological obligation to give back. Free samples, handwritten notes, valuable information given upfront, and unexpected gifts all trigger it."
+  },
+  {
+    question: "What is the 'Anchoring Bias'?",
+    options: [
+      { text: "Being anchored to a location or workplace", correct: false },
+      { text: "Over-relying on the first piece of information encountered when making decisions", correct: true },
+      { text: "A logical fallacy based on emotional attachment", correct: false },
+      { text: "Using historical data as the only basis for future predictions", correct: false }
+    ],
+    explanation: "In a classic experiment, people asked 'Is the price of this product more or less than $5?' guessed lower prices than those asked 'more or less than $500?' — for the exact same product. The initial number 'anchors' all subsequent estimates, regardless of how arbitrary it is."
+  },
+  {
+    question: "What is the 'Decoy Effect' in consumer psychology?",
+    options: [
+      { text: "Using a celebrity spokesperson to draw attention away from pricing", correct: false },
+      { text: "Adding a third, inferior option to make your preferred option look better by comparison", correct: true },
+      { text: "Hiding fees in fine print to attract buyers with a low headline price", correct: false },
+      { text: "A bait-and-switch pricing strategy", correct: false }
+    ],
+    explanation: "The Economist famously offered: Web-only for $59, Print-only for $125, Web+Print for $125. The middle 'decoy' made the third option look like incredible value. 84% chose Web+Print vs 32% without the decoy. The decoy makes the preferred option win by comparison."
+  },
+  {
+    question: "What is the 'Peak-End Rule'?",
+    options: [
+      { text: "The idea that the best experience always comes at the end", correct: false },
+      { text: "People judge an experience by its most intense moment and how it ended, not the average", correct: true },
+      { text: "A pricing model based on peak and off-peak demand", correct: false },
+      { text: "The rule that the first and last items in a list are best remembered", correct: false }
+    ],
+    explanation: "Kahneman's research showed that colonoscopy patients reported less pain when the procedure ended with a milder discomfort period — even if it lasted longer overall. In customer experience: a great ending (thank you note, follow-up call, upgrade) can override a mediocre middle."
+  },
+  {
+    question: "What is 'Loss Aversion'?",
+    options: [
+      { text: "The fear of investing in stocks or risky assets", correct: false },
+      { text: "The psychological phenomenon where losses hurt approximately 2× more than equivalent gains feel good", correct: true },
+      { text: "A risk management framework used by insurance companies", correct: false },
+      { text: "Avoiding situations where you might fail or make mistakes", correct: false }
+    ],
+    explanation: "Kahneman and Tversky proved this mathematically: losing $100 causes roughly twice the psychological pain as gaining $100 causes pleasure. This is why 'You're losing $5,000/month to this inefficiency' is more motivating than 'You could gain $5,000/month' for the same fact."
+  },
+  {
+    question: "What is 'Confirmation Bias'?",
+    options: [
+      { text: "Confirming meeting times and places before an important conversation", correct: false },
+      { text: "The tendency to seek, interpret, and remember information that confirms our pre-existing beliefs", correct: true },
+      { text: "A bias toward people who confirm your ideas with compliments", correct: false },
+      { text: "Using multiple sources to confirm a fact before acting on it", correct: false }
+    ],
+    explanation: "Confirmation bias is why two people can look at the same data and reach opposite conclusions — each is filtering for evidence that supports what they already believe. In persuasion, meeting people in their existing belief system first ('Yes, it's true that X...') before introducing new information dramatically reduces resistance."
+  },
+  {
+    question: "What is the 'Authority Principle' in Cialdini's framework?",
+    options: [
+      { text: "Using management hierarchy to force compliance", correct: false },
+      { text: "The tendency to trust and comply with credible experts, titles, and symbols of expertise", correct: true },
+      { text: "Writing authoritative-sounding copy in your marketing", correct: false },
+      { text: "Citing government regulations to justify your position", correct: false }
+    ],
+    explanation: "Milgram's famous (and disturbing) experiments showed people would deliver dangerous shocks when instructed by an authority figure in a lab coat. In practice: credentials after your name, 'As featured in Forbes,' expert endorsements, and uniform/symbols all trigger automatic deference to authority."
+  },
+  {
+    question: "What is 'Nudge Theory' (Thaler & Sunstein)?",
+    options: [
+      { text: "Physically prompting people to make better choices", correct: false },
+      { text: "Designing choice environments so the default or easiest option is the desired behavior", correct: true },
+      { text: "Sending repeated reminders until people comply", correct: false },
+      { text: "A behavioral economics model for pricing optimization", correct: false }
+    ],
+    explanation: "Nudge theory says you can influence behavior without restricting freedom or changing incentives — just by changing the architecture of choice. UK tax authority increased compliance by 15% simply by adding 'Most people in your area pay on time' to reminder letters. Same information, massive behavioral change."
+  },
+  {
+    question: "What is the 'Liking' principle in Cialdini's influence framework?",
+    options: [
+      { text: "Only selling to customers you personally like", correct: false },
+      { text: "People are more likely to say yes to those they know, like, and feel similar to", correct: true },
+      { text: "Using 'like' buttons and social media engagement as sales signals", correct: false },
+      { text: "Creating likable brand mascots and characters", correct: false }
+    ],
+    explanation: "We say yes to people we like — and we like people who are similar to us, who give genuine compliments, and who are familiar (mere exposure effect). This is why top salespeople find common ground early, why celebrities endorse products, and why handwritten notes work better than emails."
+  },
+  {
+    question: "What is the 'Sunk Cost Fallacy'?",
+    options: [
+      { text: "Writing off a failed investment immediately after it fails", correct: false },
+      { text: "Continuing a losing course of action because of past investment, even when stopping is clearly better", correct: true },
+      { text: "A financial accounting principle for depreciation", correct: false },
+      { text: "The emotional cost of a difficult decision that has already been made", correct: false }
+    ],
+    explanation: "We stay in bad jobs, bad relationships, and losing investments because 'I've already put so much in.' Rationally, only future costs and benefits should matter — past investment is gone regardless. In persuasion: subscription models use this ('You've already put 6 months into learning this platform') to reduce churn."
+  }
+];
+
+window.PAGE_TIPS = [
+  "💡 To influence someone, first agree with something they already believe — then introduce your new idea.",
+  "💡 Give before you ask. Reciprocity is the most universal human social principle.",
+  "💡 Frame offers around what someone LOSES by not acting — loss aversion is twice as powerful as gain.",
+  "💡 'Everyone is doing it' is not just peer pressure — it's a powerful cognitive shortcut we all use.",
+  "💡 The best time to ask for something big is right after someone has said yes to something small.",
+  "💡 Familiarity breeds liking. The mere exposure effect means repeated contact = increased trust.",
+  "💡 When you know your own cognitive biases, you can design decisions to work with them, not against them."
+];
+
+// ── Tip Rotator ────────────────────────────────────────────────
+(function () {
+  var tips = window.PAGE_TIPS;
+  var el = document.getElementById('tip-text');
+  if (!el || !tips || !tips.length) return;
+  var idx = Math.floor(Math.random() * tips.length);
+  el.textContent = tips[idx];
+})();
+
+// ── Quiz Bank ──────────────────────────────────────────────────
+(function () {
+  var bank = window.QUIZ_BANK;
+  var SHOW = 5;
+  var container = document.getElementById('quiz');
+  var scoreEl = document.getElementById('quiz-score');
+  var submitBtn = document.getElementById('quiz-submit');
+  var resetBtn = document.getElementById('quiz-reset');
+  var labelEl = document.getElementById('quiz-bank-label');
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function renderQuiz() {
+    if (!container) return;
+    var selected = shuffle(bank).slice(0, SHOW);
+    container.innerHTML = '';
+    if (scoreEl) { scoreEl.innerHTML = ''; scoreEl.className = 'quiz-score'; }
+
+    selected.forEach(function (q, qi) {
+      var qNum = qi + 1;
+      var name = 'qbank_' + qNum;
+      var opts = shuffle(q.options);
+
+      var optHTML = opts.map(function (o, oi) {
+        return '<label class="q-option" data-correct="' + o.correct + '">' +
+          '<input type="radio" name="' + name + '" value="' + oi + '" />' +
+          '<span class="q-option-dot"></span>' +
+          o.text +
+          '</label>';
+      }).join('');
+
+      var html = '<div class="quiz-question" id="qb_' + qNum + '">' +
+        '<div class="q-number">' + qNum + '</div>' +
+        '<div class="q-text">' + q.question + '</div>' +
+        '<div class="q-options">' + optHTML + '</div>' +
+        '<div class="q-answer">' + q.explanation + '</div>' +
+        '</div>';
+
+      container.insertAdjacentHTML('beforeend', html);
+    });
+
+    if (labelEl) {
+      labelEl.textContent = 'Showing ' + SHOW + ' of ' + bank.length + ' questions — reshuffles every visit';
+    }
+  }
+
+  function submitQuiz() {
+    var questions = container.querySelectorAll('.quiz-question');
+    var score = 0;
+    var answered = 0;
+
+    questions.forEach(function (qEl) {
+      var selected = qEl.querySelector('input[type="radio"]:checked');
+      if (!selected) return;
+      answered++;
+      var label = selected.closest('label');
+      var correct = label && label.getAttribute('data-correct') === 'true';
+      if (correct) score++;
+
+      qEl.querySelectorAll('.q-option').forEach(function (opt) {
+        var inp = opt.querySelector('input');
+        inp.disabled = true;
+        if (opt.getAttribute('data-correct') === 'true') {
+          opt.classList.add('correct');
+        } else if (inp.checked) {
+          opt.classList.add('incorrect');
+        }
+      });
+
+      var answerEl = qEl.querySelector('.q-answer');
+      if (answerEl) answerEl.style.display = 'block';
+    });
+
+    if (answered === 0) {
+      if (scoreEl) { scoreEl.textContent = 'Please answer at least one question.'; scoreEl.className = 'quiz-score'; }
+      return;
+    }
+
+    var pct = Math.round((score / answered) * 100);
+    var msg = score === answered
+      ? '🎉 Perfect score! You have a deep grasp of behavioral psychology.'
+      : score >= Math.ceil(answered * 0.7)
+        ? '✅ Great work! ' + score + '/' + answered + ' correct (' + pct + '%). Review the explanations above.'
+        : '📚 ' + score + '/' + answered + ' correct (' + pct + '%). Revisit the sections above to strengthen your knowledge.';
+
+    if (scoreEl) {
+      scoreEl.textContent = msg;
+      scoreEl.className = 'quiz-score ' + (score === answered ? 'perfect' : score >= Math.ceil(answered * 0.7) ? 'good' : 'retry');
+    }
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  renderQuiz();
+
+  if (submitBtn) submitBtn.addEventListener('click', submitQuiz);
+  if (resetBtn) resetBtn.addEventListener('click', function () {
+    if (submitBtn) submitBtn.disabled = false;
+    renderQuiz();
+  });
+})();
+  </script>
 
 </body>
 </html>

@@ -366,6 +366,39 @@
       flex-shrink: 0;
       margin-top: 0.1rem;
     }
+
+    /* Quiz bank label row */
+    .quiz-bank-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      padding: 0.7rem 1rem;
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .quiz-refresh-btn {
+      background: var(--site-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .quiz-refresh-btn:hover {
+      background: var(--site-dark);
+      transform: scale(1.04);
+    }
   </style>
 </head>
 <body>
@@ -460,6 +493,15 @@
       <!-- Main Content -->
       <main>
 
+        <!-- Tip of the Day -->
+        <div class="tip-rotator">
+          <span class="tip-icon">☮️</span>
+          <div>
+            <div class="tip-label">Conflict Tip of the Day</div>
+            <div class="tip-text" id="tip-text">Loading tip...</div>
+          </div>
+        </div>
+
         <!-- ===================== SECTION 1: CORE CONCEPT ===================== -->
         <section class="section" id="concept" style="padding-top:0;">
           <div class="section-header reveal">
@@ -478,6 +520,11 @@
             <p style="max-width:620px; margin:0 auto;">
               Research from the Harvard Negotiation Project shows that unresolved interpersonal conflict costs U.S. businesses over <strong>$359 billion per year</strong> in lost productivity. Yet the same studies show that teams with healthy conflict norms — where disagreement is surfaced and resolved — are <strong>3× more innovative</strong> than conflict-avoidant teams.
             </p>
+          </div>
+
+          <!-- Did You Know -->
+          <div class="did-you-know reveal" style="margin-top:1.5rem;">
+            <strong>Did You Know?</strong> According to CPP Inc., employees in the US spend 2.8 hours per week dealing with conflict — costing employers an estimated $359 billion in paid hours annually.
           </div>
 
           <!-- Key Terms -->
@@ -519,7 +566,69 @@
             </p>
           </div>
 
-          <!-- TKI 5 Styles -->
+          <!-- Thomas-Kilmann 2x2 Matrix using principle-grid -->
+          <div class="reveal" style="margin-top:1.5rem;">
+            <h3 style="margin-bottom:0.5rem;">The 5 Conflict Styles — When to Use Each</h3>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
+              Y-axis: ASSERTIVENESS (Your Needs) &nbsp;|&nbsp; X-axis: COOPERATIVENESS (Others' Needs)
+            </p>
+            <div class="principle-grid">
+              <div class="principle-card" style="border-top-color:var(--site-color); background:rgba(225,29,72,0.05);">
+                <div class="principle-icon">💪</div>
+                <div class="principle-title">Competing</div>
+                <div class="principle-desc">High Assert · Low Coop<br><strong>Best for:</strong> Emergencies, ethical violations.<br><em>Risk: Damages trust if overused.</em></div>
+              </div>
+              <div class="principle-card" style="border-top-color:#16a34a; background:rgba(22,163,74,0.05);">
+                <div class="principle-icon">🤝</div>
+                <div class="principle-title">Collaborating</div>
+                <div class="principle-desc">High Assert · High Coop<br><strong>Best for:</strong> Important issues where the relationship matters deeply.<br><em>Most durable outcome.</em></div>
+              </div>
+              <div class="principle-card">
+                <div class="principle-icon">⚖️</div>
+                <div class="principle-title">Compromising</div>
+                <div class="principle-desc">Mid Assert · Mid Coop<br><strong>Best for:</strong> Time-limited situations with moderately important goals.<br><em>Both parties give a little.</em></div>
+              </div>
+              <div class="principle-card">
+                <div class="principle-icon">🚶</div>
+                <div class="principle-title">Avoiding</div>
+                <div class="principle-desc">Low Assert · Low Coop<br><strong>Best for:</strong> Trivial issues or when emotions need to cool first.<br><em>Risk: Problems fester.</em></div>
+              </div>
+              <div class="principle-card">
+                <div class="principle-icon">🤲</div>
+                <div class="principle-title">Accommodating</div>
+                <div class="principle-desc">Low Assert · High Coop<br><strong>Best for:</strong> Relationship preservation, or when you are clearly wrong.<br><em>Risk: Signals weakness if overused.</em></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Before / After: Destructive vs Constructive Conflict -->
+          <div class="reveal" style="margin-top:2rem;">
+            <h3 style="margin-bottom:1rem;">Destructive vs. Constructive Conflict</h3>
+            <div class="before-after">
+              <div class="before-col">
+                <div class="ba-header">❌ Destructive Conflict</div>
+                <ul class="ba-list">
+                  <li>Personal attacks ("You're so irresponsible")</li>
+                  <li>Blaming and shaming the other party</li>
+                  <li>Stonewalling and prolonged silence</li>
+                  <li>Win-at-all-costs mindset</li>
+                  <li>Escalating to management immediately</li>
+                </ul>
+              </div>
+              <div class="after-col">
+                <div class="ba-header">✅ Constructive Conflict</div>
+                <ul class="ba-list">
+                  <li>Behavior-focused ("When X happens, I feel Y")</li>
+                  <li>Taking responsibility for your own role</li>
+                  <li>Requesting a structured conversation</li>
+                  <li>Collaborative problem-solving mindset</li>
+                  <li>Attempting direct resolution first</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- TKI 5 Styles (legacy visual cards) -->
           <div class="tki-grid reveal">
             <div class="tki-style">
               <span class="tki-icon">⚔️</span>
@@ -547,6 +656,50 @@
               <p class="tki-desc">Low assertive, high cooperative. Yield to the other party. Best when preserving the relationship trumps the outcome.</p>
             </div>
           </div>
+
+          <!-- Avoidance vs Resolution Compare Table -->
+          <div class="reveal" style="margin-top:2rem;">
+            <h3 style="margin-bottom:1rem;">Avoidance vs. Resolution: The Real Costs</h3>
+            <div class="compare-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Factor</th>
+                    <th>Avoiding Conflict</th>
+                    <th>Resolving Conflict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Short-term comfort</td>
+                    <td class="ct-positive">High</td>
+                    <td class="ct-negative">Low</td>
+                  </tr>
+                  <tr>
+                    <td>Long-term relationship</td>
+                    <td class="ct-negative">Damaged</td>
+                    <td class="ct-positive">Strengthened</td>
+                  </tr>
+                  <tr>
+                    <td>Trust over time</td>
+                    <td class="ct-negative">Decreases</td>
+                    <td class="ct-positive">Increases</td>
+                  </tr>
+                  <tr>
+                    <td>Team performance</td>
+                    <td class="ct-negative">Declines</td>
+                    <td class="ct-positive">Improves</td>
+                  </tr>
+                  <tr>
+                    <td>Personal stress</td>
+                    <td class="ct-negative">Builds up</td>
+                    <td class="ct-positive">Released</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </section>
 
         <!-- ===================== SECTION 2: QUOTES ===================== -->
@@ -596,6 +749,33 @@
               <div class="method-number">Method 1</div>
               <h3 style="margin-bottom:0.3rem;">The DESC De-escalation Script</h3>
               <p style="margin-bottom:1rem;">A structured four-part script for addressing conflict-triggering behaviors calmly and constructively — without triggering defensiveness or escalating tension.</p>
+
+              <!-- Flow Steps Visual -->
+              <div class="flow-steps" style="margin-bottom:1.2rem;">
+                <div class="flow-step">
+                  <div class="fs-icon">D</div>
+                  <div class="fs-label">Describe</div>
+                  <div class="fs-sub">Behavior, not character</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="fs-icon">E</div>
+                  <div class="fs-label">Express</div>
+                  <div class="fs-sub">Your feelings</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="fs-icon">S</div>
+                  <div class="fs-label">Specify</div>
+                  <div class="fs-sub">Specific change</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="fs-icon">C</div>
+                  <div class="fs-label">Consequence</div>
+                  <div class="fs-sub">Positive outcome</div>
+                </div>
+              </div>
 
               <div class="desc-grid">
                 <div class="desc-block">
@@ -822,70 +1002,68 @@
           <div class="grid-2">
 
             <!-- Example 1: Google Aristotle -->
-            <div class="example-card reveal">
-              <div class="example-label">Case Study 01</div>
-              <h4>Google's Project Aristotle — Conflict &amp; Psychological Safety</h4>
-              <p>
-                Google's People Operations team spent two years studying 180 teams to identify what separates high-performing groups from average ones. They expected technical skill or star talent to dominate. Instead, the single most important factor was <strong>psychological safety</strong> — the shared belief that team members can speak up, disagree, and take interpersonal risks without being punished.
-              </p>
-              <p>
-                Managers trained in conflict facilitation using IBR principles created environments where disagreement was surfaced productively. Teams that avoided conflict had 2× the attrition rate and consistently underperformed on creative problem-solving benchmarks.
-              </p>
-
-              <div class="example-stats">
-                <div class="example-stat">
-                  <span class="es-num">180</span>
-                  <div class="es-label">Teams Studied</div>
-                </div>
-                <div class="example-stat">
-                  <span class="es-num">#1</span>
-                  <div class="es-label">Psych Safety</div>
-                </div>
-                <div class="example-stat">
-                  <span class="es-num">35%</span>
-                  <div class="es-label">Performance Lift</div>
-                </div>
-                <div class="example-stat">
-                  <span class="es-num">2×</span>
-                  <div class="es-label">Attrition (unresolved)</div>
-                </div>
+            <div class="scenario-card reveal">
+              <div class="scenario-header">
+                <span class="scenario-icon">🔬</span>
+                <span class="scenario-title">Google Project Aristotle</span>
+                <span class="scenario-tag">Case Study 01</span>
               </div>
+              <div class="scenario-body">
+                <p>
+                  Google's People Operations team spent two years studying 180 teams to identify what separates high-performing groups from average ones. They expected technical skill or star talent to dominate. Instead, the single most important factor was <strong>psychological safety</strong> — the shared belief that team members can speak up, disagree, and take interpersonal risks without being punished.
+                </p>
+                <p>
+                  Managers trained in conflict facilitation using IBR principles created environments where disagreement was surfaced productively. Teams that avoided conflict had 2× the attrition rate and consistently underperformed on creative problem-solving benchmarks.
+                </p>
 
-              <div class="outcome-box">
-                <strong>Key Takeaway:</strong> Conflict is not a team failure — conflict avoidance is. Teams that openly resolve disagreement with structured tools are measurably more innovative, more cohesive, and more profitable than those that suppress friction.
+                <div class="stat-chips">
+                  <span class="stat-chip">180 teams studied</span>
+                  <span class="stat-chip">35% performance lift</span>
+                  <span class="stat-chip">#1 factor: psychological safety</span>
+                  <span class="stat-chip">2× attrition without it</span>
+                </div>
+
+                <div class="outcome-box">
+                  <strong>Key Takeaway:</strong> Conflict is not a team failure — conflict avoidance is. Teams that openly resolve disagreement with structured tools are measurably more innovative, more cohesive, and more profitable than those that suppress friction.
+                </div>
               </div>
             </div>
 
             <!-- Example 2: Manager & Designer -->
-            <div class="example-card reveal">
-              <div class="example-label">Case Study 02</div>
-              <h4>Workplace Conflict — The Marketing Director &amp; the Star Designer</h4>
-              <p>
-                A marketing director at a mid-sized tech firm is in recurring conflict with the company's top designer over creative direction. The director routinely overrides the designer's concepts late in the production cycle. Tensions escalate to the point where the designer submits a resignation letter.
-              </p>
-              <p>The director, trained in DESC and Active Listening, chooses to engage rather than accept the resignation.</p>
-
-              <div class="process-steps">
-                <div class="process-step">
-                  <span class="ps-num">1</span>
-                  <span>Scheduled a private, distraction-free meeting — no ambush, no audience.</span>
-                </div>
-                <div class="process-step">
-                  <span class="ps-num">2</span>
-                  <span>Used DESC to describe the behavior factually: "When I override your designs without explanation at the final stage..."</span>
-                </div>
-                <div class="process-step">
-                  <span class="ps-num">3</span>
-                  <span>Applied Active Listening — discovered the designer's core need was <em>creative autonomy and acknowledgment</em>, not just approval of specific designs.</span>
-                </div>
-                <div class="process-step">
-                  <span class="ps-num">4</span>
-                  <span>Used IBR to generate options — landed on a new process: designer owns initial concept phase completely; director provides strategic context upfront rather than corrections later.</span>
-                </div>
+            <div class="scenario-card reveal">
+              <div class="scenario-header">
+                <span class="scenario-icon">💼</span>
+                <span class="scenario-title">The Creative Conflict</span>
+                <span class="scenario-tag">Case Study 02</span>
               </div>
+              <div class="scenario-body">
+                <p>
+                  A marketing director at a mid-sized tech firm is in recurring conflict with the company's top designer over creative direction. The director routinely overrides the designer's concepts late in the production cycle. Tensions escalate to the point where the designer submits a resignation letter.
+                </p>
+                <p>The director, trained in DESC and Active Listening, chooses to engage rather than accept the resignation.</p>
 
-              <div class="outcome-box">
-                <strong>Result:</strong> The resignation was withdrawn. The designer became the most productive and highest-rated team member in the following quarter. The new creative process reduced revision cycles by 60% and was adopted company-wide.
+                <div class="process-steps">
+                  <div class="process-step">
+                    <span class="ps-num">1</span>
+                    <span>Scheduled a private, distraction-free meeting — no ambush, no audience.</span>
+                  </div>
+                  <div class="process-step">
+                    <span class="ps-num">2</span>
+                    <span>Used DESC to describe the behavior factually: "When I override your designs without explanation at the final stage..."</span>
+                  </div>
+                  <div class="process-step">
+                    <span class="ps-num">3</span>
+                    <span>Applied Active Listening — discovered the designer's core need was <em>creative autonomy and acknowledgment</em>, not just approval of specific designs.</span>
+                  </div>
+                  <div class="process-step">
+                    <span class="ps-num">4</span>
+                    <span>Used IBR to generate options — landed on a new process: designer owns initial concept phase completely; director provides strategic context upfront rather than corrections later.</span>
+                  </div>
+                </div>
+
+                <div class="outcome-box scenario-outcome">
+                  <strong>Result:</strong> The resignation was withdrawn. The designer became the most productive and highest-rated team member in the following quarter. The new creative process reduced revision cycles by 60% and was adopted company-wide.
+                </div>
               </div>
             </div>
 
@@ -897,157 +1075,23 @@
           <div class="section-header reveal">
             <span class="section-label">Test Your Knowledge</span>
             <h2>Knowledge Quiz</h2>
-            <p>5 questions covering the core frameworks. Select an answer, then submit to see your score and explanations.</p>
+            <p>5 questions drawn from a rotating bank of 15. Select an answer, then submit to see your score and explanations.</p>
           </div>
 
           <div class="quiz-container reveal">
 
-            <!-- Q1 -->
-            <div class="quiz-question" id="q1">
-              <div class="q-number">1</div>
-              <div class="q-text">What is the Thomas-Kilmann Conflict Mode Instrument (TKI) used for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Measuring employee satisfaction scores
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Identifying and understanding conflict resolution styles
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Planning and structuring team meetings
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span> Developing sales strategy and territory planning
-                </label>
-              </div>
-              <div class="q-answer">
-                The TKI model maps 5 conflict styles on two axes: <strong>assertiveness</strong> (pursuing your own concerns) and <strong>cooperativeness</strong> (addressing others' concerns). The five styles are Competing, Collaborating, Compromising, Avoiding, and Accommodating. Understanding your default style is the first step to flexing into the most appropriate style for each situation.
-              </div>
+            <div class="quiz-bank-label">
+              <span id="quiz-bank-label">Showing 5 of 15 questions — reshuffles every visit</span>
+              <button class="quiz-refresh-btn" id="quiz-reset">🔀 New Questions</button>
             </div>
 
-            <!-- Q2 -->
-            <div class="quiz-question" id="q2">
-              <div class="q-number">2</div>
-              <div class="q-text">In the DESC de-escalation script, what does the letter "E" stand for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Escalate the concern to management
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Evaluate all available evidence
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Express your feelings using "I" statements
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span> Eliminate the source of the issue entirely
-                </label>
-              </div>
-              <div class="q-answer">
-                "Express" means communicating your emotional response to the specific behavior using <strong>"I" statements</strong> rather than "you" accusations. For example: "I feel frustrated and unheard..." instead of "You always dismiss my ideas." This keeps the conversation constructive by making the speaker responsible for their own emotional experience — rather than blaming the other party.
-              </div>
-            </div>
+            <div id="quiz"></div>
 
-            <!-- Q3 -->
-            <div class="quiz-question" id="q3">
-              <div class="q-number">3</div>
-              <div class="q-text">What is the foundational principle of Interest-Based Conflict Resolution (IBR)?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> One party must win and the other must lose
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> Focus on underlying interests, not surface-level positions
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> Avoid the conflict until emotions cool completely
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span> Always compromise exactly 50/50 on every issue
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Positions</strong> are what people say they want (e.g., "I want the corner office"). <strong>Interests</strong> are why they want it (e.g., "I need privacy to focus and a status signal for client meetings"). When you address interests rather than argue about positions, you open up a vast solution space — often revealing multiple ways to satisfy both parties that no one considered before.
-              </div>
-            </div>
-
-            <!-- Q4 -->
-            <div class="quiz-question" id="q4">
-              <div class="q-number">4</div>
-              <div class="q-text">Which TKI conflict style is MOST appropriate for a high-stakes, relationship-critical situation where a durable win-win outcome is essential?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Competing — assert your position firmly
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Avoiding — step back and let time pass
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Accommodating — give the other party what they want
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span> Collaborating — seek a mutually beneficial solution
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Collaborating</strong> is the only TKI style that is both highly assertive AND highly cooperative — making it the only style that genuinely seeks a win-win outcome. It requires the most time and emotional investment, but it produces the most durable agreements and actively strengthens the relationship rather than merely preserving it. Competing produces a winner and a loser; Avoiding delays the conflict; Accommodating sacrifices your interests; only Collaborating honors both parties' needs.
-              </div>
-            </div>
-
-            <!-- Q5 -->
-            <div class="quiz-question" id="q5">
-              <div class="q-number">5</div>
-              <div class="q-text">Which of the following best describes "active listening" in conflict resolution?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Talking more than the other person to make your case
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Mentally preparing your rebuttal while they speak
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Fully attending to understand the speaker, then reflecting back what was said
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span> Agreeing with everything the other person says to reduce tension
-                </label>
-              </div>
-              <div class="q-answer">
-                Active listening means giving your full, undivided attention to the speaker — withholding judgment, <strong>not</strong> formulating your response while they speak, and then reflecting back both the content and feelings you heard before responding. It's a discipline that validates the other person's experience, de-escalates emotional tension, and creates the trust necessary for real problem-solving. People who feel genuinely heard are dramatically more open to hearing your perspective in return.
-              </div>
-            </div>
-
-            <!-- Quiz Actions -->
             <div class="quiz-actions">
-              <button class="btn btn-primary" id="quiz-submit">✓ Submit Answers</button>
-              <button class="btn btn-secondary" id="quiz-reset">↺ Reset Quiz</button>
+              <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
             </div>
 
-            <div class="quiz-score" id="quiz-score">
-              <span class="score-emoji" id="score-emoji">🎉</span>
-              <span id="score-text">You scored 5/5!</span>
-              <p id="score-message" style="font-size:0.88rem; font-weight:400; margin-top:0.5rem; color:var(--text-secondary);"></p>
-            </div>
+            <div class="quiz-score" id="quiz-score"></div>
 
           </div>
         </section>
@@ -1073,15 +1117,228 @@
 
   <script src="../js/main.js"></script>
   <script>
-    // ─── Quiz Logic ───────────────────────────────────────────────
-    const submitBtn = document.getElementById('quiz-submit');
-    const resetBtn  = document.getElementById('quiz-reset');
-    const scoreDiv  = document.getElementById('quiz-score');
-    const scoreEmoji = document.getElementById('score-emoji');
-    const scoreText  = document.getElementById('score-text');
-    const scoreMsg   = document.getElementById('score-message');
+  window.QUIZ_BANK = [
+    {
+      question: "What is the Thomas-Kilmann Conflict Mode Instrument (TKI) used for?",
+      options: [
+        { text: "Measuring employee satisfaction in annual reviews", correct: false },
+        { text: "Identifying a person's default conflict resolution style across 5 modes", correct: true },
+        { text: "Planning team meeting agendas", correct: false },
+        { text: "A sales strategy framework", correct: false }
+      ],
+      explanation: "The TKI maps 5 conflict styles on two axes: assertiveness (meeting your own needs) and cooperativeness (meeting others' needs). Understanding your default style helps you flex to the most effective mode for each situation."
+    },
+    {
+      question: "In the DESC script, what does 'E' stand for?",
+      options: [
+        { text: "Escalate the concern to management", correct: false },
+        { text: "Evaluate all possible solutions first", correct: false },
+        { text: "Express your feelings without blame using 'I' statements", correct: true },
+        { text: "Eliminate the problem's root cause", correct: false }
+      ],
+      explanation: "'Express' means saying 'I feel dismissed when...' rather than 'You always...' Using 'I' statements prevents defensiveness and keeps the conversation collaborative rather than adversarial."
+    },
+    {
+      question: "What is the key principle of Interest-Based Conflict Resolution?",
+      options: [
+        { text: "One party must win for the conflict to be resolved", correct: false },
+        { text: "Focus on interests (underlying needs) rather than positions (stated demands)", correct: true },
+        { text: "Always split the difference 50/50 for fairness", correct: false },
+        { text: "Avoid direct confrontation by using email", correct: false }
+      ],
+      explanation: "Positions are what people say they want; interests are why they want it. Two people arguing over a window (one wants fresh air, one doesn't want draft) can both win if you open a window in another room — but only if you discover the underlying interest."
+    },
+    {
+      question: "Which conflict style creates the most durable resolutions for important, relationship-critical issues?",
+      options: [
+        { text: "Competing — being assertive and directive", correct: false },
+        { text: "Avoiding — stepping back to let tensions cool", correct: false },
+        { text: "Accommodating — giving in to preserve harmony", correct: false },
+        { text: "Collaborating — seeking a win-win that fully satisfies both parties", correct: true }
+      ],
+      explanation: "Collaborating is time-intensive but produces agreements both parties genuinely support. It's the only style that addresses both parties' core interests. Use it when the relationship and the issue both matter significantly."
+    },
+    {
+      question: "What is 'active listening' in conflict resolution?",
+      options: [
+        { text: "Talking more than the other person to steer the conversation", correct: false },
+        { text: "Preparing your rebuttal while the other person speaks", correct: false },
+        { text: "Fully attending to understand, then reflecting back content and emotion before responding", correct: true },
+        { text: "Nodding along in agreement with everything said", correct: false }
+      ],
+      explanation: "Active listening involves: full attention (no phone), withholding judgment, reflecting back ('What I hear is...'), validating feelings ('I can understand why you'd feel that way'), and confirming understanding before you respond. Most conflict escalates because people feel unheard."
+    },
+    {
+      question: "When is the 'Avoiding' conflict style most appropriate?",
+      options: [
+        { text: "For high-stakes decisions that affect the whole team", correct: false },
+        { text: "For trivial issues or when emotions are too high for productive dialogue right now", correct: true },
+        { text: "When you need to assert your authority as a leader", correct: false },
+        { text: "For all interpersonal conflicts to preserve team harmony", correct: false }
+      ],
+      explanation: "Avoiding is appropriate for trivial issues ('It's not worth fighting over'), when you need more information, or when immediate action would worsen the situation. Used chronically, it allows problems to fester. Know when to engage and when to step back."
+    },
+    {
+      question: "What does 'psychological safety' mean in team conflict?",
+      options: [
+        { text: "A team that never disagrees or has conflict", correct: false },
+        { text: "An environment where people can speak up, disagree, and make mistakes without fear of punishment or humiliation", correct: true },
+        { text: "A formal HR grievance process", correct: false },
+        { text: "Physical safety measures in the workplace", correct: false }
+      ],
+      explanation: "Google's Project Aristotle found psychological safety was the #1 predictor of high-performing teams — above skills, experience, or even talent. Teams with psychological safety navigate conflict productively rather than avoiding it or letting it explode."
+    },
+    {
+      question: "In the DESC model, what is the purpose of the 'C — Consequences' step?",
+      options: [
+        { text: "Threatening negative consequences if the person doesn't change", correct: false },
+        { text: "Describing positive outcomes for both parties if the change is made", correct: true },
+        { text: "Listing the consequences of past behavior that has already occurred", correct: false },
+        { text: "Calculating the financial impact of the conflict", correct: false }
+      ],
+      explanation: "The C in DESC should focus on POSITIVE consequences — 'If we do this, we'll both feel heard and solve this faster.' Not 'If you don't change, I'll escalate to HR.' Positive framing creates motivation to change; threats create resistance."
+    },
+    {
+      question: "What is 'conflict escalation'?",
+      options: [
+        { text: "Formally reporting a conflict to management", correct: false },
+        { text: "The pattern where unresolved small conflicts grow into major ones over time", correct: true },
+        { text: "A mediation technique for severe disputes", correct: false },
+        { text: "Raising your voice during an argument to be heard", correct: false }
+      ],
+      explanation: "Escalation follows predictable stages: Minor frustration → Communication breakdown → Fixed positions → Threats → Crisis. Intervening early (at stage 1-2) is dramatically easier than at stage 4-5. The DESC script is designed for early intervention."
+    },
+    {
+      question: "What is 'stonewalling' in a conflict situation?",
+      options: [
+        { text: "Being very direct and firm about your position", correct: false },
+        { text: "Shutting down and refusing to engage, often a sign of emotional flooding", correct: true },
+        { text: "Defending your interests with strong arguments", correct: false },
+        { text: "Building physical barriers between conflicting parties", correct: false }
+      ],
+      explanation: "Researcher John Gottman identified stonewalling (withdrawing emotionally and physically) as one of the 4 'Horsemen' that predict relationship breakdown. It occurs when someone's heart rate exceeds ~100 BPM — they literally can't process information. The solution: request a 20-minute break, then return."
+    },
+    {
+      question: "What is the 'Competing' conflict style best used for?",
+      options: [
+        { text: "Building long-term collaborative relationships", correct: false },
+        { text: "Emergency decisions requiring immediate action where safety is at stake", correct: true },
+        { text: "All conflict situations to show leadership confidence", correct: false },
+        { text: "When you want both parties to feel heard and respected", correct: false }
+      ],
+      explanation: "Competing (high assertiveness, low cooperation) is appropriate in genuine emergencies ('There's a fire — evacuate NOW'), when ethical violations occur that can't be compromised, or when a quick unpopular decision is unavoidable. Used chronically, it destroys trust and creates underground resistance."
+    },
+    {
+      question: "What is the 'Accommodating' conflict style?",
+      options: [
+        { text: "Finding a middle ground between both positions", correct: false },
+        { text: "Neglecting your own needs to satisfy the other party's concerns", correct: true },
+        { text: "Avoiding the conflict by changing the subject", correct: false },
+        { text: "Insisting on your position regardless of the other party", correct: false }
+      ],
+      explanation: "Accommodating (low assertiveness, high cooperation) is appropriate when the issue matters much more to the other person, when preserving the relationship is the priority, or when you're wrong and need to admit it. Used too often, it signals weakness and leads to resentment."
+    },
+    {
+      question: "What does 'reframing' mean in conflict resolution?",
+      options: [
+        { text: "Putting the conflict in a picture frame to distance yourself from it", correct: false },
+        { text: "Restating a hostile or negative statement in a neutral, problem-solving form", correct: true },
+        { text: "Changing the physical location of the conflict conversation", correct: false },
+        { text: "Rewriting the company policy that caused the conflict", correct: false }
+      ],
+      explanation: "'You never respect my ideas!' → reframed as 'It sounds like you'd like more input on these decisions — is that right?' Reframing removes the attack, preserves the underlying concern, and invites collaborative problem-solving instead of defensive reaction."
+    },
+    {
+      question: "What is a 'Conflict Trigger'?",
+      options: [
+        { text: "A gun used in workplace security training", correct: false },
+        { text: "A specific behavior, word, or situation that reliably provokes a strong emotional reaction in someone", correct: true },
+        { text: "The moment a conflict officially begins", correct: false },
+        { text: "A conflict resolution training program", correct: false }
+      ],
+      explanation: "Everyone has triggers — words, tones, or situations that bypass the rational brain and activate the emotional threat response. Knowing your own triggers (and those of others on your team) lets you design conversations that avoid unnecessary escalation."
+    },
+    {
+      question: "In conflict mediation, what is the mediator's primary role?",
+      options: [
+        { text: "To decide who is right and deliver a verdict", correct: false },
+        { text: "To represent the party with less power in the dispute", correct: false },
+        { text: "To facilitate a process that helps the parties reach their own resolution", correct: true },
+        { text: "To document the conflict for HR records", correct: false }
+      ],
+      explanation: "A mediator is a neutral facilitator — not a judge. Their job is to create a safe structure, ensure both parties are heard, help clarify interests, and guide the parties toward a self-generated solution (which is always more durable than an imposed one)."
+    }
+  ];
 
-    document.querySelectorAll('.q-option').forEach(opt => {
+  window.PAGE_TIPS = [
+    "💡 Deal with conflict early — a 10-minute honest conversation now prevents a 10-hour crisis later.",
+    "💡 When someone is angry, validate their feeling before addressing the content: 'I understand you're frustrated' goes a long way.",
+    "💡 'You always...' and 'You never...' are guaranteed to trigger defensiveness. Use 'I feel... when...' instead.",
+    "💡 If a conversation is getting heated, call a 20-minute break. Flooded brains can't negotiate.",
+    "💡 The person who speaks last in a conflict often holds the most insight — ask more questions, talk less.",
+    "💡 Conflict is information. Ask: 'What is this disagreement telling us about our processes or values?'",
+    "💡 Written conflict agreements are 3× more likely to be honored than verbal ones. Write it down."
+  ];
+
+  // ─── Tip Rotator ──────────────────────────────────────────────
+  (function() {
+    const tipEl = document.getElementById('tip-text');
+    if (!tipEl || !window.PAGE_TIPS) return;
+    const tips = window.PAGE_TIPS;
+    const idx = Math.floor(Math.random() * tips.length);
+    tipEl.textContent = tips[idx].replace(/^💡\s*/, '');
+  })();
+
+  // ─── Quiz Bank Logic ───────────────────────────────────────────
+  const QUESTIONS_PER_QUIZ = 5;
+  let activeQuestions = [];
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function renderQuiz() {
+    const bank = window.QUIZ_BANK || [];
+    activeQuestions = shuffle(bank).slice(0, QUESTIONS_PER_QUIZ);
+    const quizEl = document.getElementById('quiz');
+    const labelEl = document.getElementById('quiz-bank-label');
+    const scoreDiv = document.getElementById('quiz-score');
+    if (scoreDiv) { scoreDiv.classList.remove('show'); scoreDiv.innerHTML = ''; }
+
+    if (labelEl) {
+      labelEl.textContent = `Showing ${QUESTIONS_PER_QUIZ} of ${bank.length} questions — reshuffles every visit`;
+    }
+
+    if (!quizEl) return;
+    quizEl.innerHTML = '';
+
+    activeQuestions.forEach((q, qi) => {
+      const qNum = qi + 1;
+      const shuffledOpts = shuffle(q.options);
+      const optsHTML = shuffledOpts.map((opt, oi) => `
+        <label class="q-option" data-correct="${opt.correct}" data-qi="${qi}" data-oi="${oi}">
+          <input type="radio" name="q${qNum}" />
+          <span class="q-option-dot"></span> ${opt.text}
+        </label>
+      `).join('');
+
+      quizEl.innerHTML += `
+        <div class="quiz-question" id="qb${qNum}">
+          <div class="q-number">${qNum}</div>
+          <div class="q-text">${q.question}</div>
+          <div class="q-options">${optsHTML}</div>
+          <div class="q-answer">${q.explanation}</div>
+        </div>
+      `;
+    });
+
+    // Re-attach option click listeners
+    quizEl.querySelectorAll('.q-option').forEach(opt => {
       opt.addEventListener('click', () => {
         const name = opt.querySelector('input').getAttribute('name');
         document.querySelectorAll(`.q-option input[name="${name}"]`).forEach(inp => {
@@ -1091,98 +1348,104 @@
         opt.classList.add('selected');
       });
     });
+  }
 
-    submitBtn.addEventListener('click', () => {
-      const questions = document.querySelectorAll('.quiz-question');
-      let score = 0;
-      let answered = 0;
+  document.addEventListener('DOMContentLoaded', () => {
+    renderQuiz();
 
-      questions.forEach(q => {
-        const selected = q.querySelector('.q-option.selected');
-        const answer   = q.querySelector('.q-answer');
-        const allOpts  = q.querySelectorAll('.q-option');
+    const submitBtn = document.getElementById('quiz-submit');
+    const resetBtn  = document.getElementById('quiz-reset');
+    const scoreDiv  = document.getElementById('quiz-score');
 
-        if (!selected) return;
-        answered++;
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        renderQuiz();
+      });
+    }
 
-        const isCorrect = selected.dataset.correct === 'true';
-        if (isCorrect) {
-          score++;
-          selected.classList.add('correct');
-        } else {
-          selected.classList.add('wrong');
-          allOpts.forEach(o => {
-            if (o.dataset.correct === 'true') o.classList.add('correct');
-          });
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        const questions = document.querySelectorAll('#quiz .quiz-question');
+        let score = 0;
+        let answered = 0;
+
+        questions.forEach(q => {
+          const selected = q.querySelector('.q-option.selected');
+          const answer   = q.querySelector('.q-answer');
+          const allOpts  = q.querySelectorAll('.q-option');
+
+          if (!selected) return;
+          answered++;
+
+          const isCorrect = selected.dataset.correct === 'true';
+          if (isCorrect) {
+            score++;
+            selected.classList.add('correct');
+          } else {
+            selected.classList.add('wrong');
+            allOpts.forEach(o => {
+              if (o.dataset.correct === 'true') o.classList.add('correct');
+            });
+          }
+
+          if (answer) answer.classList.add('show');
+          allOpts.forEach(o => o.style.pointerEvents = 'none');
+        });
+
+        if (answered < questions.length) {
+          alert('Please answer all ' + questions.length + ' questions before submitting.');
+          return;
         }
 
-        if (answer) answer.classList.add('show');
-        allOpts.forEach(o => o.style.pointerEvents = 'none');
-      });
+        const total = questions.length;
+        const pct = (score / total) * 100;
+        let emoji = '🎉', msg = '';
+        if (pct === 100) { emoji = '🏆'; msg = 'Perfect score! You have mastered the fundamentals of conflict management.'; }
+        else if (pct >= 80) { emoji = '🎯'; msg = 'Excellent work! You have a strong grasp of conflict resolution principles.'; }
+        else if (pct >= 60) { emoji = '👍'; msg = 'Good effort! Review the sections above to deepen your understanding.'; }
+        else { emoji = '📖'; msg = 'Keep learning! Re-read the Methods section and try again.'; }
 
-      if (answered < questions.length) {
-        alert('Please answer all 5 questions before submitting.');
-        return;
+        scoreDiv.innerHTML = `<span class="score-emoji">${emoji}</span> <span>You scored ${score} / ${total}</span><p style="font-size:0.88rem; font-weight:400; margin-top:0.5rem; color:var(--text-secondary);">${msg}</p>`;
+        scoreDiv.classList.add('show');
+        scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+  });
+
+  // ─── Reading Progress Tracker ─────────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const progressBar   = document.getElementById('reading-progress');
+  const progressCount = document.getElementById('progress-count');
+  const visitedSections = new Set();
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        visitedSections.add(entry.target.id);
+        const count = visitedSections.size;
+        const total = sections.length;
+        if (progressBar) progressBar.style.width = (count / total * 100) + '%';
+        if (progressCount) progressCount.textContent = count + ' / ' + total;
       }
-
-      const pct = (score / questions.length) * 100;
-      let emoji = '🎉', msg = '';
-      if (pct === 100) { emoji = '🏆'; msg = 'Perfect score! You have mastered the fundamentals of conflict management.'; }
-      else if (pct >= 80) { emoji = '🎯'; msg = 'Excellent work! You have a strong grasp of conflict resolution principles.'; }
-      else if (pct >= 60) { emoji = '👍'; msg = 'Good effort! Review the sections above to deepen your understanding.'; }
-      else { emoji = '📖'; msg = 'Keep learning! Re-read the Methods section and try again.'; }
-
-      scoreEmoji.textContent = emoji;
-      scoreText.textContent  = `You scored ${score} / ${questions.length}`;
-      scoreMsg.textContent   = msg;
-      scoreDiv.classList.add('show');
-      scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+  }, { threshold: 0.3 });
 
-    resetBtn.addEventListener('click', () => {
-      document.querySelectorAll('.q-option').forEach(o => {
-        o.classList.remove('selected', 'correct', 'wrong');
-        o.style.pointerEvents = '';
-        o.querySelector('input').checked = false;
-      });
-      document.querySelectorAll('.q-answer').forEach(a => a.classList.remove('show'));
-      scoreDiv.classList.remove('show');
+  sections.forEach(s => sectionObserver.observe(s));
+
+  // ─── TOC Active Highlighting ──────────────────────────────────
+  const tocLinks = document.querySelectorAll('.toc-list a[href^="#"]');
+  const headingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
     });
+  }, { rootMargin: '-30% 0px -60% 0px' });
 
-    // ─── Reading Progress Tracker ─────────────────────────────────
-    const sections = document.querySelectorAll('section[id]');
-    const progressBar  = document.getElementById('reading-progress');
-    const progressCount = document.getElementById('progress-count');
-    const visitedSections = new Set();
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          visitedSections.add(entry.target.id);
-          const count = visitedSections.size;
-          const total = sections.length;
-          progressBar.style.width = (count / total * 100) + '%';
-          progressCount.textContent = count + ' / ' + total;
-        }
-      });
-    }, { threshold: 0.3 });
-
-    sections.forEach(s => sectionObserver.observe(s));
-
-    // ─── TOC Active Highlighting ──────────────────────────────────
-    const tocLinks = document.querySelectorAll('.toc-list a[href^="#"]');
-    const headingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          tocLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-          });
-        }
-      });
-    }, { rootMargin: '-30% 0px -60% 0px' });
-
-    sections.forEach(s => headingObserver.observe(s));
+  sections.forEach(s => headingObserver.observe(s));
   </script>
 </body>
 </html>

@@ -389,6 +389,152 @@
       opacity: 0.7;
       margin-top: 0.2rem;
     }
+
+    /* ---- Quiz Bank UI ---- */
+    .quiz-bank-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quiz-bank-label span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .quiz-refresh-btn {
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.3);
+      color: var(--site-color);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .quiz-refresh-btn:hover {
+      background: rgba(14,165,233,0.2);
+      box-shadow: 0 2px 8px rgba(14,165,233,0.2);
+    }
+
+    /* ---- 2x2 Matrix ---- */
+    .matrix-2x2-wrapper {
+      margin-top: 2rem;
+    }
+
+    .matrix-2x2-wrapper h3 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .matrix-axis-labels {
+      position: relative;
+    }
+
+    .matrix-x-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .matrix-x-sublabels {
+      display: grid;
+      grid-template-columns: 40px 1fr 1fr;
+      gap: 0;
+      margin-bottom: 0.3rem;
+      padding-left: 0;
+    }
+
+    .matrix-x-sublabels span {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .matrix-x-sublabels span:first-child { visibility: hidden; }
+
+    .matrix-inner {
+      display: grid;
+      grid-template-columns: 40px 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+
+    .matrix-y-label-wrap {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .matrix-y-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .matrix-cell {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      min-height: 100px;
+    }
+
+    .matrix-cell.highlight {
+      background: linear-gradient(135deg, rgba(14,165,233,0.12), rgba(3,105,161,0.08));
+      border: 2px solid var(--site-color);
+    }
+
+    .matrix-cell .mc-emoji {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .matrix-cell .mc-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .matrix-cell.highlight .mc-title {
+      color: var(--site-color);
+    }
+
+    .matrix-cell .mc-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .matrix-inner {
+        grid-template-columns: 28px 1fr 1fr;
+      }
+      .matrix-cell { padding: 0.8rem; }
+    }
   </style>
 </head>
 <body>
@@ -452,7 +598,7 @@
           <div class="hs-label">Real Examples</div>
         </div>
         <div class="hero-stat">
-          <span class="hs-num">5</span>
+          <span class="hs-num">15</span>
           <div class="hs-label">Quiz Questions</div>
         </div>
       </div>
@@ -487,6 +633,15 @@
 
       <!-- Main Content -->
       <main>
+
+        <!-- Tip Rotator -->
+        <div class="tip-rotator">
+          <span class="tip-icon">💡</span>
+          <div>
+            <div class="tip-label">Negotiation Tip of the Day</div>
+            <div class="tip-text" id="tip-text">Loading tip...</div>
+          </div>
+        </div>
 
         <!-- ============================================================
              SECTION 1 — Core Concept
@@ -533,6 +688,28 @@
             </div>
           </div>
 
+          <!-- Before / After: Position-Based vs Interest-Based -->
+          <div class="before-after reveal" style="margin-bottom: 2rem;">
+            <div class="before-card">
+              <div class="ba-label">❌ Position-Based Negotiation</div>
+              <ul class="ba-list">
+                <li>"I want the corner office"</li>
+                <li>"I need a $120K salary"</li>
+                <li>"I must have a 6-month deadline"</li>
+              </ul>
+              <p class="ba-note">Positions create standoffs. When both sides dig in, the only way forward is who blinks first — producing resentment, not agreement.</p>
+            </div>
+            <div class="after-card">
+              <div class="ba-label">✅ Interest-Based Negotiation</div>
+              <ul class="ba-list">
+                <li>"I need a quiet space to focus"</li>
+                <li>"I need compensation that reflects my market value"</li>
+                <li>"I need enough time to build the feature right"</li>
+              </ul>
+              <p class="ba-note">Interests unlock creativity. Once both sides share <em>why</em> they want something, a dozen new options become visible that satisfy everyone.</p>
+            </div>
+          </div>
+
           <!-- Key Terms -->
           <h3 style="margin-bottom: 1rem;">Essential Negotiation Vocabulary</h3>
           <div class="key-terms-grid">
@@ -573,6 +750,89 @@
             <p>
               <strong>The rule:</strong> Always improve your BATNA <em>before</em> entering a negotiation. A strong BATNA gives you confidence, reduces desperation, and signals to the other party that you have real alternatives. Never negotiate without knowing your BATNA.
             </p>
+          </div>
+
+          <!-- BATNA Comparison Table -->
+          <div class="compare-table reveal" style="margin-top: 2rem;">
+            <div class="ct-title">BATNA vs. No-BATNA: Side-by-Side</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Situation</th>
+                  <th>With Strong BATNA</th>
+                  <th>Without BATNA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Confidence at table</td>
+                  <td class="ct-positive">High — you have a real fallback</td>
+                  <td class="ct-negative">Low — desperation shows</td>
+                </tr>
+                <tr>
+                  <td>Ability to walk away</td>
+                  <td class="ct-positive">Genuine — not a bluff</td>
+                  <td class="ct-negative">None — trapped at the table</td>
+                </tr>
+                <tr>
+                  <td>Risk of bad deal</td>
+                  <td class="ct-positive">Minimal — floor is protected</td>
+                  <td class="ct-negative">High — may accept anything</td>
+                </tr>
+                <tr>
+                  <td>Negotiating power</td>
+                  <td class="ct-positive">Strong — alternatives = leverage</td>
+                  <td class="ct-negative">Weak — no leverage to use</td>
+                </tr>
+                <tr>
+                  <td>Emotional state</td>
+                  <td class="ct-positive">Calm and objective</td>
+                  <td class="ct-negative">Anxious, risk of over-conceding</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Negotiation Outcomes 2x2 Matrix -->
+          <div class="matrix-2x2-wrapper reveal" style="margin-top: 2.5rem;">
+            <h3>The 4 Possible Negotiation Outcomes</h3>
+            <div class="matrix-axis-labels">
+              <div class="matrix-x-label">THEIR OUTCOME →</div>
+              <div class="matrix-x-sublabels">
+                <span></span>
+                <span>Low</span>
+                <span>High</span>
+              </div>
+              <div class="matrix-inner">
+                <div class="matrix-y-label-wrap">
+                  <div class="matrix-y-label">YOUR OUTCOME</div>
+                </div>
+                <!-- Top-left: Lose-Lose (your outcome low, their outcome low) -->
+                <div class="matrix-cell">
+                  <span class="mc-emoji">😤</span>
+                  <div class="mc-title">Lose-Lose</div>
+                  <div class="mc-desc">Both lose. Impasse. Walk away or renegotiate.</div>
+                </div>
+                <!-- Top-right: Win-Win (your outcome low visually = high row, their outcome high) -->
+                <div class="matrix-cell highlight">
+                  <span class="mc-emoji">🏆</span>
+                  <div class="mc-title">Win-Win</div>
+                  <div class="mc-desc">The goal. Durable agreements. Repeat business.</div>
+                </div>
+                <!-- Bottom-left: Win-Lose -->
+                <div class="matrix-cell">
+                  <span class="mc-emoji">💪</span>
+                  <div class="mc-title">Win-Lose</div>
+                  <div class="mc-desc">You dominate. Short-term gain, long-term relationship damage.</div>
+                </div>
+                <!-- Bottom-right: Lose-Win -->
+                <div class="matrix-cell">
+                  <span class="mc-emoji">😞</span>
+                  <div class="mc-title">Lose-Win</div>
+                  <div class="mc-desc">You over-conceded. Happened without BATNA awareness.</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Positions vs Interests Deeper Dive -->
@@ -633,6 +893,45 @@
             <span class="section-label">Section 3</span>
             <h2>3 Proven Methods</h2>
             <p style="max-width:none;">Three frameworks used by world-class negotiators, executives, and diplomats — from the Harvard Negotiation Project to high-stakes corporate deal-making.</p>
+          </div>
+
+          <!-- Negotiation Process Flow -->
+          <div class="flow-steps reveal" style="margin-bottom: 2.5rem;">
+            <div class="flow-step">
+              <div class="fs-icon">📋</div>
+              <div class="fs-label">Prepare</div>
+              <div class="fs-sub">Know your BATNA</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="fs-icon">💬</div>
+              <div class="fs-label">Discuss</div>
+              <div class="fs-sub">Share interests</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="fs-icon">🔍</div>
+              <div class="fs-label">Clarify</div>
+              <div class="fs-sub">Understand needs</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="fs-icon">⚖️</div>
+              <div class="fs-label">Bargain</div>
+              <div class="fs-sub">Trade value</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="fs-icon">🔒</div>
+              <div class="fs-label">Close</div>
+              <div class="fs-sub">Lock terms</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="fs-icon">✍️</div>
+              <div class="fs-label">Commit</div>
+              <div class="fs-sub">Write it down</div>
+            </div>
           </div>
 
           <div class="methods-grid">
@@ -893,7 +1192,16 @@
             <p style="max-width:none;">See how the frameworks above play out in real high-stakes negotiations — from Hollywood studios to individual salary conversations.</p>
           </div>
 
-          <div class="examples-grid">
+          <!-- Did You Know -->
+          <div class="did-you-know reveal">
+            <div class="dyk-icon">🔬</div>
+            <div class="dyk-content">
+              <div class="dyk-label">Did You Know?</div>
+              <p>Studies show that negotiators who prepare a written BATNA are <strong>34% more likely</strong> to reach their target outcome than those who don't.</p>
+            </div>
+          </div>
+
+          <div class="examples-grid" style="margin-top: 1.5rem;">
 
             <!-- Example 1 -->
             <div class="example-card reveal">
@@ -903,6 +1211,13 @@
                 <span class="example-tag">BATNA + Principled</span>
               </div>
               <h4>Netflix &amp; Content Licensing — The Studio Standoff (2023)</h4>
+
+              <div class="stat-chips">
+                <div class="stat-chip">40+ Studio Partnerships</div>
+                <div class="stat-chip">40% Cost Reduction</div>
+                <div class="stat-chip">$0 in Bluffs Used</div>
+              </div>
+
               <p>
                 When Netflix renegotiates multi-year content licensing deals with major studios, it employs a masterclass in BATNA-powered principled negotiation. Rather than relying on any single studio, Netflix deliberately maintains active content partnerships with dozens of providers worldwide — ensuring no single studio can credibly threaten to walk away.
               </p>
@@ -933,6 +1248,13 @@
                 <span class="example-tag">Anchoring + BATNA</span>
               </div>
               <h4>Salary Negotiation — The $20K Raise Strategy</h4>
+
+              <div class="stat-chips">
+                <div class="stat-chip">+$37K Total Comp</div>
+                <div class="stat-chip">$128K Base Won</div>
+                <div class="stat-chip">6-Week Prep</div>
+              </div>
+
               <p>
                 A mid-level software engineer at a Series B startup is up for an annual review. Market rate for her role is $120K. She wants $140K. She applies the Anchoring &amp; Framing Technique systematically — and it works.
               </p>
@@ -970,179 +1292,19 @@
           <div class="section-header" style="text-align:left; margin-bottom: 2rem;">
             <span class="section-label">Section 6</span>
             <h2>Knowledge Quiz</h2>
-            <p style="max-width:none;">Test your understanding of negotiation fundamentals. Five questions — answer all, then submit to see your score and explanations.</p>
+            <p style="max-width:none;">Test your understanding of negotiation fundamentals. Five questions drawn randomly — answer all, then submit to see your score and explanations.</p>
           </div>
 
           <div class="quiz-container">
-
-            <!-- Q1 -->
-            <div class="quiz-question" id="q1">
-              <div class="q-number">1</div>
-              <div class="q-text">What does BATNA stand for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q1">
-                  <span class="q-option-dot"></span>
-                  Best Alternative To a Negotiated Agreement
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1">
-                  <span class="q-option-dot"></span>
-                  Basic Approach To Negotiating Agreements
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1">
-                  <span class="q-option-dot"></span>
-                  Business Alternative To New Arrangements
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1">
-                  <span class="q-option-dot"></span>
-                  Better Allocation Through Negotiated Actions
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>✓ Correct!</strong> BATNA is your strongest fallback option — the course of action you'll take if no agreement is reached. Knowing your BATNA gives you real power at the negotiating table because you're never negotiating from desperation.
-              </div>
+            <div class="quiz-bank-label">
+              <span id="quiz-bank-label">Questions load randomly from our bank of 15</span>
+              <button class="quiz-refresh-btn" id="quiz-reset">🔀 New Questions</button>
             </div>
-
-            <!-- Q2 -->
-            <div class="quiz-question" id="q2">
-              <div class="q-number">2</div>
-              <div class="q-text">In principled negotiation (the Harvard Method), what should you focus on instead of positions?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2">
-                  <span class="q-option-dot"></span>
-                  Emotions
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q2">
-                  <span class="q-option-dot"></span>
-                  Interests
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2">
-                  <span class="q-option-dot"></span>
-                  Demands
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2">
-                  <span class="q-option-dot"></span>
-                  Deadlines
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>✓ Correct!</strong> Interests are the underlying needs, desires, and concerns behind someone's stated position. Focusing on interests opens up creative solutions that positional bargaining can never find — like the classic orange story where both sisters got exactly what they needed.
-              </div>
-            </div>
-
-            <!-- Q3 -->
-            <div class="quiz-question" id="q3">
-              <div class="q-number">3</div>
-              <div class="q-text">What is "anchoring" in negotiation?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3">
-                  <span class="q-option-dot"></span>
-                  Refusing to make any concessions during the negotiation
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q3">
-                  <span class="q-option-dot"></span>
-                  Setting the first offer to disproportionately influence the final outcome
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3">
-                  <span class="q-option-dot"></span>
-                  Walking away from the deal to signal strength
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3">
-                  <span class="q-option-dot"></span>
-                  Hiring a professional mediator to resolve the dispute
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>✓ Correct!</strong> The first number stated in a negotiation acts as a psychological anchor, pulling final outcomes toward it. Research shows that even arbitrary numbers influence final agreements. Make the first offer when you have solid information — and always justify it immediately with objective data.
-              </div>
-            </div>
-
-            <!-- Q4 -->
-            <div class="quiz-question" id="q4">
-              <div class="q-number">4</div>
-              <div class="q-text">What is ZOPA?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q4">
-                  <span class="q-option-dot"></span>
-                  Zone of Possible Agreement
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4">
-                  <span class="q-option-dot"></span>
-                  Zero-sum Outcome of Proposed Agreements
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4">
-                  <span class="q-option-dot"></span>
-                  Zone of Personal Attitudes in negotiation
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4">
-                  <span class="q-option-dot"></span>
-                  None of the above
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>✓ Correct!</strong> ZOPA is the range between the minimum acceptable outcome for both parties — the overlap where a deal can actually be made. If Buyer's max is $100K and Seller's min is $80K, the ZOPA is $80K–$100K. Knowing the ZOPA helps you anchor strategically and recognize when a deal is truly impossible.
-              </div>
-            </div>
-
-            <!-- Q5 -->
-            <div class="quiz-question" id="q5">
-              <div class="q-number">5</div>
-              <div class="q-text">Which of these is a core tactic in The Harvard Principled Negotiation Method?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5">
-                  <span class="q-option-dot"></span>
-                  Win at all costs — negotiation is a zero-sum game
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q5">
-                  <span class="q-option-dot"></span>
-                  Insist on using objective criteria to evaluate proposals
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5">
-                  <span class="q-option-dot"></span>
-                  Make the first concession immediately to build goodwill
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5">
-                  <span class="q-option-dot"></span>
-                  Never reveal your interests under any circumstances
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>✓ Correct!</strong> Using objective criteria — market value, expert opinion, legal precedent, industry benchmarks — depersonalizes the negotiation and makes agreement easier for both parties. It shifts the conversation from "my number vs. your number" to "what does the evidence say is fair?"
-              </div>
-            </div>
-
-            <!-- Quiz Actions -->
+            <div id="quiz"></div>
             <div class="quiz-actions">
               <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
-              <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
             </div>
-
-            <!-- Score -->
-            <div class="quiz-score" id="quiz-score">
-              <span class="score-emoji" id="score-emoji">🎉</span>
-              <div id="score-text"></div>
-              <div id="score-detail" style="font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); margin-top: 0.4rem;"></div>
-            </div>
-
+            <div class="quiz-score" id="quiz-score"></div>
           </div>
         </section>
 
@@ -1166,7 +1328,183 @@
   </footer>
 
   <script src="../js/main.js"></script>
+
   <script>
+    window.QUIZ_BANK = [
+      {
+        question: "What does BATNA stand for?",
+        options: [
+          { text: "Best Alternative To a Negotiated Agreement", correct: true },
+          { text: "Basic Approach To Negotiating Agreements", correct: false },
+          { text: "Business Alternative To New Arrangements", correct: false },
+          { text: "Better Allocation Through Negotiated Actions", correct: false }
+        ],
+        explanation: "BATNA is your strongest fallback option — the course of action you'll take if no agreement is reached. Knowing your BATNA gives you confidence and a clear walk-away point."
+      },
+      {
+        question: "In principled negotiation, what should you focus on instead of positions?",
+        options: [
+          { text: "Emotions and feelings", correct: false },
+          { text: "Interests — underlying needs and motivations", correct: true },
+          { text: "The deadline pressure", correct: false },
+          { text: "Your opponent's weaknesses", correct: false }
+        ],
+        explanation: "Interests are the underlying needs, desires, and concerns behind someone's stated position. Two sisters fight over an orange — one wants the peel for baking, one wants the juice. Same position ('I want the orange'), completely different interests — a perfect win-win is possible."
+      },
+      {
+        question: "What is 'anchoring' in a negotiation?",
+        options: [
+          { text: "Refusing to make concessions under any circumstances", correct: false },
+          { text: "Setting the first offer to psychologically influence the final outcome", correct: true },
+          { text: "Walking away from the table to create urgency", correct: false },
+          { text: "Bringing in a third-party mediator", correct: false }
+        ],
+        explanation: "The first number stated in a negotiation acts as a psychological anchor, pulling all subsequent discussion toward it. Research by Northcraft & Neale showed even irrelevant numbers bias outcomes — make the first offer when you have good information."
+      },
+      {
+        question: "What is ZOPA?",
+        options: [
+          { text: "Zone of Possible Agreement — the overlap between both parties' acceptable ranges", correct: true },
+          { text: "Zero-sum Outcome of Proposed Agreements", correct: false },
+          { text: "Zone of Personal Attitudes in bargaining", correct: false },
+          { text: "A Harvard negotiation certification", correct: false }
+        ],
+        explanation: "ZOPA is the range between both parties' reservation prices (the minimum each will accept). If your ZOPA is $80K–$100K and theirs is $90K–$120K, the deal zone is $90K–$100K. No ZOPA = no deal possible."
+      },
+      {
+        question: "Which is a core principle of the Harvard Negotiation Method?",
+        options: [
+          { text: "Win at all costs — any concession is weakness", correct: false },
+          { text: "Insist on using objective criteria to evaluate options", correct: true },
+          { text: "Make the first concession immediately to build goodwill", correct: false },
+          { text: "Never reveal your true interests to the other side", correct: false }
+        ],
+        explanation: "Using objective criteria (market value, expert opinion, legal precedent, industry benchmarks) depersonalizes the negotiation. Instead of 'I want X,' you argue 'the market rate is X.' This makes agreement easier and protects against manipulation."
+      },
+      {
+        question: "What does it mean to 'separate the people from the problem'?",
+        options: [
+          { text: "Negotiate via email to avoid face-to-face tension", correct: false },
+          { text: "Use a lawyer to represent you instead", correct: false },
+          { text: "Address the substantive issue without attacking the other person's character", correct: true },
+          { text: "Ask the other person to leave the room", correct: false }
+        ],
+        explanation: "Negotiators are people with emotions, values, and different backgrounds. When you attack the person, they get defensive and stop problem-solving. Separating the people from the problem keeps the relationship intact while solving the issue."
+      },
+      {
+        question: "In salary negotiation, why is the 'first offer' so powerful?",
+        options: [
+          { text: "It shows you are desperate to close quickly", correct: false },
+          { text: "It sets the anchor that all subsequent offers gravitate toward", correct: true },
+          { text: "It forces the employer to reveal their budget immediately", correct: false },
+          { text: "It is standard HR protocol to offer first", correct: false }
+        ],
+        explanation: "Studies show that final salaries are strongly correlated with the first number mentioned. A candidate who anchors at $140K will likely settle closer to $130K; one who anchors at $110K will settle near $115K — even with identical qualifications."
+      },
+      {
+        question: "What is the 'best practice' when your BATNA is weak?",
+        options: [
+          { text: "Bluff and pretend you have better alternatives", correct: false },
+          { text: "Accept any deal offered to avoid no deal", correct: false },
+          { text: "Actively improve your BATNA before entering negotiation", correct: true },
+          { text: "Avoid negotiating altogether", correct: false }
+        ],
+        explanation: "Improving your BATNA before negotiations is the single most powerful preparation step. Get competing offers, develop alternatives, build your skill set — the stronger your BATNA, the more power you have at the table."
+      },
+      {
+        question: "What role does 'silence' play in negotiation?",
+        options: [
+          { text: "It signals you have nothing more to say", correct: false },
+          { text: "It is a powerful tool — after making an offer, silence creates pressure on the other party", correct: true },
+          { text: "It means the negotiation has failed", correct: false },
+          { text: "It is considered rude in professional negotiations", correct: false }
+        ],
+        explanation: "Many negotiators reflexively fill silence by talking — often by lowering their own offer or adding concessions. After stating your number, go quiet. The discomfort of silence works in your favor."
+      },
+      {
+        question: "Which scenario best demonstrates 'integrative negotiation'?",
+        options: [
+          { text: "Getting the other party to accept all your demands", correct: false },
+          { text: "Finding a creative solution where both parties gain more than a straight compromise", correct: true },
+          { text: "Splitting every issue exactly 50/50", correct: false },
+          { text: "Walking away when your first offer is rejected", correct: false }
+        ],
+        explanation: "Integrative (win-win) negotiation expands the pie. Example: A buyer can't afford the asking price, but the seller needs a fast close. Solution: Buyer meets the price; seller throws in expedited delivery. Both parties get their primary interest met."
+      },
+      {
+        question: "What is 'reactive devaluation' in negotiations?",
+        options: [
+          { text: "Automatically discounting a concession simply because it came from the other side", correct: true },
+          { text: "Reducing your asking price after market research", correct: false },
+          { text: "A technique for evaluating multiple offers", correct: false },
+          { text: "Getting a lower appraisal to justify a lower offer", correct: false }
+        ],
+        explanation: "Reactive devaluation is a cognitive bias where we automatically value a proposal less just because our 'opponent' offered it — even if we would have valued it highly if we had proposed it ourselves. Awareness helps you overcome it."
+      },
+      {
+        question: "In cross-cultural negotiations, what is most important to understand first?",
+        options: [
+          { text: "The exchange rate and financial conditions", correct: false },
+          { text: "Whether the culture is relationship-first or deal-first", correct: true },
+          { text: "The other party's industry jargon", correct: false },
+          { text: "Time zone differences for scheduling", correct: false }
+        ],
+        explanation: "High-context cultures (Japan, China, Middle East) prioritize relationship-building before business. Low-context cultures (USA, Germany, Australia) prefer getting to the point. Misreading this signals disrespect and kills deals before they start."
+      },
+      {
+        question: "What is a 'concession strategy' in negotiation?",
+        options: [
+          { text: "Giving up all your demands to end the negotiation quickly", correct: false },
+          { text: "Making planned, deliberate trades — giving something of lower value to you for something of higher value", correct: true },
+          { text: "Refusing to make any concessions until the other party does first", correct: false },
+          { text: "Matching the other party's concessions exactly", correct: false }
+        ],
+        explanation: "Smart concessions signal goodwill while protecting your core interests. Key rule: make concessions slowly and in decreasing size (e.g., $5K, then $3K, then $1K). Decreasing concession size signals you're approaching your limit."
+      },
+      {
+        question: "The 'Nibble' technique refers to:",
+        options: [
+          { text: "A small concession made at the very start of negotiation", correct: false },
+          { text: "Asking for a small additional item after the deal is already agreed", correct: true },
+          { text: "Slowly reducing your offer over multiple meetings", correct: false },
+          { text: "A tactic for ending a negotiation quickly", correct: false }
+        ],
+        explanation: "After a deal is struck, when the other party is emotionally committed, asking 'Could you throw in X?' often works because they don't want to risk losing the whole deal over a small item. Use it ethically — and watch out when it's used against you."
+      },
+      {
+        question: "What does 'expanding the pie' mean in negotiation?",
+        options: [
+          { text: "Increasing your initial asking price", correct: false },
+          { text: "Adding more issues to negotiate so you can trade across multiple dimensions", correct: true },
+          { text: "Bringing more people to the negotiating table", correct: false },
+          { text: "Extending the negotiation timeline", correct: false }
+        ],
+        explanation: "When you have only one issue (price), negotiation is zero-sum. By adding issues (delivery speed, payment terms, training, warranties, exclusivity), you create a multi-dimensional deal where each party gives on the things they care less about and gains on what matters most."
+      }
+    ];
+
+    window.PAGE_TIPS = [
+      "💡 Always prepare your BATNA before any negotiation — it's your most powerful asset at the table.",
+      "💡 The person who makes the first offer usually anchors the entire conversation.",
+      "💡 Silence after your offer is not awkward — it's strategic. Let the other side fill it.",
+      "💡 Ask 'Why?' five times to uncover the real interest behind any stated position.",
+      "💡 Never negotiate against yourself — wait for a counter-offer before making another concession.",
+      "💡 In salary talks: ask for a range with your target at the low end, not the high end.",
+      "💡 'What would need to be true for this to work for you?' is one of the most powerful negotiation questions."
+    ];
+  </script>
+
+  <script>
+    // ---- Tip Rotator ----
+    (function () {
+      const tipEl = document.getElementById('tip-text');
+      if (!tipEl || !window.PAGE_TIPS || !window.PAGE_TIPS.length) return;
+      const tips = window.PAGE_TIPS;
+      // Pick a tip based on day of year so it changes daily
+      const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+      tipEl.textContent = tips[dayOfYear % tips.length].replace(/^💡\s*/, '');
+    })();
+
     // ---- TOC Active Highlighting ----
     (function () {
       const sections = ['concept', 'quotes', 'methods', 'mindmap', 'examples', 'quiz'];
@@ -1194,103 +1532,149 @@
       onScroll();
     })();
 
-    // ---- Quiz Logic ----
+    // ---- Quiz Bank Logic ----
     (function () {
-      const submitBtn = document.getElementById('quiz-submit');
-      const resetBtn = document.getElementById('quiz-reset');
-      const scoreDiv = document.getElementById('quiz-score');
-      const scoreText = document.getElementById('score-text');
-      const scoreDetail = document.getElementById('score-detail');
-      const scoreEmoji = document.getElementById('score-emoji');
+      const QUESTIONS_PER_QUIZ = 5;
+      let activeQuestions = [];
 
-      // Handle option selection
-      document.querySelectorAll('.q-option').forEach(option => {
-        option.addEventListener('click', function () {
-          const question = this.closest('.quiz-question');
-          if (question.dataset.answered === 'true') return;
-          question.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
-          this.classList.add('selected');
-          const radio = this.querySelector('input[type="radio"]');
-          if (radio) radio.checked = true;
+      function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function buildQuiz() {
+        const bank = window.QUIZ_BANK || [];
+        activeQuestions = shuffle(bank).slice(0, QUESTIONS_PER_QUIZ);
+        const container = document.getElementById('quiz');
+        if (!container) return;
+        container.innerHTML = '';
+
+        activeQuestions.forEach((q, idx) => {
+          const qDiv = document.createElement('div');
+          qDiv.className = 'quiz-question';
+          qDiv.id = 'q' + (idx + 1);
+
+          const shuffledOptions = shuffle(q.options);
+
+          const optionsHTML = shuffledOptions.map(opt => `
+            <label class="q-option" data-correct="${opt.correct}">
+              <input type="radio" name="q${idx + 1}">
+              <span class="q-option-dot"></span>
+              ${opt.text}
+            </label>
+          `).join('');
+
+          qDiv.innerHTML = `
+            <div class="q-number">${idx + 1}</div>
+            <div class="q-text">${q.question}</div>
+            <div class="q-options">${optionsHTML}</div>
+            <div class="q-answer">${q.explanation}</div>
+          `;
+
+          container.appendChild(qDiv);
         });
-      });
 
-      submitBtn.addEventListener('click', function () {
-        let score = 0;
-        let answered = 0;
+        // Re-bind option click handlers
+        container.querySelectorAll('.q-option').forEach(option => {
+          option.addEventListener('click', function () {
+            const question = this.closest('.quiz-question');
+            if (question.dataset.answered === 'true') return;
+            question.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
+            this.classList.add('selected');
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+          });
+        });
 
-        document.querySelectorAll('.quiz-question').forEach(question => {
-          const selected = question.querySelector('.q-option.selected');
-          const answerDiv = question.querySelector('.q-answer');
+        // Reset score display and submit button
+        const scoreDiv = document.getElementById('quiz-score');
+        if (scoreDiv) scoreDiv.classList.remove('show');
+        const submitBtn = document.getElementById('quiz-submit');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      }
 
-          if (!selected) return; // unanswered
-          answered++;
-          question.dataset.answered = 'true';
+      // Initial build
+      buildQuiz();
 
-          const isCorrect = selected.dataset.correct === 'true';
-          if (isCorrect) {
-            selected.classList.add('correct');
-            score++;
-          } else {
-            selected.classList.add('wrong');
-            // Highlight correct
-            question.querySelectorAll('.q-option').forEach(opt => {
-              if (opt.dataset.correct === 'true') opt.classList.add('correct');
-            });
+      // New Questions button
+      const resetBtn = document.getElementById('quiz-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+          buildQuiz();
+        });
+      }
+
+      // Submit
+      const submitBtn = document.getElementById('quiz-submit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          const container = document.getElementById('quiz');
+          if (!container) return;
+          const questions = container.querySelectorAll('.quiz-question');
+          let score = 0;
+          let answered = 0;
+
+          questions.forEach(question => {
+            const selected = question.querySelector('.q-option.selected');
+            const answerDiv = question.querySelector('.q-answer');
+            if (!selected) return;
+            answered++;
+            question.dataset.answered = 'true';
+            const isCorrect = selected.dataset.correct === 'true';
+            if (isCorrect) {
+              selected.classList.add('correct');
+              score++;
+            } else {
+              selected.classList.add('wrong');
+              question.querySelectorAll('.q-option').forEach(opt => {
+                if (opt.dataset.correct === 'true') opt.classList.add('correct');
+              });
+            }
+            if (answerDiv) answerDiv.classList.add('show');
+          });
+
+          if (answered < QUESTIONS_PER_QUIZ) {
+            alert('Please answer all ' + QUESTIONS_PER_QUIZ + ' questions before submitting.');
+            return;
           }
 
-          if (answerDiv) answerDiv.classList.add('show');
+          const scoreDiv = document.getElementById('quiz-score');
+          if (!scoreDiv) return;
+          scoreDiv.classList.add('show');
+
+          let emoji, message, detail;
+          if (score === QUESTIONS_PER_QUIZ) {
+            emoji = '🏆';
+            message = `Perfect Score! ${score} / ${QUESTIONS_PER_QUIZ}`;
+            detail = 'Outstanding! You have a solid mastery of negotiation fundamentals. Time to apply BATNA, ZOPA, and principled negotiation in the real world.';
+          } else if (score >= Math.ceil(QUESTIONS_PER_QUIZ * 0.6)) {
+            emoji = '👍';
+            message = `Good Work! ${score} / ${QUESTIONS_PER_QUIZ}`;
+            detail = "You're on the right track. Review the sections for the questions you missed and re-read the core concepts to sharpen your understanding.";
+          } else {
+            emoji = '📖';
+            message = `Keep Learning! ${score} / ${QUESTIONS_PER_QUIZ}`;
+            detail = 'Negotiation mastery takes practice. Review the Core Concept and Methods sections above, then try new questions. Every great negotiator started somewhere.';
+          }
+
+          scoreDiv.innerHTML = `
+            <span class="score-emoji">${emoji}</span>
+            <div>${message}</div>
+            <div style="font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); margin-top: 0.4rem;">${detail}</div>
+          `;
+
+          scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = '0.5';
         });
-
-        if (answered < 5) {
-          alert('Please answer all 5 questions before submitting.');
-          return;
-        }
-
-        // Show score
-        scoreDiv.classList.add('show');
-        let emoji = '🤔';
-        let message = '';
-        let detail = '';
-
-        if (score === 5) {
-          emoji = '🏆';
-          message = 'Perfect Score! 5 / 5';
-          detail = 'Outstanding! You have a solid mastery of negotiation fundamentals. Time to apply BATNA, ZOPA, and principled negotiation in the real world.';
-        } else if (score >= 3) {
-          emoji = '👍';
-          message = `Good Work! ${score} / 5`;
-          detail = 'You\'re on the right track. Review the sections for the questions you missed and re-read the core concepts to sharpen your understanding.';
-        } else {
-          emoji = '📖';
-          message = `Keep Learning! ${score} / 5`;
-          detail = 'Negotiation mastery takes practice. Review the Core Concept and Methods sections above, then try the quiz again. Every great negotiator started somewhere.';
-        }
-
-        scoreEmoji.textContent = emoji;
-        scoreText.textContent = message;
-        scoreDetail.textContent = detail;
-        scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.5';
-      });
-
-      resetBtn.addEventListener('click', function () {
-        document.querySelectorAll('.quiz-question').forEach(question => {
-          question.dataset.answered = '';
-          question.querySelectorAll('.q-option').forEach(opt => {
-            opt.classList.remove('selected', 'correct', 'wrong');
-            const radio = opt.querySelector('input[type="radio"]');
-            if (radio) radio.checked = false;
-          });
-          const answerDiv = question.querySelector('.q-answer');
-          if (answerDiv) answerDiv.classList.remove('show');
-        });
-        scoreDiv.classList.remove('show');
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-      });
+      }
     })();
   </script>
 </body>

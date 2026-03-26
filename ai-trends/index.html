@@ -16,7 +16,7 @@
       --site-color-rgb: 16, 185, 129;
     }
 
-    /* ── Page-specific overrides ── */
+    /* ── Page-specific hero overlay ── */
     .subsite-hero::before {
       content: '';
       position: absolute;
@@ -62,70 +62,6 @@
       border-radius: 50%;
       background: var(--site-color);
       flex-shrink: 0;
-    }
-
-    /* ── Stack Diagram ── */
-    .stack-diagram {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin: 1.5rem 0;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .stack-layer {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.9rem 1.4rem;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-      cursor: default;
-    }
-
-    .stack-layer:last-child { border-bottom: none; }
-    .stack-layer:hover { background: rgba(16,185,129,0.05); }
-
-    .stack-layer-num {
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: var(--site-color);
-      color: white;
-      font-size: 0.78rem;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      opacity: 0.5;
-    }
-
-    .stack-layer:nth-child(1) .stack-layer-num { opacity: 0.35; }
-    .stack-layer:nth-child(2) .stack-layer-num { opacity: 0.5; }
-    .stack-layer:nth-child(3) .stack-layer-num { opacity: 0.65; }
-    .stack-layer:nth-child(4) .stack-layer-num { opacity: 0.82; }
-    .stack-layer:nth-child(5) .stack-layer-num { opacity: 1; }
-
-    .stack-layer-name {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--text-primary);
-      min-width: 220px;
-    }
-
-    .stack-layer-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin: 0;
-    }
-
-    .stack-arrow {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--site-color);
-      padding: 0.2rem 0;
-      background: var(--bg-sidebar);
-      opacity: 0.6;
     }
 
     /* ── Trend Cards ── */
@@ -212,49 +148,6 @@
       width: 6px; height: 6px;
       border-radius: 50%;
       background: currentColor;
-    }
-
-    /* ── CRAFT Framework Table ── */
-    .craft-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.88rem;
-    }
-
-    .craft-table th {
-      text-align: left;
-      padding: 0.6rem 1rem;
-      background: var(--site-color);
-      color: white;
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-    }
-
-    .craft-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
-    .craft-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
-
-    .craft-table td {
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-secondary);
-      vertical-align: top;
-    }
-
-    .craft-table tr:last-child td { border-bottom: none; }
-    .craft-table tr:hover td { background: rgba(16,185,129,0.04); }
-
-    .craft-letter {
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--site-color);
-      line-height: 1;
-    }
-
-    .craft-word {
-      font-weight: 700;
-      color: var(--text-primary);
     }
 
     /* ── Mind Map Styled ── */
@@ -462,55 +355,6 @@
       font-weight: 500;
     }
 
-    /* ── Classification Table ── */
-    .classify-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 640px) {
-      .classify-grid { grid-template-columns: 1fr; }
-      .craft-table { font-size: 0.8rem; }
-      .stack-layer-name { min-width: auto; }
-    }
-
-    .classify-col {
-      background: var(--bg-sidebar);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      border-top: 3px solid;
-    }
-
-    .classify-col.auto { border-color: var(--site-color); }
-    .classify-col.aug  { border-color: #3b82f6; }
-    .classify-col.hum  { border-color: #f97316; }
-
-    .classify-col h5 {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.6rem;
-    }
-
-    .classify-col.auto h5 { color: var(--site-color); }
-    .classify-col.aug  h5 { color: #3b82f6; }
-    .classify-col.hum  h5 { color: #f97316; }
-
-    .classify-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .classify-col ul li {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-
     /* ── Section dividers ── */
     .section-divider {
       height: 1px;
@@ -582,6 +426,77 @@
     .agent-step-body p {
       font-size: 0.82rem;
       margin: 0;
+    }
+
+    /* ── Quiz bank label + refresh ── */
+    .quiz-bank-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding: 0.9rem 1.2rem;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .quiz-refresh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--site-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .quiz-refresh-btn:hover {
+      background: var(--site-dark);
+      transform: scale(1.04);
+    }
+
+    .quiz-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-score {
+      display: none;
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(4,120,87,0.06));
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .quiz-score.show { display: block; }
+
+    .score-emoji {
+      display: block;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #score-text {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--site-color);
+    }
+
+    @media (max-width: 640px) {
+      .quiz-bank-label { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -675,6 +590,15 @@
       <!-- Main Content -->
       <main>
 
+        <!-- Tip of the Day -->
+        <div class="tip-rotator reveal">
+          <span class="tip-icon">🤖</span>
+          <div>
+            <div class="tip-label">AI & Business Tip of the Day</div>
+            <div class="tip-text" id="tip-text">Loading tip...</div>
+          </div>
+        </div>
+
         <!-- ═══════════════════════════════════
              SECTION 1: CORE CONCEPT
         ════════════════════════════════════ -->
@@ -699,6 +623,30 @@
             <p><strong>The fundamental shift:</strong> In 2023, AI was a search engine upgrade. In 2024, it was a writing assistant. In 2025, it became a thinking partner. In 2026, it is an <em>autonomous business agent</em> — capable of researching, deciding, executing, and iterating on entire workflows on your behalf.</p>
           </div>
 
+          <!-- Before / After -->
+          <div class="before-after reveal">
+            <div class="before-col">
+              <div class="ba-header">❌ Pre-AI Business</div>
+              <ul class="ba-list">
+                <li>Research report takes 2 days to write</li>
+                <li>Customer service team of 12 handles 200 tickets/day</li>
+                <li>Marketing copy reviewed by 3 people before publishing</li>
+                <li>Data analysis requires a data scientist</li>
+                <li>New employee takes 2 weeks to learn company knowledge</li>
+              </ul>
+            </div>
+            <div class="after-col">
+              <div class="ba-header">✅ AI-First 2026</div>
+              <ul class="ba-list">
+                <li>AI agent drafts research report in 15 minutes (human reviews)</li>
+                <li>AI handles 85% of tickets; team of 3 handles complex cases</li>
+                <li>AI drafts and A/B tests 10 copy variations in 1 hour</li>
+                <li>Any employee can query data in plain English</li>
+                <li>AI onboarding assistant knows all company docs from Day 1</li>
+              </ul>
+            </div>
+          </div>
+
           <!-- Key Terms -->
           <div class="reveal">
             <h3 style="margin-bottom:0.8rem;">Essential Vocabulary for 2026</h3>
@@ -719,47 +667,47 @@
             </div>
           </div>
 
-          <!-- The 2026 AI Stack -->
+          <!-- AI Stack Visual Flow -->
           <div class="reveal" style="margin-top:2rem;">
             <div class="highlight-box">
               <strong>The 2026 Enterprise AI Stack</strong>
               <p>Every modern AI-powered business is built on five foundational layers. Understanding this architecture helps you know <em>where</em> to invest, <em>what</em> to build, and <em>how</em> the layers interact.</p>
             </div>
 
-            <div class="stack-diagram">
-              <div class="stack-layer">
-                <div class="stack-layer-num">1</div>
-                <div>
-                  <div class="stack-layer-name">Data Layer</div>
-                  <p class="stack-layer-desc">Clean, structured, and accessible data. The fuel of every AI system — databases, documents, CRM records, logs.</p>
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-step-icon">🗄️</div>
+                <div class="flow-step-body">
+                  <div class="flow-step-title">Data Layer</div>
+                  <div class="flow-step-desc">Clean, structured data — the fuel</div>
                 </div>
               </div>
-              <div class="stack-layer">
-                <div class="stack-layer-num">2</div>
-                <div>
-                  <div class="stack-layer-name">Embedding / RAG Layer</div>
-                  <p class="stack-layer-desc">Converts your data into vector embeddings. RAG retrieves the most relevant context before every AI response.</p>
+              <div class="flow-step">
+                <div class="flow-step-icon">🔍</div>
+                <div class="flow-step-body">
+                  <div class="flow-step-title">RAG Layer</div>
+                  <div class="flow-step-desc">Connect AI to your knowledge base</div>
                 </div>
               </div>
-              <div class="stack-layer">
-                <div class="stack-layer-num">3</div>
-                <div>
-                  <div class="stack-layer-name">LLM Layer</div>
-                  <p class="stack-layer-desc">The reasoning engine — Claude, GPT-4o, Gemini, Llama, or specialized models. Processes context and generates outputs.</p>
+              <div class="flow-step">
+                <div class="flow-step-icon">🧠</div>
+                <div class="flow-step-body">
+                  <div class="flow-step-title">LLM Layer</div>
+                  <div class="flow-step-desc">Choose the right model for the task</div>
                 </div>
               </div>
-              <div class="stack-layer">
-                <div class="stack-layer-num">4</div>
-                <div>
-                  <div class="stack-layer-name">Agent Orchestration Layer</div>
-                  <p class="stack-layer-desc">Coordinates multi-step tasks, tool calls, and multi-agent workflows. Frameworks: LangGraph, CrewAI, Claude Agents, AutoGen.</p>
+              <div class="flow-step">
+                <div class="flow-step-icon">⚡</div>
+                <div class="flow-step-body">
+                  <div class="flow-step-title">Agent Layer</div>
+                  <div class="flow-step-desc">Autonomous multi-step execution</div>
                 </div>
               </div>
-              <div class="stack-layer">
-                <div class="stack-layer-num">5</div>
-                <div>
-                  <div class="stack-layer-name">Business Application Layer</div>
-                  <p class="stack-layer-desc">The end product: customer-facing chatbots, internal copilots, automated pipelines, dashboards, and decision-support tools.</p>
+              <div class="flow-step">
+                <div class="flow-step-icon">🖥️</div>
+                <div class="flow-step-body">
+                  <div class="flow-step-title">App Layer</div>
+                  <div class="flow-step-desc">Business-facing interface</div>
                 </div>
               </div>
             </div>
@@ -800,6 +748,12 @@
               <div class="quote-author">— Harvard Business Review, 2025</div>
             </div>
           </div>
+
+          <!-- Did You Know -->
+          <div class="did-you-know reveal">
+            <div class="dyk-label">Did You Know?</div>
+            <p>McKinsey estimates AI could add <strong>$4.4 trillion annually</strong> to the global economy — roughly the entire GDP of Japan. By 2026, companies with mature AI adoption are already seeing <strong>3–5× ROI</strong> on AI investments within 18 months.</p>
+          </div>
         </section>
 
         <div class="section-divider"></div>
@@ -818,38 +772,24 @@
           <div class="method-card-ai reveal">
             <div class="method-number">Method 01</div>
             <h3 style="margin-top:0.5rem; margin-bottom:0.4rem;">The AI-First Workflow Framework</h3>
-            <p style="margin-bottom:1rem;">A systematic 5-step process to audit your business, deploy AI agents where they'll have the highest impact, and redirect human energy to where it matters most.</p>
+            <p style="margin-bottom:1.5rem;">A systematic 5-step process to audit your business, deploy AI agents where they'll have the highest impact, and redirect human energy to where it matters most.</p>
 
-            <div class="classify-grid">
-              <div class="classify-col auto">
-                <h5>Automatable</h5>
-                <ul>
-                  <li>Email triage & drafting</li>
-                  <li>Report generation</li>
-                  <li>Data entry & enrichment</li>
-                  <li>Research & summarization</li>
-                  <li>Invoice processing</li>
-                </ul>
+            <!-- AI Task Classification Grid -->
+            <div class="principle-grid">
+              <div class="principle-card">
+                <div class="principle-icon">🤖</div>
+                <h4>Automate Fully</h4>
+                <p>Repetitive, rule-based tasks. Email sorting, data entry, report generation, appointment scheduling.</p>
               </div>
-              <div class="classify-col aug">
-                <h5>Augmentable</h5>
-                <ul>
-                  <li>Strategic planning</li>
-                  <li>Content creation</li>
-                  <li>Financial analysis</li>
-                  <li>Customer proposals</li>
-                  <li>Market research</li>
-                </ul>
+              <div class="principle-card">
+                <div class="principle-icon">🤝</div>
+                <h4>Augment Human</h4>
+                <p>Complex judgment tasks. Strategy, writing, analysis, customer relationships — AI as co-pilot.</p>
               </div>
-              <div class="classify-col hum">
-                <h5>Human-Only</h5>
-                <ul>
-                  <li>Client relationships</li>
-                  <li>Team leadership</li>
-                  <li>Ethical decisions</li>
-                  <li>Creative vision</li>
-                  <li>Crisis management</li>
-                </ul>
+              <div class="principle-card">
+                <div class="principle-icon">👤</div>
+                <h4>Keep Human-Only</h4>
+                <p>Ethics, culture, final accountability, novel creative direction, empathetic relationships.</p>
               </div>
             </div>
 
@@ -873,46 +813,46 @@
             <h3 style="margin-top:0.5rem; margin-bottom:0.4rem;">Prompt Engineering Mastery — The CRAFT Framework</h3>
             <p style="margin-bottom:1rem;">The quality of your AI output is directly proportional to the quality of your prompt. CRAFT is the gold standard for writing prompts that get professional-grade results every time.</p>
 
-            <div style="overflow-x:auto; border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <table class="craft-table">
+            <div class="compare-table-wrap">
+              <table class="compare-table">
                 <thead>
                   <tr>
-                    <th style="width:50px;">Letter</th>
-                    <th style="width:120px;">Element</th>
-                    <th>What It Does</th>
+                    <th>Letter</th>
+                    <th>Stands For</th>
+                    <th>What to Include</th>
                     <th>Example</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="craft-letter">C</span></td>
-                    <td><span class="craft-word">Context</span></td>
-                    <td>Gives the AI your role, situation, and background. The more context, the more tailored the response.</td>
-                    <td><em>"I'm a B2B SaaS startup founder preparing for a Series A pitch..."</em></td>
+                    <td><strong style="font-size:1.2rem; color:var(--site-color);">C</strong></td>
+                    <td><strong>Context</strong></td>
+                    <td>Your role, situation, background</td>
+                    <td><em>"I'm a sales manager at a B2B SaaS company..."</em></td>
                   </tr>
                   <tr>
-                    <td><span class="craft-letter">R</span></td>
-                    <td><span class="craft-word">Role</span></td>
-                    <td>Tells the AI which expert persona to adopt — unlocking specialized depth and vocabulary.</td>
-                    <td><em>"Act as a senior McKinsey strategy consultant..."</em></td>
+                    <td><strong style="font-size:1.2rem; color:var(--site-color);">R</strong></td>
+                    <td><strong>Role</strong></td>
+                    <td>Expert persona for AI</td>
+                    <td><em>"Act as a senior marketing strategist..."</em></td>
                   </tr>
                   <tr>
-                    <td><span class="craft-letter">A</span></td>
-                    <td><span class="craft-word">Action</span></td>
-                    <td>Specifies exactly what you want the AI to do. Clear verbs prevent vague outputs.</td>
-                    <td><em>"Analyze the top 3 risks and provide mitigation strategies for each..."</em></td>
+                    <td><strong style="font-size:1.2rem; color:var(--site-color);">A</strong></td>
+                    <td><strong>Action</strong></td>
+                    <td>Exactly what you want</td>
+                    <td><em>"Write a 5-bullet executive summary..."</em></td>
                   </tr>
                   <tr>
-                    <td><span class="craft-letter">F</span></td>
-                    <td><span class="craft-word">Format</span></td>
-                    <td>Specifies the output structure — table, bullet list, JSON, email, executive summary, step-by-step guide.</td>
-                    <td><em>"Format your response as a 2-column table with Risk and Mitigation..."</em></td>
+                    <td><strong style="font-size:1.2rem; color:var(--site-color);">F</strong></td>
+                    <td><strong>Format</strong></td>
+                    <td>Output structure</td>
+                    <td><em>"Format as a table with 3 columns..."</em></td>
                   </tr>
                   <tr>
-                    <td><span class="craft-letter">T</span></td>
-                    <td><span class="craft-word">Tone</span></td>
-                    <td>Sets the voice and style — professional, conversational, persuasive, technical, or empathetic.</td>
-                    <td><em>"Write in a confident, professional tone suitable for a board presentation..."</em></td>
+                    <td><strong style="font-size:1.2rem; color:var(--site-color);">T</strong></td>
+                    <td><strong>Tone</strong></td>
+                    <td>Voice and style</td>
+                    <td><em>"Use a professional but conversational tone..."</em></td>
                   </tr>
                 </tbody>
               </table>
@@ -1066,51 +1006,50 @@
           </div>
 
           <div class="grid-2">
-            <!-- Example 1 -->
-            <div class="example-card reveal">
-              <div class="example-meta-row">
-                <span class="example-label">Enterprise Case Study</span>
-                <span class="example-stat">🏦 Financial Services</span>
-                <span class="example-stat">2025–2026</span>
+            <!-- Example 1 — Scenario Card -->
+            <div class="scenario-card reveal">
+              <div class="scenario-header" style="background: linear-gradient(135deg, var(--site-color), var(--site-dark));">
+                <span class="scenario-icon">🏦</span>
+                <div>
+                  <div class="scenario-label">Enterprise Case Study</div>
+                  <div class="scenario-title">Morgan Stanley AI Advisor</div>
+                </div>
               </div>
-              <h4>Morgan Stanley's AI Financial Advisor</h4>
-              <p>Morgan Stanley deployed an AI system built on GPT-4 and trained on 100,000+ internal research documents — covering equity research, market analysis, product guides, and regulatory filings.</p>
-              <p>Financial advisors use the system to instantly retrieve personalized, context-aware investment insights for client meetings. The AI handles the heavy lifting of RAG and synthesis; the human advisor handles the relationship, trust-building, and final recommendation.</p>
-              <p>This is a textbook <strong>Human + AI Augmentation</strong> model — not replacing advisors, but making each advisor dramatically more effective.</p>
-              <div class="result-highlight">
-                <h5>Measured Outcomes</h5>
-                <ul>
-                  <li>Average advisor prep time per client meeting dropped from 2.5 hours to 15 minutes</li>
-                  <li>Client satisfaction scores increased by 28% year-over-year</li>
-                  <li>Advisors now handle 35% more client relationships simultaneously</li>
-                  <li>New hires reach full productivity 60% faster with AI knowledge access</li>
-                </ul>
+              <div class="scenario-body">
+                <p>Morgan Stanley deployed an AI system built on GPT-4 and trained on 100,000+ internal research documents — covering equity research, market analysis, product guides, and regulatory filings.</p>
+                <p>Financial advisors use the system to instantly retrieve personalized, context-aware investment insights for client meetings. The AI handles the heavy lifting of RAG and synthesis; the human advisor handles the relationship, trust-building, and final recommendation.</p>
+                <p>This is a textbook <strong>Human + AI Augmentation</strong> model — not replacing advisors, but making each advisor dramatically more effective.</p>
+                <div class="stat-chips">
+                  <span class="stat-chip">100K+ docs trained</span>
+                  <span class="stat-chip">2.5h → 15min prep</span>
+                  <span class="stat-chip">28% satisfaction increase</span>
+                  <span class="stat-chip">Deployed to 16,000 advisors</span>
+                </div>
               </div>
             </div>
 
-            <!-- Example 2 -->
-            <div class="example-card reveal">
-              <div class="example-meta-row">
-                <span class="example-label">SME Case Study</span>
-                <span class="example-stat">🛒 E-Commerce</span>
-                <span class="example-stat">50-Person Team</span>
+            <!-- Example 2 — Scenario Card -->
+            <div class="scenario-card reveal">
+              <div class="scenario-header" style="background: linear-gradient(135deg, var(--site-color), var(--site-dark));">
+                <span class="scenario-icon">🛍️</span>
+                <div>
+                  <div class="scenario-label">SME Case Study</div>
+                  <div class="scenario-title">AI-First E-Commerce Ops</div>
+                </div>
               </div>
-              <h4>AI Agent Suite for E-Commerce Operations</h4>
-              <p>A mid-size direct-to-consumer e-commerce brand with 50 employees deployed a coordinated suite of three specialized AI agents — each targeting a different operational bottleneck.</p>
-              <p>The company invested 3 months and approximately $80,000 in the build-out, then monitored results over 12 months. The human team transitioned from day-to-day operations management to strategic growth initiatives.</p>
-              <div class="result-highlight">
-                <h5>Agent Deployments &amp; Results</h5>
-                <ul>
-                  <li>Customer service agent handled 85% of support tickets autonomously, 24/7</li>
-                  <li>Inventory forecasting agent reduced stockouts by 40% through predictive reordering</li>
-                  <li>Ad copy agent generated, launched, and A/B tested Facebook &amp; Instagram ads autonomously</li>
-                  <li>Total annual savings: $320,000 in labor and lost-sale costs</li>
-                  <li>Revenue grew 60% year-over-year as team focused on product and partnerships</li>
-                </ul>
-              </div>
-              <div class="outcome-banner" style="margin-top:1rem;">
-                <span>📈</span>
-                <span>ROI on AI investment: ~400% in Year 1. The team of 50 now operates at the capacity of a 70-person team.</span>
+              <div class="scenario-body">
+                <p>A mid-size direct-to-consumer e-commerce brand with 50 employees deployed a coordinated suite of three specialized AI agents — each targeting a different operational bottleneck.</p>
+                <p>The company invested 3 months and approximately $80,000 in the build-out, then monitored results over 12 months. The human team transitioned from day-to-day operations management to strategic growth initiatives.</p>
+                <div class="stat-chips">
+                  <span class="stat-chip">$320K annual savings</span>
+                  <span class="stat-chip">85% tickets automated</span>
+                  <span class="stat-chip">40% fewer stockouts</span>
+                  <span class="stat-chip">60% revenue growth YoY</span>
+                </div>
+                <div class="outcome-banner" style="margin-top:1rem;">
+                  <span>📈</span>
+                  <span>ROI on AI investment: ~400% in Year 1. The team of 50 now operates at the capacity of a 70-person team.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1133,50 +1072,48 @@
             <p style="max-width:none;">The six most consequential AI trends reshaping business strategy and competitive advantage right now.</p>
           </div>
 
-          <div class="trends-grid">
-
-            <div class="trend-card reveal">
-              <span class="trend-emoji">🤖</span>
+          <div class="principle-grid">
+            <div class="principle-card reveal">
+              <div class="principle-icon">🤖</div>
               <h4>Autonomous AI Agents</h4>
-              <p>AI systems that independently plan, use tools, browse the web, write code, and complete multi-step business tasks without human intervention at each step.</p>
+              <p>Multi-step task execution without human prompting. AI systems that independently plan, use tools, browse the web, write code, and complete complex workflows.</p>
               <span class="maturity-badge mainstream">Mainstream</span>
             </div>
 
-            <div class="trend-card reveal">
-              <span class="trend-emoji">👁️</span>
+            <div class="principle-card reveal">
+              <div class="principle-icon">👁️</div>
               <h4>Multimodal AI</h4>
-              <p>Models like GPT-4o, Claude 3.5, and Gemini Ultra process and generate across text, images, audio, and video — enabling entirely new classes of business workflows.</p>
+              <p>Text + image + audio + video in one model. Models like GPT-4o, Claude 3.5, and Gemini Ultra process all modalities in a single unified conversation.</p>
               <span class="maturity-badge mainstream">Mainstream</span>
             </div>
 
-            <div class="trend-card reveal">
-              <span class="trend-emoji">🔍</span>
+            <div class="principle-card reveal">
+              <div class="principle-icon">🔍</div>
               <h4>AI-Powered Search &amp; RAG</h4>
-              <p>Retrieval-Augmented Generation is replacing keyword search across enterprises — giving employees an AI that answers questions using your company's own documents and data.</p>
+              <p>Knowledge retrieval + LLM reasoning. RAG is replacing keyword search — giving employees an AI that answers questions using your company's own data.</p>
               <span class="maturity-badge mainstream">Mainstream</span>
             </div>
 
-            <div class="trend-card reveal">
-              <span class="trend-emoji">📱</span>
-              <h4>Edge AI &amp; On-Device Intelligence</h4>
-              <p>AI models running directly on smartphones, laptops, and IoT devices — enabling real-time inference without cloud dependency, unlocking privacy-first and offline-capable applications.</p>
+            <div class="principle-card reveal">
+              <div class="principle-icon">📱</div>
+              <h4>Edge AI &amp; On-Device</h4>
+              <p>Private, fast, offline AI on local hardware. Models running directly on smartphones, laptops, and IoT devices — no cloud required.</p>
               <span class="maturity-badge growing">Growing</span>
             </div>
 
-            <div class="trend-card reveal">
-              <span class="trend-emoji">⚖️</span>
+            <div class="principle-card reveal">
+              <div class="principle-icon">⚖️</div>
               <h4>AI Governance &amp; Regulation</h4>
-              <p>The EU AI Act is now enforceable. Enterprises must classify their AI systems by risk level and implement documentation, bias audits, and human oversight protocols accordingly.</p>
+              <p>EU AI Act, bias audits, compliance frameworks. Enterprises must classify AI systems by risk level and implement documentation and oversight protocols.</p>
               <span class="maturity-badge growing">Growing</span>
             </div>
 
-            <div class="trend-card reveal">
-              <span class="trend-emoji">🔬</span>
-              <h4>Small Language Models (SLMs)</h4>
-              <p>Compact, fine-tuned models (1–7B parameters) deployable on-device or in private infrastructure — offering 80% of frontier model capability at a fraction of the cost and latency.</p>
-              <span class="maturity-badge early">Early</span>
+            <div class="principle-card reveal">
+              <div class="principle-icon">🔬</div>
+              <h4>Small Language Models</h4>
+              <p>Compact, fast, private — runs on your laptop. Fine-tuned models (1–7B parameters) offering 80% of frontier capability at a fraction of the cost.</p>
+              <span class="maturity-badge growing">Growing</span>
             </div>
-
           </div>
 
           <div class="highlight-box reveal" style="margin-top:2rem;">
@@ -1194,178 +1131,23 @@
           <div class="section-header" style="text-align:left; margin-bottom:2rem;">
             <span class="section-label">Section 07</span>
             <h2>Knowledge Quiz</h2>
-            <p style="max-width:none;">Test your understanding of the 2026 AI landscape. 5 questions covering agents, RAG, prompt engineering, and multimodal AI.</p>
+            <p style="max-width:none;">Test your understanding of the 2026 AI landscape. 5 questions randomly drawn from a bank of 15 — reshuffles every visit.</p>
           </div>
 
           <div class="quiz-container reveal">
-
-            <!-- Q1 -->
-            <div class="quiz-question" id="q1">
-              <div class="q-number">1</div>
-              <div class="q-text">What is an "AI Agent" in the 2026 context?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span>
-                  A human employee who uses AI tools daily
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span>
-                  A chatbot that answers frequently asked questions
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span>
-                  An AI system that autonomously plans, executes, and iterates on multi-step tasks
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q1" />
-                  <span class="q-option-dot"></span>
-                  A type of neural network architecture
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>AI agents go far beyond chatbots.</strong> They have defined goals, access to tools (web search, code execution, file reading, API calls), and the ability to take sequential actions — reflecting on each result and adjusting their approach. They operate autonomously over extended task horizons, often without human intervention at every step.
-              </div>
+            <div class="quiz-bank-label">
+              <span id="quiz-bank-label">Showing 5 of 15 questions — reshuffles every visit</span>
+              <button class="quiz-refresh-btn" id="quiz-reset">🔀 New Questions</button>
             </div>
-
-            <!-- Q2 -->
-            <div class="quiz-question" id="q2">
-              <div class="q-number">2</div>
-              <div class="q-text">What does RAG stand for in AI architecture?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span>
-                  Random Access Generation
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span>
-                  Retrieval-Augmented Generation
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span>
-                  Recursive Agent Graph
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q2" />
-                  <span class="q-option-dot"></span>
-                  Real-time AI Governance
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Retrieval-Augmented Generation (RAG)</strong> connects a language model to an external knowledge base. Instead of relying solely on its training data, the AI first retrieves the most relevant documents from your knowledge store, then generates a grounded, accurate response using that context. This eliminates hallucinations about your specific business domain.
-              </div>
-            </div>
-
-            <!-- Q3 -->
-            <div class="quiz-question" id="q3">
-              <div class="q-number">3</div>
-              <div class="q-text">In the CRAFT prompt engineering framework, what does the letter "F" stand for?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span>
-                  Flexibility
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span>
-                  Focus
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span>
-                  Format
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q3" />
-                  <span class="q-option-dot"></span>
-                  Feedback
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Format</strong> tells the AI exactly how to structure its output — as a numbered list, comparison table, JSON object, professional email, executive summary, step-by-step guide, or code block. Specifying format is one of the highest-leverage prompt improvements you can make, turning generic responses into directly usable deliverables.
-              </div>
-            </div>
-
-            <!-- Q4 -->
-            <div class="quiz-question" id="q4">
-              <div class="q-number">4</div>
-              <div class="q-text">Which AI capability is most transformative for knowledge-intensive businesses (law firms, consulting, finance, healthcare)?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span>
-                  Image generation from text descriptions
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span>
-                  Text-to-speech voice synthesis
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span>
-                  RAG — connecting AI to internal knowledge bases and proprietary documents
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q4" />
-                  <span class="q-option-dot"></span>
-                  AI-assisted code autocompletion
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>RAG is the transformative capability</strong> for knowledge businesses because it allows AI to become an expert on <em>your</em> company's specific knowledge — policies, case law, research reports, product specifications, past projects, and client data — rather than being limited to general internet knowledge. This is the difference between a generic AI assistant and a true business intelligence partner.
-              </div>
-            </div>
-
-            <!-- Q5 -->
-            <div class="quiz-question" id="q5">
-              <div class="q-number">5</div>
-              <div class="q-text">What is "multimodal AI"?</div>
-              <div class="q-options">
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span>
-                  AI that runs simultaneously on multiple cloud servers
-                </label>
-                <label class="q-option" data-correct="true">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span>
-                  AI that can process and generate text, images, audio, and video in a single unified model
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span>
-                  An AI system with multiple distinct personalities for different contexts
-                </label>
-                <label class="q-option" data-correct="false">
-                  <input type="radio" name="q5" />
-                  <span class="q-option-dot"></span>
-                  A type of reinforcement learning with multiple reward signals
-                </label>
-              </div>
-              <div class="q-answer">
-                <strong>Multimodal AI</strong> (such as GPT-4o, Claude 3.5 Sonnet, and Gemini Ultra 2) can understand and generate content across multiple modalities — reading charts, analyzing product photos, transcribing audio from meetings, watching video demonstrations, and combining all of these in a single coherent response. This unlocks entirely new workflows: visual QA, audio analysis, document understanding, and real-time multimodal agents.
-              </div>
-            </div>
-
-            <!-- Quiz Actions -->
+            <div id="quiz"></div>
             <div class="quiz-actions">
               <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
-              <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
             </div>
-
             <div class="quiz-score" id="quiz-score">
               <span class="score-emoji" id="score-emoji">🎯</span>
               <div id="score-text">Score: 0/5</div>
               <div id="score-message" style="font-size:0.85rem; font-weight:400; color:var(--text-secondary); margin-top:0.4rem;"></div>
             </div>
-
           </div>
         </section>
 
@@ -1391,44 +1173,263 @@
   <!-- Scripts -->
   <script src="../js/main.js"></script>
   <script>
-    // ── Quiz Logic ──────────────────────────────────────────────────
-    (function () {
-      const questions = document.querySelectorAll('.quiz-question');
+window.QUIZ_BANK = [
+  {
+    question: "What is an 'AI Agent' in the 2026 business context?",
+    options: [
+      { text: "A human employee who specializes in AI projects", correct: false },
+      { text: "A basic chatbot that answers frequently asked questions", correct: false },
+      { text: "An AI system that autonomously plans, executes multi-step tasks, uses tools, and iterates on results", correct: true },
+      { text: "A type of deep neural network for image recognition", correct: false }
+    ],
+    explanation: "AI agents (2026) go far beyond chatbots. They have goals, memory, tools (web browsing, code execution, API calls), and can take sequential actions while reflecting and adjusting. Example: An AI agent that researches competitors, writes a report, emails it to stakeholders, and schedules a follow-up meeting — all autonomously."
+  },
+  {
+    question: "What does RAG stand for in AI?",
+    options: [
+      { text: "Random Access Generation", correct: false },
+      { text: "Retrieval-Augmented Generation", correct: true },
+      { text: "Recursive Agent Graph", correct: false },
+      { text: "Real-time AI Governance", correct: false }
+    ],
+    explanation: "RAG connects an LLM to an external knowledge base. Instead of relying only on training data (which has a cutoff date and no company-specific knowledge), the AI first retrieves relevant documents, then generates a grounded, accurate, current response. This is what makes AI actually useful for business knowledge work."
+  },
+  {
+    question: "In the CRAFT prompt framework, what does 'F' stand for?",
+    options: [
+      { text: "Flexibility — letting the AI choose its approach", correct: false },
+      { text: "Focus — narrowing the scope of the question", correct: false },
+      { text: "Format — specifying how the output should be structured", correct: true },
+      { text: "Feedback — asking the AI to evaluate its own response", correct: false }
+    ],
+    explanation: "Format dramatically changes AI output usefulness. 'Give me a table comparing X and Y' vs 'Tell me about X and Y' produces completely different, and differently useful, outputs. Always specify: table, bullet list, JSON, email, executive summary, numbered steps, etc."
+  },
+  {
+    question: "What is 'multimodal AI'?",
+    options: [
+      { text: "AI that runs on multiple servers simultaneously for redundancy", correct: false },
+      { text: "AI that has multiple different personalities or response styles", correct: false },
+      { text: "AI that can understand and generate across multiple modalities: text, images, audio, and video", correct: true },
+      { text: "A type of reinforcement learning used in robotics", correct: false }
+    ],
+    explanation: "Multimodal AI (GPT-4o, Claude 3, Gemini Ultra) can read a chart, analyze a photo, transcribe audio, and respond across all these formats in one conversation. Business applications: analyze photos of products, process voice memos, read scanned documents, generate visual reports — all with one system."
+  },
+  {
+    question: "What is 'prompt engineering' and why does it matter?",
+    options: [
+      { text: "The technical process of training AI models on new data", correct: false },
+      { text: "The skill of crafting precise instructions to get the most useful outputs from AI systems", correct: true },
+      { text: "Software engineering for building AI infrastructure", correct: false },
+      { text: "A type of fine-tuning for language models", correct: false }
+    ],
+    explanation: "The same AI model can give a useless or brilliant response depending purely on how the prompt is written. Studies show well-engineered prompts can improve output quality by 40-60%. It's the most accessible, high-leverage AI skill for business professionals in 2026."
+  },
+  {
+    question: "What is 'AI Hallucination'?",
+    options: [
+      { text: "AI creating artistic, dreamlike visual outputs", correct: false },
+      { text: "When an AI confidently generates false information that sounds credible", correct: true },
+      { text: "AI systems becoming confused by contradictory training data", correct: false },
+      { text: "A safety feature that prevents AI from generating harmful content", correct: false }
+    ],
+    explanation: "LLMs can generate plausible-sounding but completely false facts (fake citations, wrong statistics, fabricated events) with complete confidence. In 2026, businesses mitigate this with RAG (grounding responses in verified documents), human-in-the-loop review for critical decisions, and confidence scoring."
+  },
+  {
+    question: "Which AI application produces the fastest ROI for most businesses in 2026?",
+    options: [
+      { text: "Training a custom LLM from scratch on proprietary data", correct: false },
+      { text: "Automating repetitive, rule-based tasks like email drafting, report generation, and data entry", correct: true },
+      { text: "Building humanoid robots for physical tasks", correct: false },
+      { text: "Replacing the entire customer service department with AI", correct: false }
+    ],
+    explanation: "The fastest AI ROI comes from automating high-volume, low-complexity tasks: email responses, meeting summaries, data entry, report drafting, code review, invoice processing. These have clear ROI measurement, low implementation risk, and immediate time savings."
+  },
+  {
+    question: "What is a 'Small Language Model' (SLM) and why are they important in 2026?",
+    options: [
+      { text: "A simplified version of an LLM used for teaching purposes", correct: false },
+      { text: "Compact AI models that run locally on devices with limited compute, enabling privacy and speed", correct: true },
+      { text: "A language model trained on a small dataset", correct: false },
+      { text: "AI models used specifically for writing short-form content", correct: false }
+    ],
+    explanation: "SLMs (Phi-3, Mistral, Llama 3) run on laptops, phones, and edge devices without internet. This enables: air-gapped enterprise deployments (sensitive data never leaves the building), faster inference, and dramatically lower costs vs API calls to cloud LLMs. Critical for healthcare, legal, and defense applications."
+  },
+  {
+    question: "What does 'Human-in-the-Loop' (HITL) mean in AI systems?",
+    options: [
+      { text: "A requirement that humans manually code every AI decision", correct: false },
+      { text: "Designing AI workflows where humans review, approve, or correct AI decisions at critical points", correct: true },
+      { text: "Using human-generated data for AI training", correct: false },
+      { text: "Replacing AI with human judgment for all decisions", correct: false }
+    ],
+    explanation: "HITL is not about distrusting AI — it's about knowing where human judgment is irreplaceable: ethical decisions, high-stakes approvals, novel situations, and legal accountability. Best practice: let AI handle 80% of the workflow autonomously, with humans reviewing the 20% that's ambiguous or high-risk."
+  },
+  {
+    question: "What is 'AI Governance' and why do businesses need it in 2026?",
+    options: [
+      { text: "The government regulations that control AI companies", correct: false },
+      { text: "A business framework defining how AI systems are developed, deployed, monitored, and held accountable", correct: true },
+      { text: "A type of AI model that manages other AI models", correct: false },
+      { text: "HR policies about employees using AI tools at work", correct: false }
+    ],
+    explanation: "AI governance covers: bias detection, data privacy compliance (GDPR, EU AI Act), decision auditability, model documentation, and incident response. In 2026, regulators in the EU, UK, and increasingly the US require documented AI governance frameworks for high-risk AI deployments."
+  },
+  {
+    question: "What is 'AI augmentation' vs 'AI automation'?",
+    options: [
+      { text: "They mean the same thing — both replace human workers", correct: false },
+      { text: "Augmentation enhances human capabilities; automation replaces human tasks entirely", correct: true },
+      { text: "Augmentation is for hardware; automation is for software", correct: false },
+      { text: "Augmentation is more expensive; automation is cheaper", correct: false }
+    ],
+    explanation: "Automation: AI does the task instead of a human (invoice processing, appointment scheduling). Augmentation: AI enhances the human doing the task (AI-assisted surgery, AI writing suggestions, AI-powered research). Most business value in 2026 comes from augmentation — humans + AI > AI alone for complex work."
+  },
+  {
+    question: "What is 'fine-tuning' an AI model?",
+    options: [
+      { text: "Writing better prompts to improve AI outputs", correct: false },
+      { text: "Further training a pre-trained model on domain-specific data to specialize its knowledge and style", correct: true },
+      { text: "Adjusting an AI model's speed vs accuracy tradeoff", correct: false },
+      { text: "Testing an AI model in a sandboxed environment", correct: false }
+    ],
+    explanation: "Fine-tuning takes a general LLM (like GPT-4 or Llama 3) and trains it on thousands of your company's specific examples — support tickets, product docs, legal language. The result: an AI that writes in your brand voice, knows your products deeply, and handles domain-specific questions accurately."
+  },
+  {
+    question: "What is 'Agentic AI' orchestration?",
+    options: [
+      { text: "A single AI model handling all tasks in a business", correct: false },
+      { text: "Multiple specialized AI agents working together in a coordinated pipeline to accomplish complex goals", correct: true },
+      { text: "An AI that manages employee schedules and workflows", correct: false },
+      { text: "Using AI to manage and organize company data", correct: false }
+    ],
+    explanation: "Agentic orchestration (LangGraph, CrewAI, Claude agent frameworks) chains specialized agents: a research agent gathers data → an analysis agent processes it → a writing agent drafts the report → a QA agent reviews it → a delivery agent sends it. Each agent is specialized; the orchestrator coordinates the workflow."
+  },
+  {
+    question: "What is 'AI-first' business strategy?",
+    options: [
+      { text: "Replacing all employees with AI as soon as possible", correct: false },
+      { text: "Defaulting to asking 'How can AI help here?' before building traditional processes or hiring for any new capability", correct: true },
+      { text: "Only using AI-generated content in marketing and communications", correct: false },
+      { text: "Investing in AI stocks and companies as a primary growth strategy", correct: false }
+    ],
+    explanation: "AI-first means AI is the default consideration, not an afterthought. When a problem arises: Can an AI agent solve this? Can AI augment the human doing this? Can this data feed an AI model? Companies that build AI into the foundation of operations from the start have structural advantages that are very hard to replicate later."
+  },
+  {
+    question: "What is 'Edge AI' and what business problem does it solve?",
+    options: [
+      { text: "AI used specifically by startups and early-stage companies", correct: false },
+      { text: "AI processed locally on a device rather than sent to cloud servers — solving latency, privacy, and connectivity issues", correct: true },
+      { text: "AI used at the edge of a company's supply chain", correct: false },
+      { text: "Cutting-edge AI research not yet available commercially", correct: false }
+    ],
+    explanation: "Edge AI runs on the device (phone, camera, sensor, industrial machine) without sending data to the cloud. Applications: real-time quality inspection on factory floors (no latency), medical device AI that never shares patient data with cloud servers, autonomous vehicles that can't wait for a network response."
+  }
+];
 
-      // Handle option selection
-      questions.forEach(function (qEl) {
-        const options = qEl.querySelectorAll('.q-option');
-        options.forEach(function (opt) {
-          opt.addEventListener('click', function () {
-            options.forEach(function (o) { o.classList.remove('selected'); });
-            opt.classList.add('selected');
-            const radio = opt.querySelector('input[type="radio"]');
-            if (radio) radio.checked = true;
+window.PAGE_TIPS = [
+  "💡 The CRAFT prompt framework: Context + Role + Action + Format + Tone = consistently great AI outputs.",
+  "💡 Before hiring for a repetitive task, ask: 'Can an AI agent do this in 2 minutes instead of 2 hours?'",
+  "💡 AI hallucinates. Always verify any specific facts, statistics, or citations it generates.",
+  "💡 The best AI skill in 2026 is knowing WHAT to ask AI to do — not how to code it.",
+  "💡 RAG is the difference between an AI that knows the internet and an AI that knows YOUR business.",
+  "💡 Start small: automate one painful, repetitive task this week. Measure the time saved. Then scale.",
+  "💡 AI augments human judgment — it doesn't replace it. The humans who understand both will lead."
+];
+  </script>
+  <script>
+    // ── Tip Rotator ──────────────────────────────────────────────────
+    (function () {
+      var tipEl = document.getElementById('tip-text');
+      if (!tipEl || !window.PAGE_TIPS || !window.PAGE_TIPS.length) return;
+      var idx = Math.floor(Math.random() * window.PAGE_TIPS.length);
+      tipEl.textContent = window.PAGE_TIPS[idx];
+    }());
+
+    // ── Quiz Bank — Dynamic Rendering ───────────────────────────────
+    (function () {
+      var BANK = window.QUIZ_BANK || [];
+      var SHOW = 5;
+      var currentSet = [];
+
+      function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+        }
+        return a;
+      }
+
+      function renderQuiz() {
+        var container = document.getElementById('quiz');
+        if (!container) return;
+
+        currentSet = shuffle(BANK).slice(0, SHOW);
+
+        var html = '';
+        currentSet.forEach(function (q, qi) {
+          var name = 'dq' + qi;
+          html += '<div class="quiz-question" data-qi="' + qi + '">';
+          html += '<div class="q-number">' + (qi + 1) + '</div>';
+          html += '<div class="q-text">' + q.question + '</div>';
+          html += '<div class="q-options">';
+          var opts = shuffle(q.options);
+          opts.forEach(function (opt) {
+            html += '<label class="q-option" data-correct="' + opt.correct + '">';
+            html += '<input type="radio" name="' + name + '" />';
+            html += '<span class="q-option-dot"></span>';
+            html += opt.text;
+            html += '</label>';
+          });
+          html += '</div>';
+          html += '<div class="q-answer">' + q.explanation + '</div>';
+          html += '</div>';
+        });
+
+        container.innerHTML = html;
+        updateBankLabel();
+
+        // Bind click handlers
+        container.querySelectorAll('.quiz-question').forEach(function (qEl) {
+          var opts = qEl.querySelectorAll('.q-option');
+          opts.forEach(function (opt) {
+            opt.addEventListener('click', function () {
+              opts.forEach(function (o) { o.classList.remove('selected'); });
+              opt.classList.add('selected');
+              var radio = opt.querySelector('input[type="radio"]');
+              if (radio) radio.checked = true;
+            });
           });
         });
-      });
+
+        // Reset score display and submit button
+        var scoreEl = document.getElementById('quiz-score');
+        if (scoreEl) scoreEl.classList.remove('show');
+        var submitBtn = document.getElementById('quiz-submit');
+        if (submitBtn) submitBtn.disabled = false;
+      }
+
+      function updateBankLabel() {
+        var lbl = document.getElementById('quiz-bank-label');
+        if (lbl) lbl.textContent = 'Showing ' + SHOW + ' of ' + BANK.length + ' questions — reshuffles every visit';
+      }
 
       // Submit handler
       document.getElementById('quiz-submit').addEventListener('click', function () {
-        let score = 0;
-        let allAnswered = true;
+        var container = document.getElementById('quiz');
+        var questions = container.querySelectorAll('.quiz-question');
+        var score = 0;
+        var allAnswered = true;
 
         questions.forEach(function (qEl) {
-          const selected = qEl.querySelector('.q-option.selected');
-          const answerEl = qEl.querySelector('.q-answer');
+          var selected = qEl.querySelector('.q-option.selected');
+          var answerEl = qEl.querySelector('.q-answer');
 
-          if (!selected) {
-            allAnswered = false;
-            return;
-          }
+          if (!selected) { allAnswered = false; return; }
 
-          const isCorrect = selected.getAttribute('data-correct') === 'true';
-          const options = qEl.querySelectorAll('.q-option');
-
-          options.forEach(function (opt) {
-            if (opt.getAttribute('data-correct') === 'true') {
-              opt.classList.add('correct');
-            }
+          var isCorrect = selected.getAttribute('data-correct') === 'true';
+          qEl.querySelectorAll('.q-option').forEach(function (opt) {
+            if (opt.getAttribute('data-correct') === 'true') opt.classList.add('correct');
           });
 
           if (isCorrect) {
@@ -1445,14 +1446,14 @@
           return;
         }
 
-        const total = questions.length;
-        const pct = Math.round((score / total) * 100);
-        const scoreEl = document.getElementById('quiz-score');
-        const emojiEl = document.getElementById('score-emoji');
-        const textEl = document.getElementById('score-text');
-        const msgEl = document.getElementById('score-message');
+        var total = questions.length;
+        var pct = Math.round((score / total) * 100);
+        var scoreEl = document.getElementById('quiz-score');
+        var emojiEl = document.getElementById('score-emoji');
+        var textEl = document.getElementById('score-text');
+        var msgEl = document.getElementById('score-message');
 
-        let emoji, message;
+        var emoji, message;
         if (pct === 100) {
           emoji = '🏆';
           message = 'Perfect score! You have mastered the 2026 AI fundamentals. You are ready to lead the AI revolution.';
@@ -1471,40 +1472,29 @@
         textEl.textContent = 'Score: ' + score + '/' + total + ' (' + pct + '%)';
         msgEl.textContent = message;
         scoreEl.classList.add('show');
-
         document.getElementById('quiz-submit').disabled = true;
       });
 
-      // Reset handler
+      // Reset / New Questions handler
       document.getElementById('quiz-reset').addEventListener('click', function () {
-        questions.forEach(function (qEl) {
-          const options = qEl.querySelectorAll('.q-option');
-          options.forEach(function (opt) {
-            opt.classList.remove('selected', 'correct', 'wrong');
-            const radio = opt.querySelector('input[type="radio"]');
-            if (radio) radio.checked = false;
-          });
-          const answerEl = qEl.querySelector('.q-answer');
-          if (answerEl) answerEl.classList.remove('show');
-        });
-
-        const scoreEl = document.getElementById('quiz-score');
-        scoreEl.classList.remove('show');
-        document.getElementById('quiz-submit').disabled = false;
+        renderQuiz();
       });
+
+      // Initial render
+      renderQuiz();
     }());
 
     // ── TOC Active State on Scroll ──────────────────────────────────
     (function () {
-      const sections = document.querySelectorAll('section[id]');
-      const tocLinks = document.querySelectorAll('.toc-list a');
+      var sections = document.querySelectorAll('section[id]');
+      var tocLinks = document.querySelectorAll('.toc-list a');
 
       if (!sections.length || !tocLinks.length) return;
 
       function onScroll() {
-        let current = '';
+        var current = '';
         sections.forEach(function (sec) {
-          const top = sec.getBoundingClientRect().top;
+          var top = sec.getBoundingClientRect().top;
           if (top <= 120) current = sec.getAttribute('id');
         });
         tocLinks.forEach(function (link) {
@@ -1528,7 +1518,7 @@
         return;
       }
 
-      const observer = new IntersectionObserver(function (entries) {
+      var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
