@@ -468,6 +468,219 @@
       background: var(--site-color);
       color: white;
     }
+
+    /* ── Sticky Section Nav ─────────────────── */
+    .sticky-section-nav {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      display: flex;
+      gap: 0.3rem;
+      overflow-x: auto;
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
+    }
+    .sticky-section-nav::-webkit-scrollbar { display: none; }
+    .sticky-section-nav a {
+      flex-shrink: 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-section-nav a:hover,
+    .sticky-section-nav a.active {
+      background: var(--site-color);
+      border-color: var(--site-color);
+      color: white;
+    }
+
+    /* ── Methods Tabs ───────────────────────── */
+    .methods-tab-container { margin-top: 1.5rem; }
+    .methods-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    .method-tab-btn {
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .method-tab-btn:hover {
+      border-color: var(--site-color);
+      color: var(--site-color);
+    }
+    .method-tab-btn.active {
+      background: var(--site-color);
+      border-color: var(--site-color);
+      color: white;
+    }
+    .method-tab-panel { display: none; }
+    .method-tab-panel.active { display: block; }
+
+    /* ── Principle cards in tab (pc-*) ─────── */
+    .principle-grid .pc-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+    .principle-grid .pc-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--site-color);
+      margin-bottom: 0.2rem;
+    }
+    .principle-grid .principle-card h5 {
+      font-size: 0.95rem;
+      margin: 0 0 0.3rem;
+      color: var(--text-primary);
+    }
+    .principle-grid .principle-card p { font-size: 0.82rem; margin: 0; }
+
+    /* ── Steps list (shared) ────────────────── */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--site-color);
+      color: white;
+      font-weight: 800;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ── Flow steps in EAST tab (fs-*) ─────── */
+    .flow-steps { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      flex: 1;
+      min-width: 70px;
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+    }
+    .fs-num {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--site-color);
+      line-height: 1;
+    }
+    .fs-label { font-size: 0.78rem; font-weight: 700; color: var(--text-primary); }
+    .fs-sub { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* ── Flip Cards ─────────────────────────── */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .flip-card {
+      height: 140px;
+      perspective: 800px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem;
+      text-align: center;
+    }
+    .flip-card-front {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      gap: 0.3rem;
+    }
+    .flip-card-front:hover { border-color: var(--site-color); }
+    .fc-icon { font-size: 1.6rem; }
+    .fc-term { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+    .fc-hint { font-size: 0.68rem; color: var(--text-muted); }
+    .flip-card-back {
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      transform: rotateY(180deg);
+    }
+
+    /* ── Section Complete Button ────────────── */
+    .section-complete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .section-complete-btn:hover {
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+    .section-complete-btn.done {
+      background: rgba(34,197,94,0.1);
+      border-color: #22c55e;
+      color: #22c55e;
+    }
   </style>
 </head>
 <body>
@@ -500,6 +713,15 @@
       <a href="../ai-trends/index.html">🤖 AI &amp; Future Biz</a>
     </div>
   </nav>
+
+  <div class="sticky-section-nav" id="sticky-nav">
+    <a href="#concept">💡 Concept</a>
+    <a href="#quotes">✍️ Quotes</a>
+    <a href="#methods">⚙️ Methods</a>
+    <a href="#mindmap">🗺️ Mind Map</a>
+    <a href="#examples">🌍 Examples</a>
+    <a href="#quiz">🧩 Quiz</a>
+  </div>
 
   <!-- ══ HERO ════════════════════════════════════════════════════ -->
   <section class="subsite-hero">
@@ -731,6 +953,49 @@
                 </div>
               </div>
             </div>
+
+            <h4 style="margin: 2rem 0 0.5rem; font-size: 1rem;">🃏 Psychology Terms — Tap to Flip</h4>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;">Tap any card to reveal the definition</p>
+            <div class="flip-grid">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">⚡</span><span class="fc-term">System 1</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Fast, automatic, emotional, unconscious thinking. Drives ~95% of decisions. Activated by familiar patterns, emotion, and social cues.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🔬</span><span class="fc-term">System 2</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Slow, deliberate, logical, conscious thinking. Used for complex problems. Mentally exhausting — we avoid it when possible.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">😰</span><span class="fc-term">Loss Aversion</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Losses hurt ~2× more than equivalent gains feel good. "You're losing $5K/month" is more motivating than "You could gain $5K/month."</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🪞</span><span class="fc-term">Confirmation Bias</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">We seek, interpret, and remember information that confirms what we already believe — and ignore contradictory evidence.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🎭</span><span class="fc-term">Framing Effect</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">How information is presented changes decisions even when facts are identical. "90% fat free" vs "10% fat" — same product, different perception.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🌊</span><span class="fc-term">Nudge Theory</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Designing choice environments so the easiest path is the desired behavior — without restricting freedom or changing incentives.</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="section-complete-btn" data-section="concept">○ Mark as read</button>
           </section>
 
           <!-- ══ SECTION 2 — QUOTES ═════════════════════════════ -->
@@ -763,185 +1028,107 @@
                 <div class="quote-author">— Mahatma Gandhi</div>
               </div>
             </div>
+            <button class="section-complete-btn" data-section="quotes">○ Mark as read</button>
           </section>
 
           <!-- ══ SECTION 3 — 3 PROVEN METHODS ══════════════════ -->
-          <section id="methods" class="section">
-            <div class="section-header reveal">
-              <span class="section-label">Section 3</span>
-              <h2>3 Proven Methods</h2>
-              <p>Battle-tested frameworks that turn knowledge of psychology into real-world influence.</p>
+          <section class="section" id="methods">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Proven Frameworks</span>
+      <h2>3 Methods of Influence & Persuasion</h2>
+      <p>Click each tab to explore a proven psychology framework.</p>
+    </div>
+    <div class="methods-tab-container">
+      <div class="methods-tabs">
+        <button class="method-tab-btn active">🎯 Cialdini's 6</button>
+        <button class="method-tab-btn">🧩 Cognitive Biases</button>
+        <button class="method-tab-btn">🏛️ EAST Nudge</button>
+      </div>
+      <div class="method-tab-panel active">
+        <div class="method-card">
+          <span class="method-number">Method 1</span>
+          <h3>Cialdini's 6 Principles of Influence</h3>
+          <p>Robert Cialdini's landmark research identified 6 universal principles of persuasion — hardwired into human psychology through evolution and culture.</p>
+          <div class="principle-grid" style="margin:1.2rem 0;">
+            <div class="principle-card">
+              <span class="pc-icon">🎁</span>
+              <div class="pc-num">Principle 1</div>
+              <h5>Reciprocity</h5>
+              <p>Give first. People feel compelled to return favors — even unsolicited ones. Example: Free trial, handwritten thank-you note.</p>
             </div>
-
-            <!-- Method 1: Cialdini's 6 Principles -->
-            <div class="method-card reveal mb-4" style="margin-bottom:2rem;">
-              <div class="method-number">METHOD 01</div>
-              <h3 style="margin-top:0.5rem;">Cialdini's 6 Principles of Influence</h3>
-              <p>Dr. Robert Cialdini spent 35 years studying why people say "yes." His landmark research identified six universal principles that reliably trigger compliance — understanding them is essential for anyone in sales, leadership, or communications.</p>
-
-              <!-- Principle Grid (new visual component) -->
-              <div class="principle-grid">
-                <div class="principle-card">
-                  <div class="p-icon">🎁</div>
-                  <span class="principle-tag">Give First</span>
-                  <h4>Reciprocity</h4>
-                  <p>Give first, receive later. People feel compelled to return favors when you provide genuine value upfront.</p>
-                  <span class="p-example">Example: Free trial, handwritten note</span>
-                </div>
-                <div class="principle-card">
-                  <div class="p-icon">🔒</div>
-                  <span class="principle-tag">Small Yes → Big Yes</span>
-                  <h4>Commitment</h4>
-                  <p>Small yes leads to big yes. Once committed, people align future behavior to remain consistent.</p>
-                  <span class="p-example">Example: Email signup → purchase</span>
-                </div>
-                <div class="principle-card">
-                  <div class="p-icon">👥</div>
-                  <span class="principle-tag">Follow the Crowd</span>
-                  <h4>Social Proof</h4>
-                  <p>We follow the crowd. Reviews, ratings, and testimonials all leverage our tendency to look to others.</p>
-                  <span class="p-example">Example: "4.8★ from 50,000 reviews"</span>
-                </div>
-                <div class="principle-card">
-                  <div class="p-icon">🏅</div>
-                  <span class="principle-tag">Trust Credentials</span>
-                  <h4>Authority</h4>
-                  <p>Trust the expert. Credentials, titles, and demonstrated expertise create deference and compliance.</p>
-                  <span class="p-example">Example: "Dr. recommended", "Forbes featured"</span>
-                </div>
-                <div class="principle-card">
-                  <div class="p-icon">❤️</div>
-                  <span class="principle-tag">Say Yes to Those We Like</span>
-                  <h4>Liking</h4>
-                  <p>Yes to those we like. Similarity, genuine compliments, and familiarity build rapport that converts.</p>
-                  <span class="p-example">Example: Finding common ground, compliments</span>
-                </div>
-                <div class="principle-card">
-                  <div class="p-icon">⏰</div>
-                  <span class="principle-tag">Rare = Valuable</span>
-                  <h4>Scarcity</h4>
-                  <p>Rare is valuable. The fear of missing out is stronger than the desire to gain. Limited = desired.</p>
-                  <span class="p-example">Example: "Only 3 left", "48h offer"</span>
-                </div>
-              </div>
+            <div class="principle-card">
+              <span class="pc-icon">🔒</span>
+              <div class="pc-num">Principle 2</div>
+              <h5>Commitment</h5>
+              <p>Small yes → bigger yes. Once people commit publicly, they act consistently. Example: Email signup → purchase.</p>
             </div>
-
-            <!-- Method 2: Cognitive Bias Toolkit -->
-            <div class="method-card reveal mb-4" style="margin-bottom:2rem;">
-              <div class="method-number">METHOD 02</div>
-              <h3 style="margin-top:0.5rem;">Cognitive Bias Toolkit for Communicators</h3>
-              <p>Over 200 cognitive biases have been identified by researchers. These five are the most immediately applicable for anyone who communicates, negotiates, or markets professionally.</p>
-              <div class="bias-list">
-                <div class="bias-item">
-                  <span class="bias-icon">⚓</span>
-                  <div>
-                    <span class="bias-name">Anchoring Bias</span>
-                    <span class="bias-desc">The first number presented disproportionately influences all subsequent estimates and judgments. Present the most favorable number first in any negotiation or proposal.</span>
-                    <span class="bias-example">Example: Listing a product at $999 before showing a "discounted" price of $699 makes $699 feel like a deal — even if $699 is the actual target price.</span>
-                  </div>
-                </div>
-                <div class="bias-item">
-                  <span class="bias-icon">🖼️</span>
-                  <div>
-                    <span class="bias-name">Framing Effect</span>
-                    <span class="bias-desc">How information is presented changes decisions, even when the underlying facts are identical. "90% fat free" is the same as "10% fat" — but the first sells.</span>
-                    <span class="bias-example">Example: "5% failure rate" vs "95% success rate" — people prefer the latter, even though the data is identical.</span>
-                  </div>
-                </div>
-                <div class="bias-item">
-                  <span class="bias-icon">🕳️</span>
-                  <div>
-                    <span class="bias-name">Sunk Cost Fallacy</span>
-                    <span class="bias-desc">People continue bad decisions to justify past investment of time, money, or effort — even when cutting losses would be rational. Acknowledge it to avoid it.</span>
-                    <span class="bias-example">Example: Staying in a failing project because "we've already invested $2M" rather than evaluating future returns rationally.</span>
-                  </div>
-                </div>
-                <div class="bias-item">
-                  <span class="bias-icon">📈</span>
-                  <div>
-                    <span class="bias-name">Peak-End Rule</span>
-                    <span class="bias-desc">People judge experiences almost entirely by their most intense moment (the peak) and how they ended — not the average. Engineer great endings.</span>
-                    <span class="bias-example">Example: A dentist visit that ends with a small reward and friendly conversation is remembered better than one that was objectively less painful throughout.</span>
-                  </div>
-                </div>
-                <div class="bias-item">
-                  <span class="bias-icon">🎭</span>
-                  <div>
-                    <span class="bias-name">Decoy Effect</span>
-                    <span class="bias-desc">Adding a third, strategically inferior option makes your preferred option look significantly more attractive — without changing anything about it.</span>
-                    <span class="bias-example">Example: Small ($3), Medium ($6.50), Large ($7). Medium is the decoy — Large suddenly looks like exceptional value.</span>
-                  </div>
-                </div>
-              </div>
+            <div class="principle-card">
+              <span class="pc-icon">👥</span>
+              <div class="pc-num">Principle 3</div>
+              <h5>Social Proof</h5>
+              <p>We follow the crowd when uncertain. Example: "4.8★ from 50,000 reviews" or "Join 500,000 users."</p>
             </div>
-
-            <!-- Method 3: EAST Nudge Framework -->
-            <div class="method-card reveal">
-              <div class="method-number">METHOD 03</div>
-              <h3 style="margin-top:0.5rem;">The EAST Nudge Framework (Behavioural Insights Team)</h3>
-              <p>Developed by the UK Government's Behavioural Insights Team, the EAST framework provides a practical blueprint for designing nudges — small changes to choice architecture that dramatically shift behavior without mandates or incentives.</p>
-
-              <!-- EAST Flow Steps -->
-              <div class="flow-steps">
-                <div class="flow-step">
-                  <div class="flow-step-icon">E</div>
-                  <div class="flow-step-body">
-                    <div class="flow-step-title">Easy</div>
-                    <div class="flow-step-desc">Remove friction. Make the desired choice the default.</div>
-                  </div>
-                </div>
-                <div class="flow-step">
-                  <div class="flow-step-icon">A</div>
-                  <div class="flow-step-body">
-                    <div class="flow-step-title">Attractive</div>
-                    <div class="flow-step-desc">Use visuals and rewards to draw attention.</div>
-                  </div>
-                </div>
-                <div class="flow-step">
-                  <div class="flow-step-icon">S</div>
-                  <div class="flow-step-body">
-                    <div class="flow-step-title">Social</div>
-                    <div class="flow-step-desc">Show what people like them are doing.</div>
-                  </div>
-                </div>
-                <div class="flow-step">
-                  <div class="flow-step-icon">T</div>
-                  <div class="flow-step-body">
-                    <div class="flow-step-title">Timely</div>
-                    <div class="flow-step-desc">Act at peak motivation.</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Legacy east-grid cards (kept for content depth) -->
-              <div class="east-grid" style="margin-top:1.2rem;">
-                <div class="east-card">
-                  <div class="east-letter">E</div>
-                  <h4>Easy</h4>
-                  <p>Make the desired behavior the path of least resistance. Reduce friction to near zero. Default options are the most powerful nudge in existence.</p>
-                </div>
-                <div class="east-card">
-                  <div class="east-letter">A</div>
-                  <h4>Attractive</h4>
-                  <p>Use striking visuals, clear rewards, and salient design to draw attention to the desired option. Attention precedes action.</p>
-                </div>
-                <div class="east-card">
-                  <div class="east-letter">S</div>
-                  <h4>Social</h4>
-                  <p>Show that "most people like you" already do this behavior. Harnessing social norms is among the most consistent behavior-change strategies known.</p>
-                </div>
-                <div class="east-card">
-                  <div class="east-letter">T</div>
-                  <h4>Timely</h4>
-                  <p>Intervene at the moment of highest motivation and receptivity. A message at the right moment is 10x more effective than the same message at the wrong one.</p>
-                </div>
-              </div>
-              <div class="highlight-box" style="margin-top:1.2rem;">
-                <strong>EAST in Action:</strong>
-                <p>Organ donation opt-out systems (Easy), colorful health food placement at eye level in cafeterias (Attractive), "9 in 10 of your neighbors pay taxes on time" letters (Social), and sending pension enrollment reminders at paycheck time (Timely) — all nudges with massive real-world impact.</p>
-              </div>
+            <div class="principle-card">
+              <span class="pc-icon">🏅</span>
+              <div class="pc-num">Principle 4</div>
+              <h5>Authority</h5>
+              <p>We defer to credible experts. Example: "Dr. recommended," "As featured in Forbes," credentials and titles.</p>
             </div>
-          </section>
+            <div class="principle-card">
+              <span class="pc-icon">❤️</span>
+              <div class="pc-num">Principle 5</div>
+              <h5>Liking</h5>
+              <p>We say yes to people we like. Similarity, genuine compliments, and familiarity all increase liking.</p>
+            </div>
+            <div class="principle-card">
+              <span class="pc-icon">⏰</span>
+              <div class="pc-num">Principle 6</div>
+              <h5>Scarcity</h5>
+              <p>Rare = valuable. "Only 3 left in stock" and "Offer ends tonight" trigger fear of missing out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="method-tab-panel">
+        <div class="method-card">
+          <span class="method-number">Method 2</span>
+          <h3>Cognitive Bias Toolkit for Communicators</h3>
+          <p>Cognitive biases are systematic errors in thinking that affect every decision. Understanding them lets you design more persuasive communications.</p>
+          <ul class="steps-list">
+            <li><span class="step-num">1</span><strong>Anchoring Bias</strong> — The first number heard disproportionately influences final judgment. Use: present your most favorable number first</li>
+            <li><span class="step-num">2</span><strong>Framing Effect</strong> — "90% fat free" vs "10% fat" — identical facts, opposite perceptions. Use: frame around gains for risk-takers, losses for risk-averse</li>
+            <li><span class="step-num">3</span><strong>Sunk Cost Fallacy</strong> — People continue failing endeavors to justify past investment. Use: subscription models reference past investment to reduce churn</li>
+            <li><span class="step-num">4</span><strong>Peak-End Rule</strong> — Experiences are judged by their peak and their end, not their average. Use: ensure every customer interaction ends on a high note</li>
+            <li><span class="step-num">5</span><strong>Decoy Effect</strong> — A third inferior option makes your preferred option look better. Use: price tiers strategically to guide toward the middle or top tier</li>
+          </ul>
+          <div class="highlight-box"><strong>Key principle:</strong> You cannot eliminate cognitive biases — in yourself or others. But you can design your communications to work with them rather than against them.</div>
+        </div>
+      </div>
+      <div class="method-tab-panel">
+        <div class="method-card">
+          <span class="method-number">Method 3</span>
+          <h3>The EAST Nudge Framework</h3>
+          <p>Developed by the UK Behavioural Insights Team. Changes behavior by redesigning the choice environment — no coercion, no incentives, just smarter architecture.</p>
+          <div class="flow-steps" style="margin:1.2rem 0;">
+            <div class="flow-step"><div class="fs-num">E</div><div class="fs-label">Easy</div><div class="fs-sub">Remove friction</div></div>
+            <div class="flow-step"><div class="fs-num">A</div><div class="fs-label">Attractive</div><div class="fs-sub">Draw attention</div></div>
+            <div class="flow-step"><div class="fs-num">S</div><div class="fs-label">Social</div><div class="fs-sub">"People like you"</div></div>
+            <div class="flow-step"><div class="fs-num">T</div><div class="fs-label">Timely</div><div class="fs-sub">Right moment</div></div>
+          </div>
+          <ul class="steps-list">
+            <li><span class="step-num">E</span><strong>Easy</strong> — Make the desired behavior the default or path of least resistance. Auto-enrollment in pension plans increased savings by 40%</li>
+            <li><span class="step-num">A</span><strong>Attractive</strong> — Use visuals, rewards, and salience to draw attention to the desired option</li>
+            <li><span class="step-num">S</span><strong>Social</strong> — "9 out of 10 people in your neighborhood recycle" — social norms are enormously powerful behavior drivers</li>
+            <li><span class="step-num">T</span><strong>Timely</strong> — Intervene at the moment of highest motivation: right after a health scare, a new year, a promotion</li>
+          </ul>
+          <div class="highlight-box"><strong>Real result:</strong> UK HMRC added "Most people in your area pay on time" to tax reminder letters. Compliance increased by 15% — same cost as before, just smarter framing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="section-complete-btn" data-section="methods">○ Mark as read</button>
+</section>
 
           <!-- ══ SECTION 4 — MIND MAP ═══════════════════════════ -->
           <section id="mindmap" class="section">
@@ -1093,6 +1280,7 @@
               </div>
 
             </div>
+            <button class="section-complete-btn" data-section="examples">○ Mark as read</button>
           </section>
 
           <!-- ══ SECTION 6 — QUIZ ════════════════════════════════ -->
@@ -1137,6 +1325,70 @@
   </footer>
 
   <script src="../js/main.js"></script>
+
+  <script>
+    // ── Methods Tab Switching ────────────────────────────────
+    (function () {
+      const btns   = document.querySelectorAll('.method-tab-btn');
+      const panels = document.querySelectorAll('.method-tab-panel');
+      btns.forEach(function (btn, i) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          panels.forEach(function (p) { p.classList.remove('active'); });
+          btn.classList.add('active');
+          panels[i].classList.add('active');
+        });
+      });
+    })();
+
+    // ── Flip Cards ───────────────────────────────────────────
+    document.querySelectorAll('.flip-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    // ── Mark as Read Buttons ─────────────────────────────────
+    document.querySelectorAll('.section-complete-btn').forEach(function (btn) {
+      var key = 'section-done-' + btn.dataset.section;
+      if (localStorage.getItem(key)) {
+        btn.classList.add('done');
+        btn.textContent = '✓ Read';
+      }
+      btn.addEventListener('click', function () {
+        if (btn.classList.contains('done')) {
+          btn.classList.remove('done');
+          btn.textContent = '○ Mark as read';
+          localStorage.removeItem(key);
+        } else {
+          btn.classList.add('done');
+          btn.textContent = '✓ Read';
+          localStorage.setItem(key, '1');
+        }
+      });
+    });
+
+    // ── Sticky Nav Active Highlight ──────────────────────────
+    (function () {
+      var navLinks = document.querySelectorAll('.sticky-section-nav a');
+      if (!navLinks.length) return;
+      var sections = Array.from(navLinks).map(function (a) {
+        return document.querySelector(a.getAttribute('href'));
+      });
+      function onScroll() {
+        var scrollY = window.scrollY + 120;
+        var current = sections[0];
+        sections.forEach(function (s) {
+          if (s && s.offsetTop <= scrollY) current = s;
+        });
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 
   <script>
 window.QUIZ_BANK = [

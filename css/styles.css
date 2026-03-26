@@ -1364,3 +1364,412 @@ footer p {
 .tip-rotator .tip-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--site-color, var(--master-accent)); margin-bottom: 0.2rem; }
 .tip-rotator .tip-text { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
 
+
+/* =============================================
+   UPGRADE v3.0 — Mobile UI + Interactivity
+   ============================================= */
+
+/* --- Reading Progress Bar (top of page) --- */
+.reading-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--site-color, var(--master-accent)), var(--master-accent-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* --- Methods Tab System --- */
+.methods-tabs {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  background: var(--bg-sidebar);
+  padding: 0.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.method-tab-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-family: var(--font-sans);
+}
+
+.method-tab-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+.method-tab-btn.active {
+  background: var(--bg-card);
+  color: var(--site-color, var(--master-accent));
+  box-shadow: var(--shadow);
+}
+
+.method-tab-panel { display: none; animation: fadeIn 0.3s ease; }
+.method-tab-panel.active { display: block; }
+
+/* --- Flip Cards (Key Terms) --- */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.flip-card {
+  height: 150px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.flip-card-front {
+  background: var(--bg-card);
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.flip-card-front .fc-icon { font-size: 1.8rem; }
+.flip-card-front .fc-term {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+.flip-card-front .fc-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.flip-card-back {
+  background: var(--site-color, var(--master-accent));
+  transform: rotateY(180deg);
+  color: white;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* --- Section Complete Toggle --- */
+.section-complete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: var(--font-sans);
+  margin-top: 1rem;
+}
+.section-complete-btn:hover { border-color: #22c55e; color: #22c55e; }
+.section-complete-btn.done {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #16a34a;
+}
+[data-theme="dark"] .section-complete-btn.done {
+  background: rgba(34,197,94,0.15);
+}
+
+/* --- Expandable Accordion (for methods detail) --- */
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  transition: background 0.2s;
+  user-select: none;
+  gap: 0.8rem;
+}
+.accordion-header:hover { background: var(--bg-sidebar); }
+
+.accordion-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.accordion-chevron {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.accordion-item.open .accordion-chevron { transform: rotate(180deg); }
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  background: var(--bg-card);
+}
+.accordion-item.open .accordion-body { max-height: 800px; }
+.accordion-body-inner { padding: 0 1.2rem 1.2rem; }
+
+/* --- Interactive Quiz: One-at-a-time mode --- */
+.quiz-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.quiz-step-dots {
+  display: flex; gap: 0.3rem;
+}
+.quiz-step-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.2s;
+}
+.quiz-step-dot.answered { background: var(--site-color, var(--master-accent)); }
+.quiz-step-dot.current  { background: var(--site-color, var(--master-accent)); transform: scale(1.4); }
+
+/* --- Sticky Section Nav (mobile) --- */
+.sticky-section-nav {
+  display: none;
+  position: sticky;
+  top: 60px;
+  z-index: 50;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0.4rem;
+  -webkit-overflow-scrolling: touch;
+}
+.sticky-section-nav::-webkit-scrollbar { display: none; }
+.sticky-section-nav a {
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.sticky-section-nav a.active,
+.sticky-section-nav a:hover {
+  background: var(--site-color, var(--master-accent));
+  color: white;
+  border-color: transparent;
+}
+
+/* --- Mobile: Show sticky nav instead of sidebar --- */
+@media (max-width: 900px) {
+  .sticky-section-nav { display: flex; }
+}
+
+/* ============================================
+   MOBILE-FIRST READING IMPROVEMENTS
+   ============================================ */
+
+/* Better base font on mobile */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+
+  /* Larger readable text */
+  .concept-box p,
+  .method-card p,
+  .example-card p,
+  .scenario-body p,
+  .steps-list li,
+  .ba-item,
+  .q-text { font-size: 0.95rem; line-height: 1.75; }
+
+  /* Section padding */
+  .section  { padding: 2.5rem 0; }
+  .container { padding: 0 1rem; }
+
+  /* Cards: full breathing room */
+  .card, .method-card, .quote-card,
+  .concept-box, .example-card,
+  .scenario-card, .highlight-box {
+    padding: 1.2rem;
+  }
+
+  /* Hero */
+  .hero { padding: 2.5rem 0 2rem; }
+  .subsite-hero { padding: 2.5rem 0 2.5rem; }
+  .hero-icon { font-size: 3rem; }
+
+  /* Quotes: single column */
+  .quotes-grid { grid-template-columns: 1fr; }
+
+  /* Section header */
+  .section-header { margin-bottom: 2rem; }
+  .section-header h2 { font-size: 1.5rem; }
+
+  /* Methods: single column */
+  .grid-2, .grid-3, .principle-grid { grid-template-columns: 1fr; }
+
+  /* Comparison table: horizontal scroll */
+  .compare-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius);
+    margin: 0 -0.5rem;
+    padding: 0 0.5rem;
+  }
+  .compare-table { min-width: 480px; }
+
+  /* Scenario card header font */
+  .scenario-header h4 { font-size: 1rem; }
+
+  /* Flow steps: vertical */
+  .flow-steps { flex-direction: column; }
+  .flow-step {
+    border-radius: var(--radius) !important;
+    margin-bottom: 0.2rem;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '↓';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -16px;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+  }
+
+  /* Quiz options: bigger tap targets */
+  .q-option {
+    padding: 0.9rem 1rem;
+    font-size: 0.93rem;
+    min-height: 48px;
+  }
+  .q-option-dot { width: 20px; height: 20px; flex-shrink: 0; }
+  .q-text { font-size: 1rem; line-height: 1.65; }
+
+  /* Flip cards: smaller grid */
+  .flip-grid { grid-template-columns: repeat(2, 1fr); }
+  .flip-card { height: 130px; }
+
+  /* Buttons */
+  .btn { padding: 0.8rem 1.4rem; font-size: 0.9rem; }
+  .quiz-actions { flex-direction: column; }
+  .quiz-actions .btn { width: 100%; justify-content: center; }
+
+  /* Stat chips: wrap tightly */
+  .stat-chips { gap: 0.4rem; }
+  .stat-chip { padding: 0.5rem 0.8rem; min-width: 70px; }
+  .stat-chip .sc-num { font-size: 1.1rem; }
+
+  /* Did you know */
+  .did-you-know { flex-direction: column; gap: 0.6rem; }
+
+  /* Wisdom widget */
+  .wisdom-widget { padding: 1.8rem 1.2rem; }
+  .wisdom-text { font-size: 1.05rem; }
+
+  /* Mind map */
+  .mindmap { font-size: 0.8rem; }
+
+  /* TOC sidebar: hidden on mobile (replaced by sticky nav) */
+  .toc-sidebar { display: none; }
+  .page-layout { grid-template-columns: 1fr; }
+
+  /* Matrix */
+  .matrix-2x2 { grid-template-columns: 1fr 1fr; }
+  .matrix-cell { padding: 0.8rem; }
+  .matrix-cell h5 { font-size: 0.78rem; }
+  .matrix-cell p  { font-size: 0.73rem; }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .flip-grid { grid-template-columns: 1fr; }
+  .flip-card { height: 120px; }
+  .methods-tabs { flex-direction: column; }
+  .method-tab-btn { min-width: unset; }
+}
+
+/* Better method number badge visibility on mobile */
+@media (max-width: 600px) {
+  .method-number { font-size: 0.7rem; padding: 0.15rem 0.6rem; }
+}
+
+/* Smooth scrolling for entire page */
+html { scroll-padding-top: 80px; }
+
+/* Larger navbar brand on mobile */
+@media (max-width: 700px) {
+  .navbar-brand { font-size: 1rem; }
+  .navbar-brand .brand-icon { width: 32px; height: 32px; font-size: 1rem; }
+}
+
+/* --- Interactive highlight on hover for quote cards --- */
+.quote-card { cursor: default; }
+.quote-card:hover .quote-text { color: var(--text-primary); }
+
+/* --- Smooth focus rings for accessibility --- */
+.btn:focus-visible,
+.q-option:focus-visible,
+.method-tab-btn:focus-visible,
+.accordion-header:focus-visible {
+  outline: 2px solid var(--site-color, var(--master-accent));
+  outline-offset: 2px;
+}
+
+/* --- Animated entrance for flip cards hint --- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+.flip-card-front .fc-hint { animation: wiggle 3s ease-in-out 2s 2; }
+

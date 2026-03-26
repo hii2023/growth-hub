@@ -222,6 +222,142 @@ function initTipRotator() {
   el.textContent = tips[idx];
 }
 
+// ── Reading Progress Bar ─────────────────────
+function initReadingProgress() {
+  const bar = document.createElement('div');
+  bar.className = 'reading-progress';
+  bar.id = 'reading-progress';
+  document.body.prepend(bar);
+
+  function update() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+// ── Accordion ────────────────────────────────
+function initAccordions() {
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    if (!header) return;
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      // Close all siblings
+      item.closest('.accordion-group')?.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  // Open first by default
+  document.querySelectorAll('.accordion-group').forEach(g => {
+    const first = g.querySelector('.accordion-item');
+    if (first) first.classList.add('open');
+  });
+}
+
+// ── Method Tabs ───────────────────────────────
+function initMethodTabs() {
+  document.querySelectorAll('.methods-tabs').forEach(tabBar => {
+    const btns = tabBar.querySelectorAll('.method-tab-btn');
+    const panels = tabBar.closest('.methods-tab-container')?.querySelectorAll('.method-tab-panel') || [];
+    btns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        if (panels[i]) panels[i].classList.add('active');
+      });
+    });
+    // Activate first tab
+    if (btns[0]) btns[0].click();
+  });
+}
+
+// ── Flip Cards ───────────────────────────────
+function initFlipCards() {
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Flip card to see definition');
+  });
+}
+
+// ── Section Complete Buttons ─────────────────
+function initSectionComplete() {
+  const page = window.location.pathname.split('/').filter(Boolean).pop()?.replace('.html','') || 'home';
+  const storageKey = `done-${page}`;
+  const done = JSON.parse(localStorage.getItem(storageKey) || '[]');
+
+  document.querySelectorAll('.section-complete-btn').forEach(btn => {
+    const sectionId = btn.dataset.section;
+    if (done.includes(sectionId)) markDone(btn, sectionId, false);
+
+    btn.addEventListener('click', () => {
+      const isDone = btn.classList.contains('done');
+      if (isDone) {
+        btn.classList.remove('done');
+        btn.innerHTML = '○ Mark as read';
+        const updated = done.filter(s => s !== sectionId);
+        localStorage.setItem(storageKey, JSON.stringify(updated));
+      } else {
+        markDone(btn, sectionId, true);
+        if (!done.includes(sectionId)) done.push(sectionId);
+        localStorage.setItem(storageKey, JSON.stringify(done));
+      }
+    });
+  });
+}
+
+function markDone(btn, sectionId, animate) {
+  btn.classList.add('done');
+  btn.innerHTML = '✓ Done';
+  if (animate) {
+    btn.style.transform = 'scale(1.08)';
+    setTimeout(() => { btn.style.transform = ''; }, 300);
+  }
+}
+
+// ── Sticky Section Nav (mobile) ──────────────
+function initStickySectionNav() {
+  const nav = document.querySelector('.sticky-section-nav');
+  if (!nav) return;
+  const links = nav.querySelectorAll('a');
+  const sections = [];
+  links.forEach(link => {
+    const id = link.getAttribute('href');
+    if (id && id.startsWith('#')) {
+      const el = document.querySelector(id);
+      if (el) sections.push({ el, link });
+    }
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const match = sections.find(s => s.el === entry.target);
+        if (match) {
+          match.link.classList.add('active');
+          // Scroll the nav link into view
+          match.link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach(s => observer.observe(s.el));
+}
+
 // ── Scroll Reveal ─────────────────────────────
 function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {
@@ -336,6 +472,12 @@ function updateProgressUI() {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initWisdom();
+  initReadingProgress();
+  initAccordions();
+  initMethodTabs();
+  initFlipCards();
+  initSectionComplete();
+  initStickySectionNav();
   initQuiz();
   initTipRotator();
   initScrollReveal();

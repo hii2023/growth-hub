@@ -535,6 +535,158 @@
       }
       .matrix-cell { padding: 0.8rem; }
     }
+
+    /* ---- Sticky Section Nav ---- */
+    .sticky-section-nav {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .sticky-section-nav::-webkit-scrollbar { display: none; }
+    .sticky-section-nav a {
+      flex-shrink: 0;
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-section-nav a:hover,
+    .sticky-section-nav a.active {
+      color: var(--site-color);
+      border-bottom-color: var(--site-color);
+    }
+
+    /* ---- Methods Tab Container ---- */
+    .methods-tab-container {
+      margin-top: 1.5rem;
+    }
+    .methods-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .method-tab-btn {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .method-tab-btn:hover {
+      background: rgba(14,165,233,0.08);
+      color: var(--site-color);
+      border-color: var(--site-color);
+    }
+    .method-tab-btn.active {
+      background: var(--site-color);
+      color: #fff;
+      border-color: var(--site-color);
+      box-shadow: 0 2px 8px rgba(14,165,233,0.3);
+    }
+    .method-tab-panel {
+      display: none;
+    }
+    .method-tab-panel.active {
+      display: block;
+    }
+
+    /* ---- Flip Cards ---- */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .flip-card {
+      height: 140px;
+      perspective: 800px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    .flip-card-front {
+      background: var(--bg-sidebar);
+      border-top: 3px solid var(--site-color);
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(3,105,161,0.06));
+      border-color: rgba(14,165,233,0.3);
+      transform: rotateY(180deg);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .fc-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .fc-term { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
+    .fc-hint { font-size: 0.7rem; color: var(--text-muted, var(--text-secondary)); margin-top: 0.25rem; opacity: 0.7; }
+
+    /* ---- Mark as Read Button ---- */
+    .section-complete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .section-complete-btn:hover {
+      background: rgba(14,165,233,0.08);
+      color: var(--site-color);
+      border-color: var(--site-color);
+    }
+    .section-complete-btn.done {
+      background: rgba(34,197,94,0.1);
+      color: #16a34a;
+      border-color: #86efac;
+    }
   </style>
 </head>
 <body>
@@ -571,6 +723,15 @@
       <a href="../ai-trends/index.html">🤖 AI &amp; Future Biz</a>
     </div>
   </nav>
+
+  <div class="sticky-section-nav" id="sticky-nav">
+    <a href="#concept">💡 Concept</a>
+    <a href="#quotes">✍️ Quotes</a>
+    <a href="#methods">⚙️ Methods</a>
+    <a href="#mindmap">🗺️ Mind Map</a>
+    <a href="#examples">🌍 Examples</a>
+    <a href="#quiz">🧩 Quiz</a>
+  </div>
 
   <!-- Hero -->
   <section class="subsite-hero">
@@ -735,6 +896,47 @@
             </div>
           </div>
 
+          <h4 style="margin: 2rem 0 0.5rem; font-size: 1rem;">🃏 Key Terms — Tap to Flip</h4>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;">Tap any card to reveal the definition</p>
+          <div class="flip-grid">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">🛡️</span><span class="fc-term">BATNA</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">Best Alternative To a Negotiated Agreement. Your walk-away option that gives you power at the table.</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">🎯</span><span class="fc-term">ZOPA</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">Zone of Possible Agreement — the overlap between both parties' acceptable ranges where a deal can be made.</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">⚓</span><span class="fc-term">Anchoring</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">Setting the first number to psychologically pull the final outcome toward your preferred position.</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">🔍</span><span class="fc-term">Interests vs Positions</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">Position = what you say you want. Interest = why you want it. Great negotiators always dig for the interest.</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">🤝</span><span class="fc-term">Win-Win</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">Integrative negotiation where both parties achieve their core interests — the goal of principled negotiation.</div>
+              </div>
+            </div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front"><span class="fc-icon">🧮</span><span class="fc-term">Reservation Price</span><span class="fc-hint">Tap to flip</span></div>
+                <div class="flip-card-back">The worst acceptable deal — the point beyond which you'd rather walk away. Never cross it.</div>
+              </div>
+            </div>
+          </div>
+
           <!-- BATNA Highlight Box -->
           <div class="batna-highlight reveal" style="margin-top: 2rem;">
             <div class="batna-head">
@@ -840,6 +1042,7 @@
             <strong>🎯 Positions vs. Interests — A Classic Example</strong>
             <p style="margin-top: 0.5rem;">Two sisters are fighting over an orange. Each says "I want the orange" (positions). A mediator asks <em>why</em>. One sister wants the peel for a cake recipe. The other wants the juice to drink. Both can have exactly what they want — the full peel and the full juice. By exploring interests instead of arguing positions, both sisters get 100% of what they need.</p>
           </div>
+          <button class="section-complete-btn" data-section="concept">○ Mark as read</button>
         </section>
 
         <div class="section-divider"></div>
@@ -881,6 +1084,7 @@
             <span class="ic-icon">📚</span>
             <p>These quotes share a common thread: the best negotiators combine <strong>courage</strong> (willingness to engage), <strong>empathy</strong> (understanding the other party), and <strong>objectivity</strong> (keeping emotions out of the deal). Study these principles, not just the tactics.</p>
           </div>
+          <button class="section-complete-btn" data-section="quotes">○ Mark as read</button>
         </section>
 
         <div class="section-divider"></div>
@@ -888,174 +1092,70 @@
         <!-- ============================================================
              SECTION 3 — 3 Proven Methods
         ============================================================ -->
-        <section id="methods" class="reveal" style="margin: 4rem 0;">
-          <div class="section-header" style="text-align:left; margin-bottom: 2rem;">
-            <span class="section-label">Section 3</span>
-            <h2>3 Proven Methods</h2>
-            <p style="max-width:none;">Three frameworks used by world-class negotiators, executives, and diplomats — from the Harvard Negotiation Project to high-stakes corporate deal-making.</p>
-          </div>
-
-          <!-- Negotiation Process Flow -->
-          <div class="flow-steps reveal" style="margin-bottom: 2.5rem;">
-            <div class="flow-step">
-              <div class="fs-icon">📋</div>
-              <div class="fs-label">Prepare</div>
-              <div class="fs-sub">Know your BATNA</div>
+        <section class="section" id="methods">
+          <div class="container">
+            <div class="section-header reveal">
+              <span class="section-label">Proven Frameworks</span>
+              <h2>3 Methods That Work</h2>
+              <p>Click each tab to explore a different negotiation framework.</p>
             </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="fs-icon">💬</div>
-              <div class="fs-label">Discuss</div>
-              <div class="fs-sub">Share interests</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="fs-icon">🔍</div>
-              <div class="fs-label">Clarify</div>
-              <div class="fs-sub">Understand needs</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="fs-icon">⚖️</div>
-              <div class="fs-label">Bargain</div>
-              <div class="fs-sub">Trade value</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="fs-icon">🔒</div>
-              <div class="fs-label">Close</div>
-              <div class="fs-sub">Lock terms</div>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step">
-              <div class="fs-icon">✍️</div>
-              <div class="fs-label">Commit</div>
-              <div class="fs-sub">Write it down</div>
-            </div>
-          </div>
-
-          <div class="methods-grid">
-
-            <!-- Method 1 -->
-            <div class="method-card reveal">
-              <div class="method-number">Method 01</div>
-              <div style="margin-top: 0.8rem;">
-                <h3>The Harvard Principled Negotiation</h3>
-                <p style="color: var(--site-color); font-size: 0.82rem; font-weight: 600; margin-bottom: 0.8rem;">Fisher &amp; Ury · "Getting to Yes" · Est. 1981</p>
-                <p>
-                  Developed at Harvard Law School by Roger Fisher and William Ury, principled negotiation replaces positional bargaining with a method built on reason, empathy, and mutual benefit. It is the gold standard for professional negotiators worldwide.
-                </p>
-                <ul class="steps-list">
-                  <li>
-                    <span class="step-num">1</span>
-                    <span><strong>Separate the people from the problem.</strong> Address the human relationship and the substantive issue independently. Never let personal emotions cloud objective decision-making.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">2</span>
-                    <span><strong>Focus on interests, not positions.</strong> Ask "why?" repeatedly to uncover the underlying needs, fears, and motivations driving each party's stated demands.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">3</span>
-                    <span><strong>Invent options for mutual gain.</strong> Before deciding, brainstorm a wide range of possibilities designed to advance shared interests. Expand the pie before dividing it.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">4</span>
-                    <span><strong>Insist on objective criteria.</strong> Base the agreement on fair standards — market value, expert opinion, precedent, or legal standards — not on who applies more pressure.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">5</span>
-                    <span><strong>Know your BATNA.</strong> Develop your best alternative before entering. It protects you from accepting a bad deal and empowers you to walk away confidently when needed.</span>
-                  </li>
-                </ul>
-                <div class="highlight-box" style="margin-top: 1rem;">
-                  <strong>Best for:</strong>
-                  <p>Long-term business partnerships, salary negotiations, complex multi-party agreements, international diplomacy, and any situation where the relationship matters as much as the outcome.</p>
+            <div class="methods-tab-container">
+              <div class="methods-tabs">
+                <button class="method-tab-btn active">🎓 Harvard Method</button>
+                <button class="method-tab-btn">💪 BATNA Framework</button>
+                <button class="method-tab-btn">⚓ Anchoring & Framing</button>
+              </div>
+              <!-- Tab 1 -->
+              <div class="method-tab-panel active">
+                <div class="method-card">
+                  <span class="method-number">Method 1</span>
+                  <h3>The Harvard Principled Negotiation</h3>
+                  <p>Developed by Roger Fisher & William Ury in <em>Getting to Yes</em>. The gold standard for win-win negotiations worldwide.</p>
+                  <ul class="steps-list">
+                    <li><span class="step-num">1</span>Separate the people from the problem — attack the issue, not the person</li>
+                    <li><span class="step-num">2</span>Focus on interests, not positions — ask "Why?" to uncover real needs</li>
+                    <li><span class="step-num">3</span>Invent options for mutual gain — brainstorm before evaluating</li>
+                    <li><span class="step-num">4</span>Insist on using objective criteria — market rates, expert opinion, precedent</li>
+                    <li><span class="step-num">5</span>Know your BATNA — your walk-away point gives you power</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Best for:</strong> Long-term relationships, complex deals, multi-issue negotiations.</div>
+                </div>
+              </div>
+              <!-- Tab 2 -->
+              <div class="method-tab-panel">
+                <div class="method-card">
+                  <span class="method-number">Method 2</span>
+                  <h3>The BATNA Power Framework</h3>
+                  <p>Your BATNA (Best Alternative To a Negotiated Agreement) is the most powerful variable in any negotiation. Build it before you sit down.</p>
+                  <ul class="steps-list">
+                    <li><span class="step-num">1</span>List every alternative you have if this negotiation fails</li>
+                    <li><span class="step-num">2</span>Evaluate each alternative realistically — not wishfully</li>
+                    <li><span class="step-num">3</span>Select the best one — this is your BATNA</li>
+                    <li><span class="step-num">4</span>Actively improve your BATNA before negotiating (get competing offers)</li>
+                    <li><span class="step-num">5</span>Use your BATNA as your walk-away threshold — never accept below it</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Key insight:</strong> The side with the stronger BATNA has more power — regardless of who needs the deal more emotionally.</div>
+                </div>
+              </div>
+              <!-- Tab 3 -->
+              <div class="method-tab-panel">
+                <div class="method-card">
+                  <span class="method-number">Method 3</span>
+                  <h3>The Anchoring & Framing Technique</h3>
+                  <p>Research confirms the first number stated in any negotiation exerts a powerful gravitational pull on the final outcome.</p>
+                  <ul class="steps-list">
+                    <li><span class="step-num">1</span>Research the true value range (know the ZOPA before entering)</li>
+                    <li><span class="step-num">2</span>Make the first offer when you have good information — anchor boldly</li>
+                    <li><span class="step-num">3</span>Justify your anchor with objective criteria (data, comparables, ROI)</li>
+                    <li><span class="step-num">4</span>Make concessions slowly and in decreasing increments ($5K, $3K, $1K)</li>
+                    <li><span class="step-num">5</span>Use strategic silence after your offer — resist the urge to fill it</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Power move:</strong> Decreasing concession sizes signal you're approaching your limit — without saying so.</div>
                 </div>
               </div>
             </div>
-
-            <!-- Method 2 -->
-            <div class="method-card reveal fade-in-delay-1">
-              <div class="method-number">Method 02</div>
-              <div style="margin-top: 0.8rem;">
-                <h3>The BATNA Power Framework</h3>
-                <p style="color: var(--site-color); font-size: 0.82rem; font-weight: 600; margin-bottom: 0.8rem;">Strategic Preparation · Walk-Away Power</p>
-                <p>
-                  Most negotiators walk in hoping for the best. Elite negotiators walk in with a fully developed BATNA — a concrete plan B that makes saying "no" completely comfortable. This framework systematically builds that power before you ever sit down at the table.
-                </p>
-                <ul class="steps-list">
-                  <li>
-                    <span class="step-num">1</span>
-                    <span><strong>List all alternatives if no deal.</strong> Write out every possible course of action available if negotiations fail completely. Be exhaustive, not just optimistic.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">2</span>
-                    <span><strong>Evaluate each alternative realistically.</strong> Assess each option for value, feasibility, timeline, and cost. Quantify where possible — attach actual dollar figures or time estimates.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">3</span>
-                    <span><strong>Select the best alternative (your BATNA).</strong> Identify which alternative delivers the most value with the least risk. This becomes your negotiating floor.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">4</span>
-                    <span><strong>Improve your BATNA before negotiating.</strong> Actively work to strengthen your alternatives. Cultivate competing offers, develop partnerships, and build your options before the conversation begins.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">5</span>
-                    <span><strong>Use BATNA as your walk-away threshold.</strong> Never accept an agreement worse than your BATNA. Disclose your BATNA selectively — share it if it's strong; protect it if it's weak.</span>
-                  </li>
-                </ul>
-                <div class="highlight-box" style="margin-top: 1rem;">
-                  <strong>Best for:</strong>
-                  <p>Job offer negotiations, procurement deals, vendor contracts, real estate transactions, and any situation where the power balance can be shifted through strategic preparation.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Method 3 -->
-            <div class="method-card reveal fade-in-delay-2">
-              <div class="method-number">Method 03</div>
-              <div style="margin-top: 0.8rem;">
-                <h3>The Anchoring &amp; Framing Technique</h3>
-                <p style="color: var(--site-color); font-size: 0.82rem; font-weight: 600; margin-bottom: 0.8rem;">Cognitive Influence · Behavioral Economics</p>
-                <p>
-                  Anchoring exploits a well-documented cognitive bias: the first number introduced in a negotiation exerts a disproportionate gravitational pull on the final outcome. Combined with strategic framing and deliberate concession-making, this technique shifts negotiations in your favor from the very first moment.
-                </p>
-                <ul class="steps-list">
-                  <li>
-                    <span class="step-num">1</span>
-                    <span><strong>Research the true value range (ZOPA).</strong> Before anchoring, understand both parties' real limits. Know the market rate, precedents, and the other party's likely reservation point. Anchor without data is just guessing.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">2</span>
-                    <span><strong>Make the first offer strategically.</strong> Anchor high when selling, low when buying — but within a believable range. Extreme anchors lose credibility; calibrated anchors create room to maneuver.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">3</span>
-                    <span><strong>Justify with objective criteria.</strong> Immediately follow your anchor with compelling rationale: market data, benchmarks, ROI calculations, or expert opinion. This makes your number feel earned, not arbitrary.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">4</span>
-                    <span><strong>Make concessions slowly and deliberately.</strong> Each concession should decrease in size — e.g., $10K, then $5K, then $2K, then $1K. This pattern signals you are approaching your limit and creates psychological finality.</span>
-                  </li>
-                  <li>
-                    <span class="step-num">5</span>
-                    <span><strong>Use silence as a powerful tool.</strong> After making an offer, stop talking. Silence creates discomfort that the other party often fills by moving toward your number. Resist the urge to fill the gap.</span>
-                  </li>
-                </ul>
-                <div class="highlight-box" style="margin-top: 1rem;">
-                  <strong>Best for:</strong>
-                  <p>Salary negotiations, pricing discussions, one-time transactions, real estate, sales, and situations where you have solid market data and a strong opening position.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
-
-          <div class="insight-callout reveal" style="margin-top: 2rem;">
-            <span class="ic-icon">🔑</span>
-            <p><strong>Which method should you use?</strong> In practice, elite negotiators blend all three. They prepare thoroughly (BATNA Framework), open with a strategic anchor, justify it with data, then pivot to principled negotiation — focusing on interests, exploring creative options, and landing on criteria both parties can respect.</p>
-          </div>
+          <button class="section-complete-btn" data-section="methods">○ Mark as read</button>
         </section>
 
         <div class="section-divider"></div>
@@ -1281,6 +1381,7 @@
             <span class="ic-icon">🎓</span>
             <p><strong>Common thread in both examples:</strong> Neither party bluffed. Both had real alternatives (BATNAs), anchored with objective data, and focused on interests (sustainable content pricing / fair market compensation) rather than positions ("lower prices" / "pay me more"). That's principled negotiation in action.</p>
           </div>
+          <button class="section-complete-btn" data-section="examples">○ Mark as read</button>
         </section>
 
         <div class="section-divider"></div>
@@ -1328,6 +1429,72 @@
   </footer>
 
   <script src="../js/main.js"></script>
+
+  <script>
+    // ---- Methods Tab Switcher ----
+    (function () {
+      const btns = document.querySelectorAll('.method-tab-btn');
+      const panels = document.querySelectorAll('.method-tab-panel');
+      btns.forEach(function (btn, i) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          panels.forEach(function (p) { p.classList.remove('active'); });
+          btn.classList.add('active');
+          if (panels[i]) panels[i].classList.add('active');
+        });
+      });
+    })();
+
+    // ---- Flip Cards ----
+    (function () {
+      document.querySelectorAll('.flip-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          card.classList.toggle('flipped');
+        });
+      });
+    })();
+
+    // ---- Mark as Read Buttons ----
+    (function () {
+      var STORAGE_KEY = 'negotiations-sections-read';
+      var readSections = {};
+      try { readSections = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch (e) {}
+
+      function markDone(btn, section) {
+        btn.textContent = '✓ Read';
+        btn.classList.add('done');
+        readSections[section] = true;
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(readSections)); } catch (e) {}
+      }
+
+      document.querySelectorAll('.section-complete-btn').forEach(function (btn) {
+        var section = btn.dataset.section;
+        if (readSections[section]) markDone(btn, section);
+        btn.addEventListener('click', function () { markDone(btn, section); });
+      });
+    })();
+
+    // ---- Sticky Nav Active State on Scroll ----
+    (function () {
+      var navLinks = document.querySelectorAll('.sticky-section-nav a');
+      var sectionIds = ['concept', 'quotes', 'methods', 'mindmap', 'examples', 'quiz'];
+
+      function updateActive() {
+        var current = '';
+        sectionIds.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          if (el.getBoundingClientRect().top <= 100) current = id;
+        });
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    })();
+  </script>
 
   <script>
     window.QUIZ_BANK = [

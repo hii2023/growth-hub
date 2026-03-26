@@ -399,6 +399,190 @@
       background: var(--site-dark);
       transform: scale(1.04);
     }
+
+    /* ── Sticky Section Nav ────────────────────────────────── */
+    .sticky-section-nav {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      scrollbar-width: none;
+    }
+    .sticky-section-nav::-webkit-scrollbar { display: none; }
+    .sticky-section-nav a {
+      flex-shrink: 0;
+      padding: 0.6rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-section-nav a:hover,
+    .sticky-section-nav a.active {
+      color: var(--site-color);
+      border-bottom-color: var(--site-color);
+    }
+
+    /* ── Methods Tabs ──────────────────────────────────────── */
+    .methods-tab-container { margin-top: 1.5rem; }
+    .methods-tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .method-tab-btn {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .method-tab-btn.active,
+    .method-tab-btn:hover {
+      background: var(--site-color);
+      color: #fff;
+      border-color: var(--site-color);
+    }
+    .method-tab-panel { display: none; }
+    .method-tab-panel.active { display: block; }
+
+    /* ── Steps List (used in tab panels) ──────────────────── */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--site-color);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.72rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 0.1rem;
+    }
+
+    /* ── fs-num (flow step number variant for tabs) ────────── */
+    .fs-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--site-color);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.3rem;
+    }
+
+    /* ── Flip Cards ────────────────────────────────────────── */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.9rem;
+    }
+    .flip-card {
+      perspective: 800px;
+      height: 130px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.45s ease;
+      border-radius: var(--radius-sm);
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem;
+      text-align: center;
+    }
+    .flip-card-front {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: #fff;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      transform: rotateY(180deg);
+    }
+    .fc-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .fc-term {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      display: block;
+    }
+    .fc-hint {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Section Complete Button ───────────────────────────── */
+    .section-complete-btn {
+      display: block;
+      margin: 1rem 0 0.5rem auto;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.45rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .section-complete-btn:hover {
+      border-color: var(--site-color);
+      color: var(--site-color);
+    }
+    .section-complete-btn.done {
+      background: rgba(225,29,72,0.08);
+      border-color: var(--site-color);
+      color: var(--site-color);
+    }
   </style>
 </head>
 <body>
@@ -435,6 +619,15 @@
       <a href="../ai-trends/index.html">🤖 AI &amp; Future Biz</a>
     </div>
   </nav>
+
+  <div class="sticky-section-nav" id="sticky-nav">
+    <a href="#concept">💡 Concept</a>
+    <a href="#quotes">✍️ Quotes</a>
+    <a href="#methods">⚙️ Methods</a>
+    <a href="#mindmap">🗺️ Mind Map</a>
+    <a href="#examples">🌍 Examples</a>
+    <a href="#quiz">🧩 Quiz</a>
+  </div>
 
   <!-- Hero -->
   <section class="subsite-hero">
@@ -657,6 +850,50 @@
             </div>
           </div>
 
+          <!-- Flip Cards: Conflict Terms -->
+          <div class="reveal" style="margin-top:2rem;">
+            <h4 style="margin: 2rem 0 0.5rem; font-size: 1rem;">🃏 Conflict Terms — Tap to Flip</h4>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;">Tap any card to reveal the definition</p>
+            <div class="flip-grid">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🏛️</span><span class="fc-term">Thomas-Kilmann</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">A model mapping 5 conflict styles on 2 axes: Assertiveness (meeting your needs) vs Cooperativeness (meeting theirs).</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🔥</span><span class="fc-term">De-escalation</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Deliberately reducing the intensity of a conflict through tone, body language, validation, and strategic pauses.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🧘</span><span class="fc-term">Psychological Safety</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">An environment where people can speak up, disagree, and make mistakes without fear of punishment. Google's #1 team predictor.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🧱</span><span class="fc-term">Stonewalling</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Shutting down and withdrawing during conflict — a sign of emotional flooding. Solution: request a 20-min break and return.</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">🔄</span><span class="fc-term">Reframing</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">Restating a hostile statement in a neutral, problem-solving form. "You never listen!" → "It sounds like you want more input — is that right?"</div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front"><span class="fc-icon">⚖️</span><span class="fc-term">Mediation</span><span class="fc-hint">Tap to flip</span></div>
+                  <div class="flip-card-back">A neutral third party facilitates a structured process to help disputing parties reach their own resolution — not a verdict.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Avoidance vs Resolution Compare Table -->
           <div class="reveal" style="margin-top:2rem;">
             <h3 style="margin-bottom:1rem;">Avoidance vs. Resolution: The Real Costs</h3>
@@ -701,6 +938,7 @@
           </div>
 
         </section>
+        <button class="section-complete-btn" data-section="concept">○ Mark as read</button>
 
         <!-- ===================== SECTION 2: QUOTES ===================== -->
         <section class="section" id="quotes">
@@ -733,177 +971,84 @@
             </div>
           </div>
         </section>
+        <button class="section-complete-btn" data-section="quotes">○ Mark as read</button>
 
         <!-- ===================== SECTION 3: METHODS ===================== -->
         <section class="section" id="methods">
-          <div class="section-header reveal">
-            <span class="section-label">Frameworks</span>
-            <h2>3 Proven Methods</h2>
-            <p>Battle-tested frameworks used by mediators, HR professionals, executives, and therapists worldwide.</p>
-          </div>
-
-          <div style="display:flex; flex-direction:column; gap:2.5rem;">
-
-            <!-- Method 1: DESC -->
-            <div class="method-card reveal">
-              <div class="method-number">Method 1</div>
-              <h3 style="margin-bottom:0.3rem;">The DESC De-escalation Script</h3>
-              <p style="margin-bottom:1rem;">A structured four-part script for addressing conflict-triggering behaviors calmly and constructively — without triggering defensiveness or escalating tension.</p>
-
-              <!-- Flow Steps Visual -->
-              <div class="flow-steps" style="margin-bottom:1.2rem;">
-                <div class="flow-step">
-                  <div class="fs-icon">D</div>
-                  <div class="fs-label">Describe</div>
-                  <div class="fs-sub">Behavior, not character</div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                  <div class="fs-icon">E</div>
-                  <div class="fs-label">Express</div>
-                  <div class="fs-sub">Your feelings</div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                  <div class="fs-icon">S</div>
-                  <div class="fs-label">Specify</div>
-                  <div class="fs-sub">Specific change</div>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                  <div class="fs-icon">C</div>
-                  <div class="fs-label">Consequence</div>
-                  <div class="fs-sub">Positive outcome</div>
-                </div>
-              </div>
-
-              <div class="desc-grid">
-                <div class="desc-block">
-                  <div class="desc-letter">D</div>
-                  <div class="desc-label">Describe</div>
-                  <p>State the specific, observable behavior objectively — no labels, no assumptions.</p>
-                  <p class="desc-example">"When you interrupt me in meetings before I finish my point..."</p>
-                </div>
-                <div class="desc-block">
-                  <div class="desc-letter">E</div>
-                  <div class="desc-label">Express</div>
-                  <p>Share your emotional response using "I" statements. Own your feelings — don't project blame.</p>
-                  <p class="desc-example">"I feel dismissed and frustrated because my ideas aren't heard..."</p>
-                </div>
-                <div class="desc-block">
-                  <div class="desc-letter">S</div>
-                  <div class="desc-label">Specify</div>
-                  <p>Make a concrete, actionable request. Vague requests invite vague compliance.</p>
-                  <p class="desc-example">"I'd like us to take turns speaking without interruption..."</p>
-                </div>
-                <div class="desc-block">
-                  <div class="desc-letter">C</div>
-                  <div class="desc-label">Consequences</div>
-                  <p>Describe the positive outcomes when the change happens — frame it as mutual gain, not a threat.</p>
-                  <p class="desc-example">"We'll both feel heard and solve problems faster as a team..."</p>
-                </div>
-              </div>
-
-              <div class="key-rule">
-                <span class="rule-icon">💡</span>
-                <p><strong>Golden Rule:</strong> Always describe the behavior — never attack the character. "You interrupted me three times" is a behavior. "You're disrespectful and controlling" is an attack. One invites change; the other invites defensiveness.</p>
-              </div>
+          <div class="container">
+            <div class="section-header reveal">
+              <span class="section-label">Proven Frameworks</span>
+              <h2>3 Methods That Resolve Conflict</h2>
+              <p>Click each tab to explore a proven conflict resolution framework.</p>
             </div>
-
-            <!-- Method 2: IBR -->
-            <div class="method-card reveal">
-              <div class="method-number">Method 2</div>
-              <h3 style="margin-bottom:0.3rem;">Interest-Based Conflict Resolution (IBR)</h3>
-              <p style="margin-bottom:1rem;">Adapted from the Harvard Negotiation Project's "Getting to Yes," IBR separates the people from the problem and focuses on underlying needs — producing durable, mutually satisfying agreements.</p>
-
-              <div class="ibr-steps">
-                <div class="ibr-step">
-                  <div class="ibr-step-num">1</div>
-                  <div class="ibr-step-body">
-                    <strong>Separate the People from the Problem</strong>
-                    <p>Acknowledge emotions and treat parties as human beings with valid perspectives. Attack the problem, never the person.</p>
+            <div class="methods-tab-container">
+              <div class="methods-tabs">
+                <button class="method-tab-btn active">📝 DESC Script</button>
+                <button class="method-tab-btn">🤝 Interest-Based</button>
+                <button class="method-tab-btn">👂 Active Listening</button>
+              </div>
+              <div class="method-tab-panel active">
+                <div class="method-card">
+                  <span class="method-number">Method 1</span>
+                  <h3>The DESC De-escalation Script</h3>
+                  <p>A structured, non-confrontational framework for addressing difficult behaviors directly without triggering defensiveness.</p>
+                  <div class="flow-steps" style="margin:1.2rem 0;">
+                    <div class="flow-step"><div class="fs-num">D</div><div class="fs-label">Describe</div><div class="fs-sub">The behavior</div></div>
+                    <div class="flow-step"><div class="fs-num">E</div><div class="fs-label">Express</div><div class="fs-sub">Your feelings</div></div>
+                    <div class="flow-step"><div class="fs-num">S</div><div class="fs-label">Specify</div><div class="fs-sub">What you need</div></div>
+                    <div class="flow-step"><div class="fs-num">C</div><div class="fs-label">Consequence</div><div class="fs-sub">Positive outcome</div></div>
                   </div>
+                  <ul class="steps-list">
+                    <li><span class="step-num">D</span><strong>Describe</strong> — State the specific, observable behavior objectively: "When you interrupt me in team meetings..."</li>
+                    <li><span class="step-num">E</span><strong>Express</strong> — Share your emotional response using "I" statements: "I feel dismissed and my ideas don't get heard..."</li>
+                    <li><span class="step-num">S</span><strong>Specify</strong> — Make a concrete, actionable request: "I'd like us to take turns speaking without interruption..."</li>
+                    <li><span class="step-num">C</span><strong>Consequence</strong> — State positive outcomes for both: "That way we'll both feel respected and solve problems faster"</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Golden rule:</strong> Always describe the BEHAVIOR, never attack the CHARACTER. "You interrupted me" vs "You're so disrespectful."</div>
                 </div>
-                <div class="ibr-step">
-                  <div class="ibr-step-num">2</div>
-                  <div class="ibr-step-body">
-                    <strong>Focus on Interests, Not Positions</strong>
-                    <p>Ask "What do you need?" not just "What do you want?" Positions are the surface demands; interests are the underlying motivations. Most conflicts dissolve when both parties' interests are understood.</p>
-                  </div>
+              </div>
+              <div class="method-tab-panel">
+                <div class="method-card">
+                  <span class="method-number">Method 2</span>
+                  <h3>Interest-Based Conflict Resolution (IBR)</h3>
+                  <p>Based on the Harvard Negotiation Project. Focuses on underlying needs rather than stated positions — opening creative solutions that satisfy both parties.</p>
+                  <ul class="steps-list">
+                    <li><span class="step-num">1</span>Separate the people from the problem — it's not about who's right</li>
+                    <li><span class="step-num">2</span>Ask "What do you NEED?" not "What do you WANT?" — dig for the interest</li>
+                    <li><span class="step-num">3</span>Generate multiple options before evaluating any of them</li>
+                    <li><span class="step-num">4</span>Use objective standards to evaluate options — data, policy, fairness</li>
+                    <li><span class="step-num">5</span>Build the agreement collaboratively — both parties author the solution</li>
+                    <li><span class="step-num">6</span>Write it down and follow up in 2 weeks to check adherence</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Classic example:</strong> Two colleagues want the same office. One needs a quiet space (interest). One needs natural light (interest). Solution: soundproof glass partition. Both interests met — no compromise needed.</div>
                 </div>
-                <div class="ibr-step">
-                  <div class="ibr-step-num">3</div>
-                  <div class="ibr-step-body">
-                    <strong>Generate Multiple Options Before Deciding</strong>
-                    <p>Brainstorm freely without judging options prematurely. The first solution on the table is rarely the best. Create at least 5 options before evaluating any.</p>
+              </div>
+              <div class="method-tab-panel">
+                <div class="method-card">
+                  <span class="method-number">Method 3</span>
+                  <h3>The Active Listening De-escalation Technique</h3>
+                  <p>Most conflict escalates because people feel unheard. This technique resolves conflicts simply by creating the experience of being fully understood.</p>
+                  <div class="flow-steps" style="margin:1.2rem 0;">
+                    <div class="flow-step"><div class="fs-num">1</div><div class="fs-label">STOP</div><div class="fs-sub">Pause &amp; breathe</div></div>
+                    <div class="flow-step"><div class="fs-num">2</div><div class="fs-label">LISTEN</div><div class="fs-sub">No interrupting</div></div>
+                    <div class="flow-step"><div class="fs-num">3</div><div class="fs-label">REFLECT</div><div class="fs-sub">"What I hear is..."</div></div>
+                    <div class="flow-step"><div class="fs-num">4</div><div class="fs-label">VALIDATE</div><div class="fs-sub">"Makes sense..."</div></div>
+                    <div class="flow-step"><div class="fs-num">5</div><div class="fs-label">RESPOND</div><div class="fs-sub">Only now</div></div>
                   </div>
-                </div>
-                <div class="ibr-step">
-                  <div class="ibr-step-num">4</div>
-                  <div class="ibr-step-body">
-                    <strong>Use Objective Standards to Evaluate Options</strong>
-                    <p>Reference external criteria — market norms, expert opinion, legal standards, or precedent — to make decisions feel fair rather than arbitrary.</p>
-                  </div>
-                </div>
-                <div class="ibr-step">
-                  <div class="ibr-step-num">5</div>
-                  <div class="ibr-step-body">
-                    <strong>Build the Agreement Collaboratively — Write It Down</strong>
-                    <p>Co-author the solution. Written agreements prevent memory conflicts and signal shared ownership. Include specific commitments, timelines, and responsibilities.</p>
-                  </div>
-                </div>
-                <div class="ibr-step">
-                  <div class="ibr-step-num">6</div>
-                  <div class="ibr-step-body">
-                    <strong>Follow Up After 2 Weeks</strong>
-                    <p>Schedule a brief check-in to assess how the agreement is holding. Early course-correction prevents backsliding into old patterns.</p>
-                  </div>
+                  <ul class="steps-list">
+                    <li><span class="step-num">1</span>STOP — pause your own defensive reaction; take a slow breath</li>
+                    <li><span class="step-num">2</span>LISTEN — full attention, no phone, no preparing your rebuttal</li>
+                    <li><span class="step-num">3</span>REFLECT — "What I'm hearing is that you feel X when Y happens..."</li>
+                    <li><span class="step-num">4</span>VALIDATE — "I can understand why that would be frustrating..."</li>
+                    <li><span class="step-num">5</span>RESPOND — only after they confirm you've understood correctly</li>
+                  </ul>
+                  <div class="highlight-box"><strong>Science:</strong> When someone feels heard, their cortisol (stress hormone) drops 30%. Physiologically, they become capable of collaborative problem-solving again.</div>
                 </div>
               </div>
             </div>
-
-            <!-- Method 3: Active Listening -->
-            <div class="method-card reveal">
-              <div class="method-number">Method 3</div>
-              <h3 style="margin-bottom:0.3rem;">The Active Listening De-escalation Technique</h3>
-              <p style="margin-bottom:1rem;">The most underused skill in conflict — and the most powerful. Studies show that 80% of people in conflict primarily feel unheard. Resolving that single feeling dissolves most of the conflict's energy before any solution is even proposed.</p>
-
-              <div class="al-steps">
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 1</span>
-                  <div class="al-step-keyword">STOP</div>
-                  <p>Pause your own reaction entirely. Take a slow breath. Do not respond, counter-argue, or plan your rebuttal. Your nervous system must settle before your brain can listen effectively.</p>
-                </div>
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 2</span>
-                  <div class="al-step-keyword">LISTEN</div>
-                  <p>Give the other party full, undivided attention. No interruptions. No finishing their sentences. No glancing at your phone. Listen for both content AND emotion.</p>
-                </div>
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 3</span>
-                  <div class="al-step-keyword">REFLECT</div>
-                  <p>Paraphrase back what you heard without editorializing: <em>"What I hear you saying is..."</em> This confirms understanding and signals you were truly listening.</p>
-                </div>
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 4</span>
-                  <div class="al-step-keyword">VALIDATE</div>
-                  <p>Acknowledge the other person's emotional experience without necessarily agreeing with their position: <em>"I can understand why you'd feel that way given what you've described."</em></p>
-                </div>
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 5</span>
-                  <div class="al-step-keyword">RESPOND</div>
-                  <p>Only after the other party feels genuinely heard should you share your own perspective. People who feel heard are 4× more likely to be open to your point of view.</p>
-                </div>
-                <div class="al-step">
-                  <span class="al-step-num-badge">Step 6</span>
-                  <div class="al-step-keyword">AGREE</div>
-                  <p>Close the conversation by jointly agreeing on one concrete next step — however small. Momentum forward replaces the stuck energy of circular conflict.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
+        <button class="section-complete-btn" data-section="methods">○ Mark as read</button>
 
         <!-- ===================== SECTION 4: MIND MAP ===================== -->
         <section class="section" id="mindmap">
@@ -1069,6 +1214,7 @@
 
           </div>
         </section>
+        <button class="section-complete-btn" data-section="examples">○ Mark as read</button>
 
         <!-- ===================== SECTION 6: QUIZ ===================== -->
         <section class="section" id="quiz">
@@ -1446,6 +1592,61 @@
   }, { rootMargin: '-30% 0px -60% 0px' });
 
   sections.forEach(s => headingObserver.observe(s));
+
+  // ─── Methods Tabs ──────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.method-tab-btn');
+    const tabPanels = document.querySelectorAll('.method-tab-panel');
+    tabBtns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        tabPanels[i].classList.add('active');
+      });
+    });
+
+    // ─── Flip Cards ──────────────────────────────────────────
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+    });
+
+    // ─── Section Complete Buttons ─────────────────────────────
+    document.querySelectorAll('.section-complete-btn').forEach(btn => {
+      const key = 'section-read-' + btn.dataset.section;
+      if (localStorage.getItem(key)) {
+        btn.textContent = '✓ Read';
+        btn.classList.add('done');
+      }
+      btn.addEventListener('click', () => {
+        const already = btn.classList.contains('done');
+        if (already) {
+          btn.textContent = '○ Mark as read';
+          btn.classList.remove('done');
+          localStorage.removeItem(key);
+        } else {
+          btn.textContent = '✓ Read';
+          btn.classList.add('done');
+          localStorage.setItem(key, '1');
+        }
+      });
+    });
+
+    // ─── Sticky Nav Active Highlight ─────────────────────────
+    const stickyLinks = document.querySelectorAll('.sticky-section-nav a');
+    const sectionEls = document.querySelectorAll('section[id]');
+    const stickyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sectionEls.forEach(s => stickyObserver.observe(s));
+  });
+
   </script>
 </body>
 </html>
