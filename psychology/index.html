@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mind Reader — Psychology of Persuasion &amp; Influence | The Growth Hub</title>
+  <meta name="description" content="Decode human behavior — the psychology of persuasion, influence, and decision-making. Master Cialdini's 6 Principles, cognitive biases, and nudge theory." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --site-color: #8b5cf6;
+      --site-dark:  #6d28d9;
+    }
+
+    /* ── Key Terms Grid ─────────────────────── */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .term-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      transition: all 0.2s;
+    }
+
+    .term-chip:hover {
+      border-color: var(--site-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .term-chip .term-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .term-chip .term-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .term-chip .term-def {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Cialdini Principles Grid ───────────── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .principle-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.4rem;
+      position: relative;
+      transition: all 0.2s;
+      border-top: 3px solid var(--site-color);
+    }
+
+    .principle-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .principle-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--site-color);
+      color: white;
+      font-weight: 800;
+      font-size: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .principle-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--text-primary);
+    }
+
+    .principle-card p {
+      font-size: 0.85rem;
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    .principle-card .principle-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      background: rgba(139,92,246,0.12);
+      color: var(--site-color);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Bias Cards ─────────────────────────── */
+    .bias-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .bias-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--site-color);
+    }
+
+    .bias-item .bias-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .bias-item .bias-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .bias-item .bias-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .bias-item .bias-example {
+      font-size: 0.78rem;
+      color: var(--site-color);
+      font-style: italic;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* ── EAST Framework Cards ───────────────── */
+    .east-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .east-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .east-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--site-color);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .east-card:hover::before { transform: scaleX(1); }
+    .east-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+
+    .east-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+    }
+
+    .east-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+
+    .east-card p { font-size: 0.84rem; margin: 0; }
+
+    /* ── Mind Map ───────────────────────────── */
+    .mindmap-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mindmap-visual::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(139,92,246,0.05);
+    }
+
+    .mindmap-root {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .mindmap-root .root-bubble {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+      letter-spacing: 0.02em;
+    }
+
+    .mindmap-branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .mm-branch {
+      background: var(--bg-sidebar);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      border-top: 2px solid var(--site-color);
+    }
+
+    .mm-branch .branch-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--site-color);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .mm-branch .mm-leaf {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      padding: 0.2rem 0;
+    }
+
+    .mm-branch .mm-leaf::before {
+      content: '▸';
+      color: var(--site-color);
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Examples ───────────────────────────── */
+    .example-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .example-meta .example-label {
+      margin-bottom: 0;
+    }
+
+    .example-principles {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .example-principles .tag {
+      font-size: 0.7rem;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .metric-item {
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    .metric-item .m-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--site-color);
+      display: block;
+      line-height: 1;
+    }
+
+    .metric-item .m-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── System 1 vs 2 Visual ───────────────── */
+    .system-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    @media (max-width: 560px) {
+      .system-compare { grid-template-columns: 1fr; }
+    }
+
+    .system-box {
+      border-radius: var(--radius);
+      padding: 1.3rem;
+    }
+
+    .system-box.s1 {
+      background: rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+
+    .system-box.s2 {
+      background: rgba(14,165,233,0.08);
+      border: 1px solid rgba(14,165,233,0.3);
+    }
+
+    .system-box .sys-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .system-box.s1 .sys-label { color: var(--site-color); }
+    .system-box.s2 .sys-label { color: #0ea5e9; }
+
+    .system-box h4 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .sys-traits {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .sys-trait {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .sys-trait .dot-marker {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .s1 .dot-marker { background: var(--site-color); }
+    .s2 .dot-marker { background: #0ea5e9; }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">
+        <span class="brand-icon">🌱</span>
+        The Growth Hub
+      </a>
+      <div class="navbar-links">
+        <a href="../negotiations/index.html">🤝 Negotiations</a>
+        <a href="../sales/index.html">💰 Sales</a>
+        <a href="../conflict/index.html">☮️ Conflict</a>
+        <a href="../psychology/index.html" class="active">🧠 Psychology</a>
+        <a href="../ai-trends/index.html">🤖 AI &amp; Biz</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="btn-theme" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">🌙</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="../index.html">🏠 Home</a>
+      <a href="../negotiations/index.html">🤝 Negotiations</a>
+      <a href="../sales/index.html">💰 Sales</a>
+      <a href="../conflict/index.html">☮️ Conflict Management</a>
+      <a href="../psychology/index.html">🧠 Psychology &amp; Influence</a>
+      <a href="../ai-trends/index.html">🤖 AI &amp; Future Biz</a>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ════════════════════════════════════════════════════ -->
+  <section class="subsite-hero">
+    <div class="container">
+      <a href="../index.html" class="back-to-hub">← Back to The Growth Hub</a>
+      <div class="hero-badge">
+        <span class="dot"></span> Track 4 of 5
+      </div>
+      <span class="hero-icon">🧠</span>
+      <h1 class="fade-in">The Mind Reader</h1>
+      <p class="fade-in fade-in-delay-1" style="font-size:1.15rem; max-width:620px; margin:0.8rem auto 0;">
+        Decode Human Behavior — The Psychology of Persuasion, Influence &amp; Decision-Making
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ MAIN CONTENT (TOC + Page Body) ═════════════════════════ -->
+  <main class="section">
+    <div class="container">
+      <div class="page-layout">
+
+        <!-- ── TOC Sidebar ──────────────────── -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <nav class="toc-list">
+            <a href="#concept">💡 Core Concept</a>
+            <a href="#quotes">💬 Inspiring Quotes</a>
+            <a href="#methods">⚙️ 3 Proven Methods</a>
+            <a href="#mindmap">🗺️ Mind Map</a>
+            <a href="#examples">🌍 Real-World Examples</a>
+            <a href="#quiz">🧩 Knowledge Quiz</a>
+          </nav>
+        </aside>
+
+        <!-- ── Page Content ─────────────────── -->
+        <div class="page-content">
+
+          <!-- ══ SECTION 1 — CORE CONCEPT ══════════════════════ -->
+          <section id="concept" class="section" style="padding-top:0;">
+            <div class="section-header reveal">
+              <span class="section-label">Section 1</span>
+              <h2>Core Concept</h2>
+              <p>Why humans rarely act rationally — and how understanding this changes everything.</p>
+            </div>
+
+            <!-- Concept Box -->
+            <div class="concept-box reveal">
+              <span class="big-icon">🧠</span>
+              <h3>The Fundamental Insight</h3>
+              <p style="max-width:640px; margin:0 auto; font-size:0.95rem;">
+                Human behavior is driven far more by <strong>cognitive shortcuts</strong>, <strong>emotional triggers</strong>, and <strong>social influence</strong> than by rational logic. We believe we make decisions through careful reasoning — but neuroscience and behavioral economics consistently show that 95% of our choices are driven by automatic, unconscious processes. Understanding these mechanisms makes you a more effective communicator, leader, and persuader.
+              </p>
+            </div>
+
+            <!-- System 1 vs 2 Highlight -->
+            <div class="highlight-box reveal mt-3">
+              <strong>System 1 vs System 2 Thinking (Kahneman):</strong>
+              <p style="margin-top:0.4rem;">System 1 is fast, automatic, and emotional — it drives most decisions. System 2 is slow, deliberate, and logical. Influence works by engaging System 1.</p>
+            </div>
+
+            <!-- Visual comparison of System 1 vs System 2 -->
+            <div class="system-compare reveal">
+              <div class="system-box s1">
+                <span class="sys-label">System 1 — The Autopilot</span>
+                <h4>Fast &amp; Emotional</h4>
+                <div class="sys-traits">
+                  <div class="sys-trait"><span class="dot-marker"></span>Processes 11 million bits/sec</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Automatic &amp; instinctive</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Driven by patterns &amp; emotions</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Effortless — runs in background</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Susceptible to cognitive biases</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>The primary target of influence</div>
+                </div>
+              </div>
+              <div class="system-box s2">
+                <span class="sys-label">System 2 — The Analyst</span>
+                <h4>Slow &amp; Logical</h4>
+                <div class="sys-traits">
+                  <div class="sys-trait"><span class="dot-marker"></span>Processes ~40 bits/sec</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Deliberate &amp; effortful</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Rational analysis &amp; reasoning</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Requires concentration</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Lazy — avoids activation</div>
+                  <div class="sys-trait"><span class="dot-marker"></span>Rationalizes System 1 choices</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Terms -->
+            <div class="reveal mt-4">
+              <h3 style="margin-bottom:0.3rem;">Key Terms to Know</h3>
+              <p style="font-size:0.9rem;">The vocabulary of behavioral psychology — master these and you'll see the world differently.</p>
+              <div class="terms-grid">
+                <div class="term-chip">
+                  <span class="term-icon">🔮</span>
+                  <div>
+                    <span class="term-name">Cognitive Bias</span>
+                    <span class="term-def">Systematic errors in thinking that affect decisions and judgments in predictable ways.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">⚡</span>
+                  <div>
+                    <span class="term-name">Heuristics</span>
+                    <span class="term-def">Mental shortcuts that allow quick judgments — efficient but often inaccurate.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">🎯</span>
+                  <div>
+                    <span class="term-name">Cialdini's 6 Principles</span>
+                    <span class="term-def">Six universal triggers of influence: reciprocity, commitment, social proof, authority, liking, scarcity.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">👆</span>
+                  <div>
+                    <span class="term-name">Nudge Theory</span>
+                    <span class="term-def">Designing choice environments that steer behavior without restricting freedom.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">📉</span>
+                  <div>
+                    <span class="term-name">Loss Aversion</span>
+                    <span class="term-def">Losses feel ~2x more painful than equivalent gains feel good — we hate losing more than we love winning.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">🔍</span>
+                  <div>
+                    <span class="term-name">Confirmation Bias</span>
+                    <span class="term-def">The tendency to seek, favor, and remember information that confirms pre-existing beliefs.</span>
+                  </div>
+                </div>
+                <div class="term-chip">
+                  <span class="term-icon">👥</span>
+                  <div>
+                    <span class="term-name">Social Proof</span>
+                    <span class="term-def">People look to others' behavior to determine the correct action — especially in uncertain situations.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ SECTION 2 — QUOTES ═════════════════════════════ -->
+          <section id="quotes" class="section">
+            <div class="section-header reveal">
+              <span class="section-label">Section 2</span>
+              <h2>Inspiring Quotes</h2>
+              <p>Wisdom from the masters of psychology, behavioral science, and influence.</p>
+            </div>
+
+            <div class="quotes-grid">
+              <div class="quote-card reveal">
+                <div class="quote-text">"People don't buy for logical reasons. They buy for emotional reasons."</div>
+                <div class="quote-author">— Zig Ziglar</div>
+              </div>
+              <div class="quote-card reveal fade-in-delay-1">
+                <div class="quote-text">"The best way to predict behavior is to understand the context in which people make decisions."</div>
+                <div class="quote-author">— Richard Thaler</div>
+              </div>
+              <div class="quote-card reveal fade-in-delay-2">
+                <div class="quote-text">"Influence: The key to leadership is the ability to get things done through others."</div>
+                <div class="quote-author">— Robert Cialdini</div>
+              </div>
+              <div class="quote-card reveal fade-in-delay-3">
+                <div class="quote-text">"We don't see things as they are. We see things as we are."</div>
+                <div class="quote-author">— Anaïs Nin</div>
+              </div>
+              <div class="quote-card reveal fade-in-delay-4">
+                <div class="quote-text">"A small body of determined spirits fired by an unquenchable faith in their mission can alter the course of history."</div>
+                <div class="quote-author">— Mahatma Gandhi</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ SECTION 3 — 3 PROVEN METHODS ══════════════════ -->
+          <section id="methods" class="section">
+            <div class="section-header reveal">
+              <span class="section-label">Section 3</span>
+              <h2>3 Proven Methods</h2>
+              <p>Battle-tested frameworks that turn knowledge of psychology into real-world influence.</p>
+            </div>
+
+            <!-- Method 1: Cialdini's 6 Principles -->
+            <div class="method-card reveal mb-4" style="margin-bottom:2rem;">
+              <div class="method-number">METHOD 01</div>
+              <h3 style="margin-top:0.5rem;">Cialdini's 6 Principles of Influence</h3>
+              <p>Dr. Robert Cialdini spent 35 years studying why people say "yes." His landmark research identified six universal principles that reliably trigger compliance — understanding them is essential for anyone in sales, leadership, or communications.</p>
+              <div class="principles-grid">
+                <div class="principle-card">
+                  <div class="principle-num">1</div>
+                  <span class="principle-tag">Give First</span>
+                  <h4>Reciprocity</h4>
+                  <p>People feel compelled to return favors. Give value, help, or gifts first — and create a powerful sense of obligation to reciprocate.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-num">2</div>
+                  <span class="principle-tag">Small Yes → Big Yes</span>
+                  <h4>Commitment &amp; Consistency</h4>
+                  <p>Once people commit to something small, they align future behavior to remain consistent. Foot-in-the-door uses this systematically.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-num">3</div>
+                  <span class="principle-tag">Follow the Crowd</span>
+                  <h4>Social Proof</h4>
+                  <p>"1 million customers can't be wrong." We follow the crowd — especially in uncertainty. Reviews, ratings, and testimonials all leverage this.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-num">4</div>
+                  <span class="principle-tag">Trust Credentials</span>
+                  <h4>Authority</h4>
+                  <p>Credentials, titles, and demonstrated expertise create trust and deference. People follow the lead of credible, knowledgeable experts.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-num">5</div>
+                  <span class="principle-tag">We Say Yes to People We Like</span>
+                  <h4>Liking</h4>
+                  <p>We comply with people who are similar to us, who give us compliments, or who are familiar. Rapport and warmth are powerful influence tools.</p>
+                </div>
+                <div class="principle-card">
+                  <div class="principle-num">6</div>
+                  <span class="principle-tag">Rare = Valuable</span>
+                  <h4>Scarcity</h4>
+                  <p>"Only 3 left in stock." The fear of missing out is stronger than the joy of gaining. Limited availability creates urgency and desire.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Method 2: Cognitive Bias Toolkit -->
+            <div class="method-card reveal mb-4" style="margin-bottom:2rem;">
+              <div class="method-number">METHOD 02</div>
+              <h3 style="margin-top:0.5rem;">Cognitive Bias Toolkit for Communicators</h3>
+              <p>Over 200 cognitive biases have been identified by researchers. These five are the most immediately applicable for anyone who communicates, negotiates, or markets professionally.</p>
+              <div class="bias-list">
+                <div class="bias-item">
+                  <span class="bias-icon">⚓</span>
+                  <div>
+                    <span class="bias-name">Anchoring Bias</span>
+                    <span class="bias-desc">The first number presented disproportionately influences all subsequent estimates and judgments. Present the most favorable number first in any negotiation or proposal.</span>
+                    <span class="bias-example">Example: Listing a product at $999 before showing a "discounted" price of $699 makes $699 feel like a deal — even if $699 is the actual target price.</span>
+                  </div>
+                </div>
+                <div class="bias-item">
+                  <span class="bias-icon">🖼️</span>
+                  <div>
+                    <span class="bias-name">Framing Effect</span>
+                    <span class="bias-desc">How information is presented changes decisions, even when the underlying facts are identical. "90% fat free" is the same as "10% fat" — but the first sells.</span>
+                    <span class="bias-example">Example: "5% failure rate" vs "95% success rate" — people prefer the latter, even though the data is identical.</span>
+                  </div>
+                </div>
+                <div class="bias-item">
+                  <span class="bias-icon">🕳️</span>
+                  <div>
+                    <span class="bias-name">Sunk Cost Fallacy</span>
+                    <span class="bias-desc">People continue bad decisions to justify past investment of time, money, or effort — even when cutting losses would be rational. Acknowledge it to avoid it.</span>
+                    <span class="bias-example">Example: Staying in a failing project because "we've already invested $2M" rather than evaluating future returns rationally.</span>
+                  </div>
+                </div>
+                <div class="bias-item">
+                  <span class="bias-icon">📈</span>
+                  <div>
+                    <span class="bias-name">Peak-End Rule</span>
+                    <span class="bias-desc">People judge experiences almost entirely by their most intense moment (the peak) and how they ended — not the average. Engineer great endings.</span>
+                    <span class="bias-example">Example: A dentist visit that ends with a small reward and friendly conversation is remembered better than one that was objectively less painful throughout.</span>
+                  </div>
+                </div>
+                <div class="bias-item">
+                  <span class="bias-icon">🎭</span>
+                  <div>
+                    <span class="bias-name">Decoy Effect</span>
+                    <span class="bias-desc">Adding a third, strategically inferior option makes your preferred option look significantly more attractive — without changing anything about it.</span>
+                    <span class="bias-example">Example: Small ($3), Medium ($6.50), Large ($7). Medium is the decoy — Large suddenly looks like exceptional value.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Method 3: EAST Nudge Framework -->
+            <div class="method-card reveal">
+              <div class="method-number">METHOD 03</div>
+              <h3 style="margin-top:0.5rem;">The EAST Nudge Framework (Behavioural Insights Team)</h3>
+              <p>Developed by the UK Government's Behavioural Insights Team, the EAST framework provides a practical blueprint for designing nudges — small changes to choice architecture that dramatically shift behavior without mandates or incentives.</p>
+              <div class="east-grid">
+                <div class="east-card">
+                  <div class="east-letter">E</div>
+                  <h4>Easy</h4>
+                  <p>Make the desired behavior the path of least resistance. Reduce friction to near zero. Default options are the most powerful nudge in existence.</p>
+                </div>
+                <div class="east-card">
+                  <div class="east-letter">A</div>
+                  <h4>Attractive</h4>
+                  <p>Use striking visuals, clear rewards, and salient design to draw attention to the desired option. Attention precedes action.</p>
+                </div>
+                <div class="east-card">
+                  <div class="east-letter">S</div>
+                  <h4>Social</h4>
+                  <p>Show that "most people like you" already do this behavior. Harnessing social norms is among the most consistent behavior-change strategies known.</p>
+                </div>
+                <div class="east-card">
+                  <div class="east-letter">T</div>
+                  <h4>Timely</h4>
+                  <p>Intervene at the moment of highest motivation and receptivity. A message at the right moment is 10x more effective than the same message at the wrong one.</p>
+                </div>
+              </div>
+              <div class="highlight-box" style="margin-top:1.2rem;">
+                <strong>EAST in Action:</strong>
+                <p>Organ donation opt-out systems (Easy), colorful health food placement at eye level in cafeterias (Attractive), "9 in 10 of your neighbors pay taxes on time" letters (Social), and sending pension enrollment reminders at paycheck time (Timely) — all nudges with massive real-world impact.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ SECTION 4 — MIND MAP ═══════════════════════════ -->
+          <section id="mindmap" class="section">
+            <div class="section-header reveal">
+              <span class="section-label">Section 4</span>
+              <h2>Mind Map</h2>
+              <p>A visual overview connecting the core branches of human psychology and influence.</p>
+            </div>
+
+            <div class="mindmap-visual reveal">
+              <div class="mindmap-root">
+                <div class="root-bubble">🧠 HUMAN PSYCHOLOGY &amp; INFLUENCE</div>
+              </div>
+              <div class="mindmap-branches">
+                <div class="mm-branch">
+                  <span class="branch-title">🔮 Cognitive Biases</span>
+                  <div class="mm-leaf">Anchoring Bias</div>
+                  <div class="mm-leaf">Framing Effect</div>
+                  <div class="mm-leaf">Confirmation Bias</div>
+                  <div class="mm-leaf">Sunk Cost Fallacy</div>
+                  <div class="mm-leaf">Decoy Effect</div>
+                </div>
+                <div class="mm-branch">
+                  <span class="branch-title">🎯 Cialdini's Principles</span>
+                  <div class="mm-leaf">Reciprocity</div>
+                  <div class="mm-leaf">Social Proof</div>
+                  <div class="mm-leaf">Scarcity</div>
+                  <div class="mm-leaf">Authority &amp; Liking</div>
+                  <div class="mm-leaf">Commitment &amp; Consistency</div>
+                </div>
+                <div class="mm-branch">
+                  <span class="branch-title">💥 Emotional Triggers</span>
+                  <div class="mm-leaf">Loss Aversion</div>
+                  <div class="mm-leaf">Fear &amp; Urgency</div>
+                  <div class="mm-leaf">Pride &amp; Identity</div>
+                  <div class="mm-leaf">Curiosity Gap</div>
+                </div>
+                <div class="mm-branch">
+                  <span class="branch-title">👆 Decision Architecture</span>
+                  <div class="mm-leaf">Default Options (Nudge)</div>
+                  <div class="mm-leaf">Choice Overload</div>
+                  <div class="mm-leaf">EAST Framework</div>
+                  <div class="mm-leaf">Peak-End Rule</div>
+                </div>
+                <div class="mm-branch">
+                  <span class="branch-title">🤲 Body Language &amp; Nonverbal</span>
+                  <div class="mm-leaf">Mirroring &amp; Rapport</div>
+                  <div class="mm-leaf">Power Postures</div>
+                  <div class="mm-leaf">Eye Contact</div>
+                  <div class="mm-leaf">Vocal Tonality</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mindmap text fallback (monospace version) -->
+            <div class="mindmap reveal mt-3">
+              <div class="root">◉ HUMAN PSYCHOLOGY &amp; INFLUENCE</div>
+              <div style="margin-top:0.5rem; padding-left:1.5rem;">
+                <div class="branch">├── 🔮 Cognitive Biases</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Anchoring Bias &amp; Framing Effect</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Confirmation Bias</div>
+                <div class="leaf" style="padding-left:2.5rem;">└─ Sunk Cost Fallacy &amp; Decoy Effect</div>
+                <div class="branch">├── 🎯 Cialdini's Principles</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Reciprocity &amp; Commitment</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Social Proof &amp; Authority</div>
+                <div class="leaf" style="padding-left:2.5rem;">└─ Liking &amp; Scarcity</div>
+                <div class="branch">├── 💥 Emotional Triggers</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Loss Aversion (Kahneman)</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Fear, Urgency &amp; FOMO</div>
+                <div class="leaf" style="padding-left:2.5rem;">└─ Pride, Identity &amp; Curiosity Gap</div>
+                <div class="branch">├── 👆 Decision Architecture</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Default Options (Nudge Theory)</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ EAST Framework</div>
+                <div class="leaf" style="padding-left:2.5rem;">└─ Choice Overload &amp; Peak-End Rule</div>
+                <div class="branch">└── 🤲 Body Language &amp; Nonverbal</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Mirroring &amp; Rapport Building</div>
+                <div class="leaf" style="padding-left:2.5rem;">├─ Power Postures (Amy Cuddy)</div>
+                <div class="leaf" style="padding-left:2.5rem;">└─ Eye Contact &amp; Vocal Tonality</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ SECTION 5 — REAL-WORLD EXAMPLES ═══════════════ -->
+          <section id="examples" class="section">
+            <div class="section-header reveal">
+              <span class="section-label">Section 5</span>
+              <h2>Real-World Examples</h2>
+              <p>See how the world's most successful companies weaponize behavioral psychology at scale.</p>
+            </div>
+
+            <div class="grid-2">
+
+              <!-- Example 1: Amazon -->
+              <div class="example-card reveal">
+                <div class="example-meta">
+                  <span class="example-label">Case Study 01</span>
+                  <span class="tag" style="background:rgba(255,153,0,0.12); color:#e67e00;">E-Commerce</span>
+                </div>
+                <h4>Amazon's "Only 5 Left in Stock" — Scarcity + Social Proof</h4>
+                <p>Amazon is perhaps the world's most sophisticated practitioner of behavioral psychology in product design. A single product page simultaneously deploys multiple Cialdini principles: <strong>Scarcity</strong> ("Only 5 left in stock — order soon"), <strong>Social Proof</strong> ("4,000+ reviews, 4.7 stars"), <strong>Authority</strong> ("Amazon's Choice"), and <strong>Commitment</strong> (One-click buy removes friction barriers entirely). Each element targets a different cognitive trigger, and together they create a conversion machine that's exceptionally difficult to resist.</p>
+                <div class="example-principles">
+                  <span class="tag">Scarcity</span>
+                  <span class="tag">Social Proof</span>
+                  <span class="tag">Authority</span>
+                  <span class="tag">Commitment</span>
+                  <span class="tag">Loss Aversion</span>
+                </div>
+                <div class="metric-row">
+                  <div class="metric-item">
+                    <span class="m-val">2-3x</span>
+                    <span class="m-label">higher conversion vs competitors</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="m-val">+30%</span>
+                    <span class="m-label">purchase likelihood from scarcity labels alone</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="m-val">95%</span>
+                    <span class="m-label">of purchases influenced by reviews</span>
+                  </div>
+                </div>
+                <div class="outcome-box">
+                  <strong>Key Insight:</strong> The power isn't in any single principle — it's in the <em>stack</em>. Combining scarcity + social proof + authority in a single touchpoint creates a near-irresistible psychological environment. Amazon's A/B testing culture means every element has been empirically validated.
+                </div>
+              </div>
+
+              <!-- Example 2: Spotify -->
+              <div class="example-card reveal fade-in-delay-1">
+                <div class="example-meta">
+                  <span class="example-label">Case Study 02</span>
+                  <span class="tag" style="background:rgba(30,215,96,0.12); color:#15803d;">SaaS / Subscription</span>
+                </div>
+                <h4>Spotify's Free Trial → Paid Conversion — Reciprocity + Commitment</h4>
+                <p>Spotify's conversion strategy is a masterclass in behavioral design. It starts with <strong>Reciprocity</strong>: three months of premium service free — a massive value delivery that creates psychological debt. During the trial, users create playlists, discover artists, and build listening habits (<strong>Commitment &amp; Consistency</strong> in action). By end of trial, the switching cost feels enormous — users have "invested" in the platform, activating the <strong>Sunk Cost</strong> effect. The final nudge is architectural: the "Cancel" button is deliberately buried while "Continue Premium" is front-and-center in high-contrast purple — the EAST framework's <em>Easy</em> principle executed perfectly.</p>
+                <div class="example-principles">
+                  <span class="tag">Reciprocity</span>
+                  <span class="tag">Commitment</span>
+                  <span class="tag">Sunk Cost</span>
+                  <span class="tag">EAST Nudge</span>
+                  <span class="tag">Framing</span>
+                </div>
+                <div class="metric-row">
+                  <div class="metric-item">
+                    <span class="m-val">~60%</span>
+                    <span class="m-label">free trial to paid conversion rate</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="m-val">3 mo</span>
+                    <span class="m-label">free trial — reciprocity investment</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="m-val">236M+</span>
+                    <span class="m-label">paid subscribers (2025)</span>
+                  </div>
+                </div>
+                <div class="outcome-box">
+                  <strong>Key Insight:</strong> The sequence matters — Reciprocity builds obligation, Commitment locks in identity, and the Nudge removes the final rational barrier. By the time the trial ends, the "rational" decision is the psychologically loaded one: continue paying. The UX design seals it.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ══ SECTION 6 — QUIZ ════════════════════════════════ -->
+          <section id="quiz" class="section">
+            <div class="section-header reveal">
+              <span class="section-label">Section 6</span>
+              <h2>Knowledge Quiz</h2>
+              <p>Test your understanding of the psychology of persuasion and influence.</p>
+            </div>
+
+            <div class="quiz-container reveal">
+
+              <!-- Q1 -->
+              <div class="quiz-question" id="q1">
+                <div class="q-number">1</div>
+                <div class="q-text">What is "Social Proof" in psychology?</div>
+                <div class="q-options">
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q1" />
+                    <span class="q-option-dot"></span>
+                    Showing legal documentation to build credibility
+                  </label>
+                  <label class="q-option" data-correct="true">
+                    <input type="radio" name="q1" />
+                    <span class="q-option-dot"></span>
+                    The tendency to follow others' behavior, especially in uncertain situations
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q1" />
+                    <span class="q-option-dot"></span>
+                    Proving your academic credentials before speaking
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q1" />
+                    <span class="q-option-dot"></span>
+                    A formal logical argument style used in debates
+                  </label>
+                </div>
+                <div class="q-answer">
+                  Social Proof is one of Cialdini's 6 Principles of Influence. When people are uncertain about what to do, they look to others' behavior as a signal of what's correct — "Best Seller" badges, review counts, user testimonials, and "Join 1 million customers" messaging all leverage this powerful instinct.
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="quiz-question" id="q2">
+                <div class="q-number">2</div>
+                <div class="q-text">What is the "Scarcity Principle" in influence psychology?</div>
+                <div class="q-options">
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q2" />
+                    <span class="q-option-dot"></span>
+                    Always charging premium prices for your products
+                  </label>
+                  <label class="q-option" data-correct="true">
+                    <input type="radio" name="q2" />
+                    <span class="q-option-dot"></span>
+                    We value things more when they are rare or available for a limited time
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q2" />
+                    <span class="q-option-dot"></span>
+                    Keeping information secret during negotiations
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q2" />
+                    <span class="q-option-dot"></span>
+                    Reducing product features to improve focus and clarity
+                  </label>
+                </div>
+                <div class="q-answer">
+                  Scarcity triggers Loss Aversion — the pain of potentially missing out on something is psychologically stronger than the pleasure of acquiring it. "Limited time offer," "Only 3 left in stock," and "Exclusive membership" messaging all activate this powerful instinct that evolved to help us secure vital, finite resources.
+                </div>
+              </div>
+
+              <!-- Q3 -->
+              <div class="quiz-question" id="q3">
+                <div class="q-number">3</div>
+                <div class="q-text">In Kahneman's framework, which system drives most everyday decisions?</div>
+                <div class="q-options">
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q3" />
+                    <span class="q-option-dot"></span>
+                    System 2 — slow, deliberate, and rational analysis
+                  </label>
+                  <label class="q-option" data-correct="true">
+                    <input type="radio" name="q3" />
+                    <span class="q-option-dot"></span>
+                    System 1 — fast, automatic, and emotional processing
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q3" />
+                    <span class="q-option-dot"></span>
+                    The rational conscious mind evaluating all options equally
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q3" />
+                    <span class="q-option-dot"></span>
+                    The prefrontal cortex exclusively, as the seat of executive function
+                  </label>
+                </div>
+                <div class="q-answer">
+                  System 1 processes 11 million bits of information per second versus System 2's mere 40 bits — a ratio of 275,000:1. Most decisions, judgments, and emotional reactions occur before System 2 is even engaged. Effective influence strategies target System 1 by triggering automatic, emotional responses rather than requiring effortful deliberation.
+                </div>
+              </div>
+
+              <!-- Q4 -->
+              <div class="quiz-question" id="q4">
+                <div class="q-number">4</div>
+                <div class="q-text">What is the "Framing Effect" in behavioral psychology?</div>
+                <div class="q-options">
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q4" />
+                    <span class="q-option-dot"></span>
+                    The technique of putting a picture in a literal frame to increase its perceived value
+                  </label>
+                  <label class="q-option" data-correct="true">
+                    <input type="radio" name="q4" />
+                    <span class="q-option-dot"></span>
+                    How the presentation of information alters decisions even when the underlying facts are identical
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q4" />
+                    <span class="q-option-dot"></span>
+                    Setting an initial anchor number at the start of a negotiation
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q4" />
+                    <span class="q-option-dot"></span>
+                    A structured technique for organizing public speaking presentations
+                  </label>
+                </div>
+                <div class="q-answer">
+                  "90% fat free" versus "contains 10% fat" — the same nutritional fact, but completely different perceptions and purchase decisions. Framing shapes how information is processed by System 1. Positive frames (gain-framing) and negative frames (loss-framing) can produce entirely different choices from identical data. Skilled communicators master frame control.
+                </div>
+              </div>
+
+              <!-- Q5 -->
+              <div class="quiz-question" id="q5">
+                <div class="q-number">5</div>
+                <div class="q-text">The "Foot-in-the-Door" persuasion technique relies on which of Cialdini's principles?</div>
+                <div class="q-options">
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q5" />
+                    <span class="q-option-dot"></span>
+                    Scarcity — creating urgency through limited availability
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q5" />
+                    <span class="q-option-dot"></span>
+                    Authority — establishing credibility before making a large request
+                  </label>
+                  <label class="q-option" data-correct="true">
+                    <input type="radio" name="q5" />
+                    <span class="q-option-dot"></span>
+                    Commitment and Consistency — small "yes" leads to larger "yes"
+                  </label>
+                  <label class="q-option" data-correct="false">
+                    <input type="radio" name="q5" />
+                    <span class="q-option-dot"></span>
+                    Reciprocity — giving value before making a request
+                  </label>
+                </div>
+                <div class="q-answer">
+                  Getting a small "yes" first creates a self-image as "someone who agrees with this cause/person/brand." To remain internally consistent with this self-image, people then agree to progressively larger requests. The foot-in-the-door technique exploits commitment bias — once we've said yes once, we feel psychologically compelled to keep saying yes.
+                </div>
+              </div>
+
+              <!-- Quiz Actions -->
+              <div class="quiz-actions">
+                <button class="btn btn-primary" id="quiz-submit">Check Answers</button>
+                <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
+              </div>
+              <div class="quiz-score" id="quiz-score"></div>
+            </div>
+          </section>
+
+        </div><!-- /.page-content -->
+      </div><!-- /.page-layout -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="../index.html">🏠 Home</a>
+        <a href="../negotiations/index.html">🤝 Negotiations</a>
+        <a href="../sales/index.html">💰 Sales</a>
+        <a href="../conflict/index.html">☮️ Conflict</a>
+        <a href="../psychology/index.html">🧠 Psychology</a>
+        <a href="../ai-trends/index.html">🤖 AI &amp; Biz</a>
+      </div>
+      <p>The Growth Hub — The Mind Reader · Track 4 of 5 · Psychology of Persuasion &amp; Influence</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

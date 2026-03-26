@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Sales Vault — The Growth Hub</title>
+  <meta name="description" content="Build relationships, move ideas, and close deals. Master SPIN Selling, the Challenger Sale, and consultative selling techniques inside The Sales Vault." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --site-color: #f97316;
+      --site-dark: #c2410c;
+    }
+
+    /* Key Terms Grid */
+    .key-terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .key-term-card {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      border-top: 3px solid var(--site-color);
+      transition: box-shadow 0.2s;
+    }
+
+    .key-term-card:hover { box-shadow: var(--shadow-hover); }
+
+    .key-term-card .term-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--site-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .key-term-card p {
+      font-size: 0.82rem;
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* SPIN step labels */
+    .spin-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .spin-row:last-child { border-bottom: none; }
+
+    .spin-letter {
+      min-width: 36px;
+      height: 36px;
+      background: var(--site-color);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .spin-content strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.1rem;
+    }
+
+    .spin-content span {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+    }
+
+    /* AIDA flow */
+    .aida-flow {
+      display: flex;
+      gap: 0;
+      margin-top: 1.2rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .aida-step {
+      flex: 1;
+      text-align: center;
+      padding: 1rem 0.5rem;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+    }
+
+    .aida-step:last-child { border-right: none; }
+
+    .aida-letter {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--site-color);
+      line-height: 1;
+    }
+
+    .aida-word {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .aida-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    /* Objection flow */
+    .objection-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .obj-step {
+      background: rgba(249,115,22,0.1);
+      color: var(--site-color);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .obj-arrow {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Challenger badges */
+    .challenger-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .challenger-step:last-child { border-bottom: none; }
+
+    .ch-badge {
+      min-width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .ch-content strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      margin-bottom: 0.1rem;
+    }
+
+    .ch-content span {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* Mind map enhanced */
+    .mindmap-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .mm-root {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .mm-root-label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 800;
+      padding: 0.6rem 2.5rem;
+      border-radius: 50px;
+      letter-spacing: 0.08em;
+    }
+
+    .mm-branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .mm-branch-block {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      border-top: 3px solid var(--site-color);
+    }
+
+    .mm-branch-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--site-color);
+      margin-bottom: 0.6rem;
+    }
+
+    .mm-leaves {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .mm-leaf {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      padding: 0.2rem 0.5rem;
+      background: var(--bg-card);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* Stat callout in examples */
+    .stat-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--site-color), var(--site-dark));
+      color: white;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 0.8rem;
+    }
+
+    /* Pipeline callout */
+    .pipeline-bar {
+      display: flex;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 1.5rem;
+      height: 48px;
+    }
+
+    .pipeline-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: white;
+      text-align: center;
+      transition: flex 0.3s;
+    }
+
+    .ps-1 { background: #f97316; }
+    .ps-2 { background: #ea6d0c; }
+    .ps-3 { background: #dc600a; }
+    .ps-4 { background: #ce5409; }
+    .ps-5 { background: #c2410c; }
+
+    /* Sales truth box */
+    .truth-box {
+      background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(194,65,12,0.05));
+      border: 2px solid var(--site-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .truth-box .truth-icon { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+    .truth-box blockquote {
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .truth-box .truth-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Update Banner -->
+  <div class="update-banner">
+    💰 The Sales Vault — Master the science of selling, persuasion, and closing with confidence.
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="navbar-brand">
+        <span class="brand-icon">🌱</span>
+        The Growth Hub
+      </a>
+      <div class="navbar-links">
+        <a href="../negotiations/index.html">🤝 Negotiations</a>
+        <a href="../sales/index.html" class="active">💰 Sales</a>
+        <a href="../conflict/index.html">☮️ Conflict</a>
+        <a href="../psychology/index.html">🧠 Psychology</a>
+        <a href="../ai-trends/index.html">🤖 AI &amp; Biz</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="btn-theme" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="../negotiations/index.html">🤝 Negotiations</a>
+      <a href="../sales/index.html">💰 Sales</a>
+      <a href="../conflict/index.html">☮️ Conflict Management</a>
+      <a href="../psychology/index.html">🧠 Psychology &amp; Influence</a>
+      <a href="../ai-trends/index.html">🤖 AI &amp; Future Biz</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="subsite-hero">
+    <div class="container">
+      <a href="../index.html" class="back-to-hub">← Back to The Growth Hub</a>
+      <div class="hero-badge fade-in">
+        <span class="dot"></span> Track 2 of 5
+      </div>
+      <span class="hero-icon fade-in fade-in-delay-1">💰</span>
+      <h1 class="fade-in fade-in-delay-2">The Sales Vault</h1>
+      <p class="fade-in fade-in-delay-3" style="font-size:1.15rem; max-width:620px; margin:1rem auto 2rem;">
+        Build Relationships, Move Ideas, Close Deals — The Science of Selling
+      </p>
+      <div class="stats-row fade-in fade-in-delay-4">
+        <div class="stat-item">
+          <div class="stat-num" style="color:white;">3</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.7);">Frameworks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="color:white;">6</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.7);">Key Terms</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="color:white;">2</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.7);">Real Examples</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="color:white;">5</div>
+          <div class="stat-label" style="color:rgba(255,255,255,0.7);">Quiz Questions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Layout -->
+  <div class="container" style="margin-top:3rem;">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="../index.html">🌱 Growth Hub</a>
+      <span>›</span>
+      <span style="color: var(--site-color); font-weight:600;">💰 The Sales Vault</span>
+    </nav>
+
+    <div class="page-layout" style="margin-top:1.5rem; margin-bottom:4rem;">
+
+      <!-- TOC Sidebar -->
+      <aside class="toc-sidebar">
+        <div class="toc-title">On This Page</div>
+        <nav class="toc-list">
+          <a href="#concept">📖 Core Concept</a>
+          <a href="#quotes">💬 Inspiring Quotes</a>
+          <a href="#methods">🛠 Proven Methods</a>
+          <a href="#mindmap">🗺 Mind Map</a>
+          <a href="#examples">🏢 Real-World Examples</a>
+          <a href="#quiz">🧠 Knowledge Quiz</a>
+        </nav>
+        <div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--border);">
+          <div class="toc-title">Other Tracks</div>
+          <nav class="toc-list">
+            <a href="../negotiations/index.html">🤝 Negotiations</a>
+            <a href="../conflict/index.html">☮️ Conflict</a>
+            <a href="../psychology/index.html">🧠 Psychology</a>
+            <a href="../ai-trends/index.html">🤖 AI &amp; Biz</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 1: Core Concept               -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="concept" class="section" style="padding-top:0;">
+          <div class="section-header reveal">
+            <span class="section-label">Foundation</span>
+            <h2>Core Concept of Modern Sales</h2>
+            <p>Selling is not manipulation — it is one of the most human skills there is.</p>
+          </div>
+
+          <!-- Concept Box -->
+          <div class="concept-box reveal">
+            <span class="big-icon">🎯</span>
+            <h3>The Modern Philosophy of Sales</h3>
+            <p style="font-size:1rem; max-width:640px; margin:0 auto;">
+              Sales is not about pushing products onto unwilling customers. It is about understanding a customer's world — their pressures, goals, and pain points — and positioning your solution as the bridge between their <strong>current situation</strong> and their <strong>desired outcome</strong>.
+            </p>
+            <p style="font-size:0.92rem; max-width:600px; margin:1rem auto 0;">
+              The best salespeople are equal parts psychologist, strategist, and storyteller. They ask before they tell. They listen before they pitch. They build before they close. The transaction is simply the natural conclusion of a well-built relationship.
+            </p>
+          </div>
+
+          <!-- Pipeline visual -->
+          <div class="reveal" style="margin-top:2rem;">
+            <h4 style="margin-bottom:0.5rem;">The Sales Pipeline at a Glance</h4>
+            <p style="font-size:0.85rem;">Every sale moves through a predictable journey — knowing where you are in the pipeline lets you apply the right strategy at the right moment.</p>
+            <div class="pipeline-bar">
+              <div class="pipeline-stage ps-1">Prospect</div>
+              <div class="pipeline-stage ps-2">Qualify</div>
+              <div class="pipeline-stage ps-3">Present</div>
+              <div class="pipeline-stage ps-4">Handle</div>
+              <div class="pipeline-stage ps-5">Close</div>
+            </div>
+          </div>
+
+          <!-- Key Terms -->
+          <div class="reveal" style="margin-top:2.5rem;">
+            <h4 style="margin-bottom:0.4rem;">Key Terms Every Sales Professional Must Know</h4>
+            <p style="font-size:0.85rem; margin-bottom:0;">Master the vocabulary and you master the conversation.</p>
+            <div class="key-terms-grid">
+              <div class="key-term-card">
+                <div class="term-name">Prospect</div>
+                <p>A potential buyer who fits your ideal customer profile and may have the need, budget, and authority to purchase.</p>
+              </div>
+              <div class="key-term-card">
+                <div class="term-name">Discovery Call</div>
+                <p>An early conversation focused on uncovering the prospect's goals, challenges, timeline, and decision-making process.</p>
+              </div>
+              <div class="key-term-card">
+                <div class="term-name">Value Proposition</div>
+                <p>A clear statement of the unique benefit your solution delivers — answering "Why should I buy from YOU?"</p>
+              </div>
+              <div class="key-term-card">
+                <div class="term-name">Closing</div>
+                <p>The set of techniques and asks used to move a prospect to a final buying decision — not a single moment, but a process.</p>
+              </div>
+              <div class="key-term-card">
+                <div class="term-name">Pipeline</div>
+                <p>The structured series of stages a prospect moves through from initial contact to closed deal — a salesperson's forecast tool.</p>
+              </div>
+              <div class="key-term-card">
+                <div class="term-name">Objection Handling</div>
+                <p>The art of addressing a prospect's hesitations by acknowledging, clarifying, responding with evidence, and confirming resolution.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlight Box -->
+          <div class="truth-box reveal">
+            <span class="truth-icon">💡</span>
+            <blockquote>"People don't buy products — they buy outcomes."</blockquote>
+            <p class="truth-sub">The modern sales truth: your product is only as valuable as the transformation it delivers. Sell the result, not the feature. Paint the destination, not the vehicle.</p>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 2: Inspiring Quotes           -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="quotes" class="section">
+          <div class="section-header reveal">
+            <span class="section-label">Wisdom</span>
+            <h2>Inspiring Quotes on Sales</h2>
+            <p>Words from masters of influence, persuasion, and human connection.</p>
+          </div>
+
+          <div class="quotes-grid">
+            <div class="quote-card reveal">
+              <p class="quote-text">"People don't buy for logical reasons. They buy for emotional reasons."</p>
+              <div class="quote-author">— Zig Ziglar</div>
+            </div>
+
+            <div class="quote-card reveal fade-in-delay-1">
+              <p class="quote-text">"The best salespeople know they're the best. They are comfortable in their own skin."</p>
+              <div class="quote-author">— Bill Murray</div>
+            </div>
+
+            <div class="quote-card reveal fade-in-delay-2">
+              <p class="quote-text">"Sales are contingent upon the attitude of the salesman, not the attitude of the prospect."</p>
+              <div class="quote-author">— W. Clement Stone</div>
+            </div>
+
+            <div class="quote-card reveal">
+              <p class="quote-text">"Make a customer, not a sale."</p>
+              <div class="quote-author">— Katherine Barchetti</div>
+            </div>
+
+            <div class="quote-card reveal fade-in-delay-1" style="grid-column: span 1;">
+              <p class="quote-text">"Every sale has five basic obstacles: no need, no money, no hurry, no desire, no trust."</p>
+              <div class="quote-author">— Zig Ziglar</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 3: Proven Methods             -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="methods" class="section">
+          <div class="section-header reveal">
+            <span class="section-label">Frameworks</span>
+            <h2>3 Proven Sales Methods</h2>
+            <p>Research-backed, battle-tested frameworks used by the world's top sales professionals.</p>
+          </div>
+
+          <div class="grid-2" style="gap:2rem;">
+
+            <!-- Method 1: SPIN Selling -->
+            <div class="method-card reveal">
+              <div class="method-number">Method 01</div>
+              <div class="card-header" style="margin-top:0.6rem;">
+                <div class="card-icon" style="background:rgba(249,115,22,0.12);">🔍</div>
+                <div>
+                  <h3>SPIN Selling</h3>
+                  <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Neil Rackham — Research-backed questioning system</p>
+                </div>
+              </div>
+              <p style="font-size:0.88rem;">SPIN Selling is built on a simple insight: the more a customer talks about their problem, the more urgency they feel to solve it. Your job is to ask the right questions in the right sequence.</p>
+
+              <div class="spin-row">
+                <div class="spin-letter">S</div>
+                <div class="spin-content">
+                  <strong>Situation Questions</strong>
+                  <span>Understand the customer's current state. "What tools are you currently using?" "How large is your sales team?" These establish context — don't overdo them.</span>
+                </div>
+              </div>
+              <div class="spin-row">
+                <div class="spin-letter">P</div>
+                <div class="spin-content">
+                  <strong>Problem Questions</strong>
+                  <span>Surface pain points and frustrations. "What's the biggest challenge with your current process?" "Where do deals tend to stall for you?" Let the customer name the pain.</span>
+                </div>
+              </div>
+              <div class="spin-row">
+                <div class="spin-letter">I</div>
+                <div class="spin-content">
+                  <strong>Implication Questions</strong>
+                  <span>Explore the consequences of the problem. "If this continues, what happens to your Q3 targets?" "How does this affect team morale?" This creates urgency without pressure.</span>
+                </div>
+              </div>
+              <div class="spin-row">
+                <div class="spin-letter">N</div>
+                <div class="spin-content">
+                  <strong>Need-Payoff Questions</strong>
+                  <span>Have the customer articulate the value of solving their problem. "How much would it be worth to eliminate that friction?" "What would solving this mean for your team?" They sell themselves.</span>
+                </div>
+              </div>
+
+              <div class="highlight-box" style="margin-top:1.2rem;">
+                <p><strong>The SPIN Outcome:</strong> The customer articulates their own problem, describes its impact, and envisions a better future — your solution becomes the obvious answer, not a pitch.</p>
+              </div>
+            </div>
+
+            <!-- Method 2: Challenger Sale -->
+            <div class="method-card reveal fade-in-delay-1">
+              <div class="method-number">Method 02</div>
+              <div class="card-header" style="margin-top:0.6rem;">
+                <div class="card-icon" style="background:rgba(249,115,22,0.12);">⚡</div>
+                <div>
+                  <h3>The Challenger Sale</h3>
+                  <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Dixon &amp; Adamson — Teach, Tailor, Take Control</p>
+                </div>
+              </div>
+              <p style="font-size:0.88rem;">Based on a study of 6,000+ salespeople, the Challenger Sale found that the highest performers don't just build relationships — they constructively challenge customer assumptions and reframe how customers see their own problems.</p>
+
+              <div class="challenger-step">
+                <div class="ch-badge">1</div>
+                <div class="ch-content">
+                  <strong>Teach — Offer a Unique Insight</strong>
+                  <span>Share a perspective the customer hasn't considered. Lead with insight about their industry, market risk, or hidden opportunity. Position yourself as a thought leader before you position your product.</span>
+                </div>
+              </div>
+              <div class="challenger-step">
+                <div class="ch-badge">2</div>
+                <div class="ch-content">
+                  <strong>Tailor — Customize the Message</strong>
+                  <span>Adapt your insight to each stakeholder's concerns. The CFO cares about cost; the VP of Sales cares about quota; the end user cares about ease. One insight, multiple framings.</span>
+                </div>
+              </div>
+              <div class="challenger-step">
+                <div class="ch-badge">3</div>
+                <div class="ch-content">
+                  <strong>Take Control — Push Back Constructively</strong>
+                  <span>Don't cave on price. Don't accept every objection at face value. Reframe objections as opportunities to clarify value. Maintain assertive, professional control of the sales conversation.</span>
+                </div>
+              </div>
+              <div class="challenger-step">
+                <div class="ch-badge">4</div>
+                <div class="ch-content">
+                  <strong>Challenge Assumptions — Be Provocative</strong>
+                  <span>"What if the problem isn't your tool — it's your process?" Challengers help customers see what they can't see themselves. Disrupt to rebuild around your solution.</span>
+                </div>
+              </div>
+              <div class="challenger-step">
+                <div class="ch-badge">5</div>
+                <div class="ch-content">
+                  <strong>Close on Value — Not Price</strong>
+                  <span>Never compete on price alone. Anchor the conversation on ROI, risk reduction, and competitive advantage. Make the cost of inaction greater than the cost of your solution.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Method 3: AIDA / Consultative -->
+            <div class="method-card reveal" style="grid-column: 1 / -1;">
+              <div class="method-number">Method 03</div>
+              <div class="card-header" style="margin-top:0.6rem;">
+                <div class="card-icon" style="background:rgba(249,115,22,0.12);">🤝</div>
+                <div>
+                  <h3>Consultative Selling &amp; The AIDA Model</h3>
+                  <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Classic framework meets modern relationship-first approach</p>
+                </div>
+              </div>
+
+              <p style="font-size:0.88rem; max-width:720px;">Consultative selling treats every conversation as a diagnostic session. The salesperson becomes a trusted advisor — not a vendor. Paired with the AIDA model, it delivers a structured path from first touch to signed contract.</p>
+
+              <div class="aida-flow">
+                <div class="aida-step">
+                  <div class="aida-letter">A</div>
+                  <div class="aida-word">Awareness</div>
+                  <div class="aida-desc">Grab attention with a bold question or surprising statistic</div>
+                </div>
+                <div class="aida-step">
+                  <div class="aida-letter">I</div>
+                  <div class="aida-word">Interest</div>
+                  <div class="aida-desc">Demonstrate deep understanding of their specific problem</div>
+                </div>
+                <div class="aida-step">
+                  <div class="aida-letter">D</div>
+                  <div class="aida-word">Desire</div>
+                  <div class="aida-desc">Paint a vivid picture of life with your solution in place</div>
+                </div>
+                <div class="aida-step">
+                  <div class="aida-letter">A</div>
+                  <div class="aida-word">Action</div>
+                  <div class="aida-desc">Make the next step effortless and obvious — one clear ask</div>
+                </div>
+              </div>
+
+              <div style="margin-top:1.5rem;">
+                <h4 style="margin-bottom:0.6rem;">Handling Objections — The 4-Step Response Protocol</h4>
+                <p style="font-size:0.85rem;">When an objection arises, resist the urge to immediately defend. Follow this sequence instead:</p>
+                <div class="objection-flow">
+                  <span class="obj-step">Objection Raised</span>
+                  <span class="obj-arrow">→</span>
+                  <span class="obj-step">Acknowledge</span>
+                  <span class="obj-arrow">→</span>
+                  <span class="obj-step">Clarify</span>
+                  <span class="obj-arrow">→</span>
+                  <span class="obj-step">Respond with Evidence</span>
+                  <span class="obj-arrow">→</span>
+                  <span class="obj-step">Confirm Resolution</span>
+                </div>
+              </div>
+
+              <div class="highlight-box" style="margin-top:1.2rem;">
+                <p><strong>Why it works:</strong> Acknowledgment disarms defensiveness. Clarification finds the real objection (often different from the stated one). Evidence shifts the emotional register. Confirmation closes the loop and re-builds momentum.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 4: Mind Map                   -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="mindmap" class="section">
+          <div class="section-header reveal">
+            <span class="section-label">Visual Overview</span>
+            <h2>Sales Mind Map</h2>
+            <p>Every major domain of the sales process, from first contact to post-sale expansion.</p>
+          </div>
+
+          <div class="mindmap-visual reveal">
+            <div class="mm-root">
+              <span class="mm-root-label">💰 SALES</span>
+            </div>
+            <div class="mm-branches">
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">🔍 Prospecting</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">ICP Definition</span>
+                  <span class="mm-leaf">Cold Outreach</span>
+                  <span class="mm-leaf">Social Selling (LinkedIn)</span>
+                  <span class="mm-leaf">Referral Networks</span>
+                </div>
+              </div>
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">🗣 Discovery</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">Pain Point Mapping</span>
+                  <span class="mm-leaf">SPIN Questions</span>
+                  <span class="mm-leaf">Budget Qualification</span>
+                  <span class="mm-leaf">Decision Maker ID</span>
+                </div>
+              </div>
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">🎤 Presentation</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">Tailored Demo</span>
+                  <span class="mm-leaf">ROI Framing</span>
+                  <span class="mm-leaf">Storytelling</span>
+                  <span class="mm-leaf">Social Proof</span>
+                </div>
+              </div>
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">🛡 Objections</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">Price Objections</span>
+                  <span class="mm-leaf">Timing Concerns</span>
+                  <span class="mm-leaf">Trust Gaps</span>
+                  <span class="mm-leaf">Acknowledge → Respond</span>
+                </div>
+              </div>
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">✍️ Closing</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">Assumptive Close</span>
+                  <span class="mm-leaf">Urgency Close</span>
+                  <span class="mm-leaf">Summary Close</span>
+                  <span class="mm-leaf">Next-Step Close</span>
+                </div>
+              </div>
+
+              <div class="mm-branch-block">
+                <div class="mm-branch-title">🔄 Post-Sale</div>
+                <div class="mm-leaves">
+                  <span class="mm-leaf">Onboarding Support</span>
+                  <span class="mm-leaf">Upsell / Expansion</span>
+                  <span class="mm-leaf">NPS &amp; Feedback</span>
+                  <span class="mm-leaf">Referral Cultivation</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bonus text-based mind map -->
+          <div class="mindmap reveal" style="margin-top:1.5rem;">
+            <div class="root">SALES</div>
+            <div style="margin-left:1.5rem;">
+              <div class="branch">├─ Prospecting</div>
+              <div style="margin-left:1.5rem;">
+                <div class="leaf">├─ ICP Definition → Who is your ideal buyer?</div>
+                <div class="leaf">├─ Cold Outreach → Email, LinkedIn, Cold Call</div>
+                <div class="leaf">├─ Inbound Leads → Content, SEO, Referrals</div>
+                <div class="leaf">└─ Lead Scoring → Prioritize by fit &amp; intent</div>
+              </div>
+              <div class="branch">├─ Discovery</div>
+              <div style="margin-left:1.5rem;">
+                <div class="leaf">├─ SPIN Questions → Situation → Problem → Implication → Payoff</div>
+                <div class="leaf">├─ BANT Framework → Budget, Authority, Need, Timeline</div>
+                <div class="leaf">└─ Stakeholder Mapping → Who influences the decision?</div>
+              </div>
+              <div class="branch">├─ Objection Handling</div>
+              <div style="margin-left:1.5rem;">
+                <div class="leaf">├─ "Too expensive" → ROI reframe, payment options</div>
+                <div class="leaf">├─ "Not the right time" → Cost of delay question</div>
+                <div class="leaf">├─ "We're happy with current solution" → Gap analysis</div>
+                <div class="leaf">└─ "Need to think about it" → Clarify the real hesitation</div>
+              </div>
+              <div class="branch">└─ Closing Techniques</div>
+              <div style="margin-left:1.5rem;">
+                <div class="leaf">├─ Assumptive Close → "Shall we start with the onboarding call Thursday?"</div>
+                <div class="leaf">├─ Urgency Close → Time-limited offer or capacity constraint</div>
+                <div class="leaf">├─ Summary Close → Recap all agreed value, then ask</div>
+                <div class="leaf">└─ Puppy Dog Close → Trial period with low commitment entry</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 5: Real-World Examples        -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="examples" class="section">
+          <div class="section-header reveal">
+            <span class="section-label">Case Studies</span>
+            <h2>Real-World Sales Examples</h2>
+            <p>See exactly how world-class organizations apply sales science to win at scale.</p>
+          </div>
+
+          <div class="grid-2" style="gap:1.5rem;">
+
+            <!-- Example 1: Salesforce -->
+            <div class="example-card reveal">
+              <div class="example-label">Enterprise B2B</div>
+              <h4>Salesforce's Enterprise Deal Strategy</h4>
+              <p style="font-size:0.9rem;">
+                Salesforce revolutionized enterprise sales by abandoning the traditional "feature dump" approach entirely. Their sales organization uses a deeply consultative method: before any demo, account executives spend hours understanding the customer's specific KPIs, revenue targets, and operational pain points.
+              </p>
+              <p style="font-size:0.9rem;">
+                Rather than selling "CRM software," they sell <strong>"revenue growth"</strong> and <strong>"customer retention."</strong> Every demo is tailored to show the customer's own data flowing through the platform. ROI projections — built with the customer's actual numbers — are presented before the price is ever discussed.
+              </p>
+              <p style="font-size:0.9rem;">
+                When objections arise around price, Salesforce reps are trained to pivot immediately to the cost of inaction: "What is one lost customer worth to you annually? Our data shows our customers retain 27% more clients in year one." The conversation moves from "is this expensive?" to "can we afford not to?"
+              </p>
+              <div class="outcome-box">
+                <strong>💡 Key Insight:</strong> By framing every demo around the customer's specific KPIs and demonstrating ROI before price, Salesforce achieves 70%+ win rates in enterprise. Average deal size runs 3x that of competitors — not because their product is 3x better, but because their sales process is 3x more sophisticated.
+              </div>
+              <div>
+                <span class="stat-callout">📊 70%+ Enterprise Win Rate</span>
+                <span class="stat-callout" style="margin-left:0.5rem;">💰 3x Avg Deal Size vs. Competitors</span>
+              </div>
+            </div>
+
+            <!-- Example 2: Apple -->
+            <div class="example-card reveal fade-in-delay-1">
+              <div class="example-label">B2C Retail</div>
+              <h4>Apple's In-Store Sales Method</h4>
+              <p style="font-size:0.9rem;">
+                Apple's retail stores generate more revenue per square foot than any other retailer in the world — not by accident, but because of a meticulously designed sales philosophy baked into every staff interaction.
+              </p>
+              <p style="font-size:0.9rem;">
+                Apple trains every Genius Bar and floor specialist using the <strong>APPLE acronym</strong>: <em>Approach</em> with a personalized warm welcome. <em>Probe</em> politely to understand their needs. <em>Present</em> a solution for the customer to take home today. <em>Listen</em> for and resolve any issues or concerns. <em>End</em> with a fond farewell and invitation to return.
+              </p>
+              <p style="font-size:0.9rem;">
+                Critically, staff are instructed <strong>never to pitch a product first.</strong> The opening question is always some version of: <em>"What do you use your current device for?"</em> Only once friction is identified — "my photos keep running out of storage," "my laptop is too heavy to carry to meetings" — does the specialist show how the new product removes that specific friction. There is no pushy close. The natural progression does the closing.
+              </p>
+              <div class="outcome-box">
+                <strong>💡 Key Insight:</strong> Apple Stores generate approximately <strong>$5,500 in revenue per square foot</strong> — the world's highest retail revenue density. Their secret is not product superiority alone, but a sales culture built on curiosity over pitch, and empathy over transaction.
+              </div>
+              <div>
+                <span class="stat-callout">🏆 $5,500/sqft Revenue</span>
+                <span class="stat-callout" style="margin-left:0.5rem;">🌍 World's Highest Retail $/sqft</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- SECTION 6: Knowledge Quiz             -->
+        <!-- ══════════════════════════════════════ -->
+        <section id="quiz" class="section">
+          <div class="section-header reveal">
+            <span class="section-label">Test Yourself</span>
+            <h2>Knowledge Quiz</h2>
+            <p>Five questions to test your understanding of sales frameworks, methods, and mindset.</p>
+          </div>
+
+          <div class="quiz-container reveal">
+
+            <!-- Q1 -->
+            <div class="quiz-question" id="q1">
+              <div class="q-number">1</div>
+              <div class="q-text">In SPIN Selling, what does the "I" stand for?</div>
+              <div class="q-options">
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q1" />
+                  <span class="q-option-dot"></span> Interest
+                </label>
+                <label class="q-option" data-correct="true">
+                  <input type="radio" name="q1" />
+                  <span class="q-option-dot"></span> Implication
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q1" />
+                  <span class="q-option-dot"></span> Initiative
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q1" />
+                  <span class="q-option-dot"></span> Insight
+                </label>
+              </div>
+              <div class="q-answer">
+                <strong>Correct: Implication.</strong> Implication questions explore the consequences of a problem — "If this issue continues, what impact will it have on your revenue?" This step is the most powerful in SPIN because it creates urgency organically. The customer feels the weight of the problem themselves, rather than being told to care about it.
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-question" id="q2">
+              <div class="q-number">2</div>
+              <div class="q-text">What is the core philosophy of the Challenger Sale?</div>
+              <div class="q-options">
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q2" />
+                  <span class="q-option-dot"></span> Always discount to close
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q2" />
+                  <span class="q-option-dot"></span> Build rapport above all else
+                </label>
+                <label class="q-option" data-correct="true">
+                  <input type="radio" name="q2" />
+                  <span class="q-option-dot"></span> Teach, Tailor, and Take Control
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q2" />
+                  <span class="q-option-dot"></span> Follow the customer's lead at all times
+                </label>
+              </div>
+              <div class="q-answer">
+                <strong>Correct: Teach, Tailor, and Take Control.</strong> Challengers win by offering unique insights the customer hasn't considered (Teach), customizing that message to each stakeholder's priorities (Tailor), and constructively challenging the customer's assumptions rather than simply accommodating them (Take Control). Research showed that "Relationship Builders" actually perform worst among top seller archetypes.
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-question" id="q3">
+              <div class="q-number">3</div>
+              <div class="q-text">What does "Value Proposition" mean in sales?</div>
+              <div class="q-options">
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q3" />
+                  <span class="q-option-dot"></span> The price of your product
+                </label>
+                <label class="q-option" data-correct="true">
+                  <input type="radio" name="q3" />
+                  <span class="q-option-dot"></span> The unique benefit your product delivers to solve a specific customer problem
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q3" />
+                  <span class="q-option-dot"></span> A guarantee clause in a sales contract
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q3" />
+                  <span class="q-option-dot"></span> Your product's full feature list
+                </label>
+              </div>
+              <div class="q-answer">
+                <strong>Correct: The unique benefit your product delivers to solve a specific problem.</strong> A value proposition answers the most important question in every prospect's mind: "Why should I buy from YOU, specifically?" It connects your solution directly to the customer's desired outcome — not to your product's specs. A great value prop is specific, outcome-focused, and differentiated from alternatives.
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-question" id="q4">
+              <div class="q-number">4</div>
+              <div class="q-text">What does the AIDA model stand for?</div>
+              <div class="q-options">
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q4" />
+                  <span class="q-option-dot"></span> A negotiation and conflict framework
+                </label>
+                <label class="q-option" data-correct="true">
+                  <input type="radio" name="q4" />
+                  <span class="q-option-dot"></span> Attention, Interest, Desire, Action
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q4" />
+                  <span class="q-option-dot"></span> Analysis, Inquiry, Deal, Agreement
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q4" />
+                  <span class="q-option-dot"></span> A conflict resolution model from HR
+                </label>
+              </div>
+              <div class="q-answer">
+                <strong>Correct: Attention, Interest, Desire, Action.</strong> AIDA is one of the oldest and most enduring frameworks in sales and marketing. It describes the customer's psychological journey from first encountering your message (Attention) through building curiosity (Interest), emotional resonance (Desire), and finally a purchasing decision (Action). It works at the level of an email subject line, a cold call opener, or a full enterprise sales process.
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-question" id="q5">
+              <div class="q-number">5</div>
+              <div class="q-text">What is the #1 mistake salespeople make in objection handling?</div>
+              <div class="q-options">
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q5" />
+                  <span class="q-option-dot"></span> Listening too carefully before responding
+                </label>
+                <label class="q-option" data-correct="true">
+                  <input type="radio" name="q5" />
+                  <span class="q-option-dot"></span> Immediately arguing against the objection
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q5" />
+                  <span class="q-option-dot"></span> Acknowledging the concern empathetically
+                </label>
+                <label class="q-option" data-correct="false">
+                  <input type="radio" name="q5" />
+                  <span class="q-option-dot"></span> Asking clarifying questions to understand better
+                </label>
+              </div>
+              <div class="q-answer">
+                <strong>Correct: Immediately arguing against the objection.</strong> When a salesperson argues defensively the moment an objection surfaces, it triggers psychological reactance — the prospect doubles down. The right approach follows a structured protocol: Acknowledge the concern genuinely ("That's a fair point and I hear it a lot") → Clarify the real concern beneath the stated one → Respond with evidence and perspective → Confirm the answer actually resolved the concern before moving on.
+              </div>
+            </div>
+
+            <!-- Quiz Actions -->
+            <div class="quiz-actions">
+              <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
+              <button class="btn btn-secondary" id="quiz-reset">Reset Quiz</button>
+            </div>
+
+            <!-- Score -->
+            <div class="quiz-score" id="quiz-score">
+              <span class="score-emoji" id="score-emoji">🎉</span>
+              <span id="score-text"></span>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="../index.html">🌱 The Growth Hub</a>
+        <a href="../negotiations/index.html">🤝 Negotiations</a>
+        <a href="../sales/index.html" style="color: var(--site-color); font-weight:700;">💰 Sales</a>
+        <a href="../conflict/index.html">☮️ Conflict</a>
+        <a href="../psychology/index.html">🧠 Psychology</a>
+        <a href="../ai-trends/index.html">🤖 AI &amp; Biz</a>
+      </div>
+      <p>The Sales Vault — Part of <strong>The Growth Hub</strong> Learning System &copy; 2026</p>
+      <p style="margin-top:0.3rem;">Built for professionals who believe selling is a science worth mastering.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // ── Page Init ──────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initReveal();
+      initTOCHighlight();
+      initMobileMenu();
+      initQuiz();
+    });
+
+    // ── Scroll Reveal ──────────────────────────
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => observer.observe(el));
+    }
+
+    // ── TOC Active Highlighting ─────────────────
+    function initTOCHighlight() {
+      const sections = document.querySelectorAll('section[id]');
+      const tocLinks = document.querySelectorAll('.toc-list a[href^="#"]');
+      if (!sections.length || !tocLinks.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(a => a.classList.remove('active'));
+            const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      sections.forEach(s => observer.observe(s));
+    }
+
+    // ── Mobile Menu ────────────────────────────
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('navbar-mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        btn.textContent = menu.classList.contains('open') ? '✕' : '☰';
+      });
+    }
+
+    // ── Quiz Logic ─────────────────────────────
+    function initQuiz() {
+      const submitBtn = document.getElementById('quiz-submit');
+      const resetBtn = document.getElementById('quiz-reset');
+      const scoreDiv = document.getElementById('quiz-score');
+
+      // Option selection
+      document.querySelectorAll('.q-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          const question = opt.closest('.quiz-question');
+          question.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          // Check radio
+          opt.querySelector('input[type="radio"]').checked = true;
+        });
+      });
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          const questions = document.querySelectorAll('.quiz-question');
+          let score = 0;
+          let answered = 0;
+
+          questions.forEach(q => {
+            const selected = q.querySelector('.q-option.selected');
+            if (!selected) return;
+            answered++;
+
+            const isCorrect = selected.dataset.correct === 'true';
+            if (isCorrect) {
+              selected.classList.add('correct');
+              score++;
+            } else {
+              selected.classList.add('wrong');
+              // Show the correct one
+              q.querySelectorAll('.q-option').forEach(opt => {
+                if (opt.dataset.correct === 'true') opt.classList.add('correct');
+              });
+            }
+
+            // Show explanation
+            const answer = q.querySelector('.q-answer');
+            if (answer) answer.classList.add('show');
+
+            // Disable further clicks
+            q.querySelectorAll('.q-option').forEach(opt => {
+              opt.style.pointerEvents = 'none';
+            });
+          });
+
+          if (answered === 0) {
+            alert('Please answer at least one question before submitting.');
+            return;
+          }
+
+          // Show score
+          scoreDiv.classList.add('show');
+          const pct = Math.round((score / 5) * 100);
+          let emoji = '🎉';
+          let msg = '';
+          if (score === 5)       { emoji = '🏆'; msg = 'Perfect Score! You\'re a Sales Vault master!'; }
+          else if (score >= 4)   { emoji = '🎯'; msg = `Excellent — ${score}/5! You have a strong command of sales science.`; }
+          else if (score >= 3)   { emoji = '💡'; msg = `Good work — ${score}/5! Review the frameworks above to sharpen the gaps.`; }
+          else if (score >= 2)   { emoji = '📚'; msg = `${score}/5 — Keep studying! Re-read the methods section and try again.`; }
+          else                   { emoji = '💪'; msg = `${score}/5 — Don\'t give up. Every expert started as a beginner.`; }
+
+          document.getElementById('score-emoji').textContent = emoji;
+          document.getElementById('score-text').textContent = msg;
+          scoreDiv.style.borderTop = `4px solid var(--site-color)`;
+
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = '0.5';
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          document.querySelectorAll('.q-option').forEach(opt => {
+            opt.classList.remove('selected', 'correct', 'wrong');
+            opt.style.pointerEvents = '';
+            opt.querySelector('input[type="radio"]').checked = false;
+          });
+          document.querySelectorAll('.q-answer').forEach(a => a.classList.remove('show'));
+          scoreDiv.classList.remove('show');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '';
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Growth Hub — Master Learning Center</title>
+  <meta name="description" content="Your personal learning hub covering Negotiations, Sales, Conflict Management, Human Psychology, and AI Business Trends." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --site-color: #f0a500; --site-dark: #c27d00; }
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .feature-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .feature-item .fi { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .feature-item h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .feature-item p { font-size: 0.78rem; margin: 0; }
+    .progress-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .progress-tracks { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem; }
+    .track-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.85rem; }
+    .track-name { width: 130px; flex-shrink: 0; font-weight: 600; color: var(--text-secondary); }
+    .track-bar-wrap { flex: 1; background: var(--border); border-radius: 20px; height: 6px; overflow: hidden; }
+    .track-bar { height: 100%; border-radius: 20px; width: 0%; transition: width 0.6s ease; }
+    .track-badge { font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 20px; background: var(--bg-sidebar); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <!-- Update Banner -->
+  <div class="update-banner">
+    🚀 Your personal learning hub — bookmark this page and revisit often for fresh content!
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🌱</span>
+        The Growth Hub
+      </a>
+      <div class="navbar-links">
+        <a href="negotiations/index.html">🤝 Negotiations</a>
+        <a href="sales/index.html">💰 Sales</a>
+        <a href="conflict/index.html">☮️ Conflict</a>
+        <a href="psychology/index.html">🧠 Psychology</a>
+        <a href="ai-trends/index.html">🤖 AI & Biz</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="btn-theme" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="negotiations/index.html">🤝 Negotiations</a>
+      <a href="sales/index.html">💰 Sales</a>
+      <a href="conflict/index.html">☮️ Conflict Management</a>
+      <a href="psychology/index.html">🧠 Psychology & Influence</a>
+      <a href="ai-trends/index.html">🤖 AI & Future Biz</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge fade-in">
+        <span class="dot"></span> Your Personal Learning Hub — 2026 Edition
+      </div>
+      <h1 class="fade-in fade-in-delay-1">
+        Master the Skills That<br /><span class="highlight">Shape Your Future</span>
+      </h1>
+      <p class="hero-description fade-in fade-in-delay-2">
+        Five curated sub-sites covering the most powerful skills for modern professionals — from boardroom negotiations to AI-powered business strategy.
+      </p>
+      <div class="stats-row fade-in fade-in-delay-3">
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Learning Tracks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">25+</div>
+          <div class="stat-label">Frameworks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">25</div>
+          <div class="stat-label">Quiz Questions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Real-World Examples</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Growing Content</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Wisdom -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="wisdom-widget reveal">
+        <div id="wisdom-text" class="wisdom-text">"Loading your daily wisdom..."</div>
+        <div id="wisdom-author" class="wisdom-author"></div>
+        <div class="wisdom-nav" id="wisdom-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-site Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Five Learning Tracks</span>
+        <h2>Choose Your Path</h2>
+        <p>Each sub-site is a complete learning module with frameworks, examples, mind maps, and quizzes.</p>
+      </div>
+
+      <div class="home-grid">
+        <!-- Negotiations -->
+        <a href="negotiations/index.html" class="site-card reveal" style="--site-color: #0ea5e9;">
+          <span class="site-emoji">🤝</span>
+          <h3>Negotiation Lab</h3>
+          <p class="site-tagline">Master the art of win-win deals and strategic persuasion</p>
+          <div class="pill-tags">
+            <span class="pill">BATNA</span>
+            <span class="pill">Win-Win</span>
+            <span class="pill">Anchoring</span>
+            <span class="pill">ZOPA</span>
+          </div>
+          <span id="progress-negotiations" class="track-badge mt-2" style="display:inline-block;margin-top:0.8rem;"></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Sales -->
+        <a href="sales/index.html" class="site-card reveal fade-in-delay-1" style="--site-color: #f97316;">
+          <span class="site-emoji">💰</span>
+          <h3>The Sales Vault</h3>
+          <p class="site-tagline">Move products, ideas, and people with proven sales science</p>
+          <div class="pill-tags">
+            <span class="pill">SPIN Selling</span>
+            <span class="pill">Challenger</span>
+            <span class="pill">Closing</span>
+            <span class="pill">Relationships</span>
+          </div>
+          <span id="progress-sales" class="track-badge mt-2" style="display:inline-block;margin-top:0.8rem;"></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Conflict -->
+        <a href="conflict/index.html" class="site-card reveal fade-in-delay-2" style="--site-color: #e11d48;">
+          <span class="site-emoji">☮️</span>
+          <h3>Harmony Center</h3>
+          <p class="site-tagline">Turn friction into progress with powerful conflict resolution</p>
+          <div class="pill-tags">
+            <span class="pill">De-escalation</span>
+            <span class="pill">Thomas-Kilmann</span>
+            <span class="pill">Active Listening</span>
+          </div>
+          <span id="progress-conflict" class="track-badge mt-2" style="display:inline-block;margin-top:0.8rem;"></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Psychology -->
+        <a href="psychology/index.html" class="site-card reveal fade-in-delay-3" style="--site-color: #8b5cf6;">
+          <span class="site-emoji">🧠</span>
+          <h3>The Mind Reader</h3>
+          <p class="site-tagline">Decode human behavior and master the psychology of "Yes"</p>
+          <div class="pill-tags">
+            <span class="pill">Cialdini's 6</span>
+            <span class="pill">Reciprocity</span>
+            <span class="pill">Social Proof</span>
+            <span class="pill">Biases</span>
+          </div>
+          <span id="progress-psychology" class="track-badge mt-2" style="display:inline-block;margin-top:0.8rem;"></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- AI Trends -->
+        <a href="ai-trends/index.html" class="site-card reveal fade-in-delay-4" style="--site-color: #10b981;">
+          <span class="site-emoji">🤖</span>
+          <h3>AI & Future Biz</h3>
+          <p class="site-tagline">Lead in 2026 with the latest AI trends and automation skills</p>
+          <div class="pill-tags">
+            <span class="pill">AI Agents</span>
+            <span class="pill">Multimodal AI</span>
+            <span class="pill">Automation</span>
+            <span class="pill">RAG</span>
+          </div>
+          <span id="progress-ai-trends" class="track-badge mt-2" style="display:inline-block;margin-top:0.8rem;"></span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background: var(--bg-sidebar); padding: 3rem 0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What You Get</span>
+        <h2>Everything You Need to Learn</h2>
+      </div>
+      <div class="feature-row">
+        <div class="feature-item reveal">
+          <div class="fi">💡</div>
+          <h4>Core Concepts</h4>
+          <p>Clear explanations of each topic's fundamentals</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="fi">✍️</div>
+          <h4>Inspiring Quotes</h4>
+          <p>5 mindset-setting quotes per topic from masters</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="fi">🗺️</div>
+          <h4>Mind Maps</h4>
+          <p>Visual outlines connecting all key sub-topics</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="fi">⚙️</div>
+          <h4>3 Proven Methods</h4>
+          <p>Step-by-step frameworks with real action steps</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="fi">🌍</div>
+          <h4>Real Examples</h4>
+          <p>2 real-world case studies per topic</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="fi">🧩</div>
+          <h4>Knowledge Quiz</h4>
+          <p>5-question quiz with instant feedback per topic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress Tracker -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Your Progress</span>
+        <h2>Learning Journey Tracker</h2>
+        <p>Your progress is saved in your browser automatically as you visit each section.</p>
+      </div>
+      <div class="progress-section reveal">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <span style="font-weight:700; font-size:0.9rem;">Overall Progress</span>
+          <span id="overall-progress-label" style="font-size:0.8rem; color:var(--text-muted);">0/5 sections visited</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="overall-progress-bar" style="width:0%"></div>
+        </div>
+        <div class="progress-tracks">
+          <div class="track-item">
+            <span class="track-name">🤝 Negotiations</span>
+            <div class="track-bar-wrap"><div class="track-bar" style="background:#0ea5e9" id="bar-negotiations"></div></div>
+            <span class="track-badge" id="badge-negotiations">Not started</span>
+          </div>
+          <div class="track-item">
+            <span class="track-name">💰 Sales</span>
+            <div class="track-bar-wrap"><div class="track-bar" style="background:#f97316" id="bar-sales"></div></div>
+            <span class="track-badge" id="badge-sales">Not started</span>
+          </div>
+          <div class="track-item">
+            <span class="track-name">☮️ Conflict</span>
+            <div class="track-bar-wrap"><div class="track-bar" style="background:#e11d48" id="bar-conflict"></div></div>
+            <span class="track-badge" id="badge-conflict">Not started</span>
+          </div>
+          <div class="track-item">
+            <span class="track-name">🧠 Psychology</span>
+            <div class="track-bar-wrap"><div class="track-bar" style="background:#8b5cf6" id="bar-psychology"></div></div>
+            <span class="track-badge" id="badge-psychology">Not started</span>
+          </div>
+          <div class="track-item">
+            <span class="track-name">🤖 AI & Biz</span>
+            <div class="track-bar-wrap"><div class="track-bar" style="background:#10b981" id="bar-ai-trends"></div></div>
+            <span class="track-badge" id="badge-ai-trends">Not started</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use -->
+  <section class="section" style="background: var(--bg-sidebar); padding: 3rem 0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Getting Started</span>
+        <h2>How to Use This Hub</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="card-header">
+            <div class="card-icon" style="background:#dbeafe">📖</div>
+            <div><h4>1. Pick a Track</h4></div>
+          </div>
+          <p>Choose a topic that's most relevant to your current goals. Each sub-site is self-contained.</p>
+        </div>
+        <div class="card reveal fade-in-delay-1">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fef3c7">📝</div>
+            <div><h4>2. Read & Reflect</h4></div>
+          </div>
+          <p>Go through the core concept, study the methods, and review the mind map to connect ideas.</p>
+        </div>
+        <div class="card reveal fade-in-delay-2">
+          <div class="card-header">
+            <div class="card-icon" style="background:#dcfce7">🧩</div>
+            <div><h4>3. Test Yourself</h4></div>
+          </div>
+          <p>Take the 5-question quiz at the end of each section to reinforce your learning.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2rem;" class="reveal">
+        <p style="font-size:0.9rem; color:var(--text-muted);">💡 <strong>Pro Tip:</strong> Revisit this hub weekly. Content is designed to be updated as the world evolves — especially the AI & Future Biz section.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">🏠 Home</a>
+        <a href="negotiations/index.html">🤝 Negotiations</a>
+        <a href="sales/index.html">💰 Sales</a>
+        <a href="conflict/index.html">☮️ Conflict</a>
+        <a href="psychology/index.html">🧠 Psychology</a>
+        <a href="ai-trends/index.html">🤖 AI & Biz</a>
+      </div>
+      <p>The Growth Hub — Built for lifelong learners · Hosted on GitHub Pages · Updated regularly</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Extended progress UI for home page
+    document.addEventListener('DOMContentLoaded', () => {
+      const prog = JSON.parse(localStorage.getItem('growth-hub-progress') || '{}');
+      const tracks = ['negotiations', 'sales', 'conflict', 'psychology', 'ai-trends'];
+      tracks.forEach(t => {
+        const bar = document.getElementById('bar-' + t);
+        const badge = document.getElementById('badge-' + t);
+        if (prog[t]?.visited) {
+          if (bar) bar.style.width = '100%';
+          if (badge) {
+            badge.textContent = '✓ Done';
+            badge.style.background = '#dcfce7';
+            badge.style.color = '#16a34a';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
