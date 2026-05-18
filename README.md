@@ -1,79 +1,49 @@
-# 🌱 The Growth Hub — Master Learning Center
+# The Growth Hub
 
-A personal learning website with 5 high-quality sub-sites covering the most powerful skills for modern professionals.
+A personal **learning and skill-development website** covering five high-impact domains — built as a self-contained knowledge hub with quizzes, mind maps, and daily wisdom.
 
-## 🗺️ Sub-Sites
+## What It Does
 
-| # | Site | Topic | Color |
-|---|------|--------|-------|
-| 1 | 🤝 Negotiation Lab | Win-win deals, BATNA, ZOPA, anchoring | Sky Blue |
-| 2 | 💰 The Sales Vault | SPIN Selling, Challenger Sale, closing | Orange |
-| 3 | ☮️ Harmony Center | Conflict resolution, DESC, de-escalation | Rose |
-| 4 | 🧠 The Mind Reader | Cialdini's 6, cognitive biases, influence | Purple |
-| 5 | 🤖 AI & Future Biz | AI agents, RAG, automation, 2026 trends | Emerald |
+Organizes learning content across five sub-sites, each focused on a critical professional skill. Users can read, quiz themselves, explore mind maps, and track their progress — all without logging in.
 
-## ✨ Features
+## Key Features
 
-- **Dark / Light mode** — toggled per-user, saved in localStorage
-- **Progress tracking** — browser remembers which sections you've visited
+- **5 fully independent sub-sites**:
+  1. **Negotiation Lab** — frameworks, tactics, and practice scenarios
+  2. **Sales Vault** — proven sales techniques and closing strategies
+  3. **Harmony Center** — conflict resolution models and tools
+  4. **Mind Reader** — psychology of influence and persuasion
+  5. **AI & Future Biz** — AI trends and their business impact
 - **Interactive quizzes** — 5 questions per topic with instant feedback
-- **Mind maps** — visual outlines of each topic's structure
-- **Daily wisdom** — rotating quotes on the home page
-- **Scroll animations** — smooth reveal effects
+- **Mind maps** — visual overviews of key concepts per topic
+- **Daily wisdom quotes** — rotating quote on the homepage
+- **Progress tracking** — visited sections remembered via localStorage
+- **Dark / Light mode** — with localStorage persistence
+- **Scroll reveal animations** — smooth entrance effects throughout
 - **Fully responsive** — works on mobile, tablet, and desktop
-- **No dependencies** — pure HTML, CSS, and vanilla JavaScript
+- **Zero dependencies** — pure HTML/CSS/JS, no framework or build tool
 
-## 🚀 How to Host on GitHub Pages
+## Tech Stack
 
-1. Push this repo to GitHub:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/growth-hub.git
-   git push -u origin main
-   ```
+- HTML, CSS, Vanilla JavaScript
 
-2. Go to your repo → **Settings** → **Pages**
-
-3. Under **Source**, select `main` branch, `/ (root)` folder → click **Save**
-
-4. Your site will be live at: `https://YOUR_USERNAME.github.io/growth-hub/`
-
-## 📁 File Structure
+## Site Structure
 
 ```
-growth-hub/
-├── index.html              ← Master Home (The Growth Hub)
-├── css/
-│   └── styles.css          ← Shared styles for all pages
-├── js/
-│   └── main.js             ← Shared JavaScript (quiz, theme, progress)
-├── negotiations/
-│   └── index.html          ← Negotiation Lab
-├── sales/
-│   └── index.html          ← The Sales Vault
-├── conflict/
-│   └── index.html          ← Harmony Center
-├── psychology/
-│   └── index.html          ← The Mind Reader
-└── ai-trends/
-    └── index.html          ← AI & Future Biz
+index.html           → Hub homepage
+negotiations/        → Negotiation Lab
+sales/               → Sales Vault
+conflict/            → Harmony Center
+psychology/          → Mind Reader
+ai-trends/           → AI & Future Business
+css/styles.css       → Global styles
+js/main.js           → Core logic
 ```
 
-## 🔄 Keeping Content Updated
+## Live Site
 
-Each sub-site is a standalone HTML file. To update content:
+[https://hii2023.github.io/growth-hub](https://hii2023.github.io/growth-hub)
 
-- **Add new quotes**: Edit the `quotes-grid` section in any sub-site HTML
-- **Add new AI trends**: Update the trends snapshot grid in `ai-trends/index.html`
-- **Add new methods**: Add a new `.method-card` block in the methods section
-- **Update quiz questions**: Edit the `.quiz-question` blocks and `data-correct` attributes
-- **Add new sub-sites**: Create a new folder with `index.html`, update the nav in all files
+## Audience
 
-## 📅 Content Update Log
-
-| Date | Update |
-|------|--------|
-| 2026-03-27 | Initial release — all 5 sub-sites live |
-
----
-
-Built with ❤️ for lifelong learners.
+Self-learners, sales professionals, operators, and anyone looking to build high-value interpersonal and business skills.
